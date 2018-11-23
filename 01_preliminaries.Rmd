@@ -28,62 +28,35 @@ The following statements are true:
 3. $D(t,T) = A(t,T)^{-1}$.
 
 
+
+
+## Stocks and Dividends
+
+## ETFs
+
 ## Forward Contracts
 
 <!-- Now you have learned the very basic concepts of R Markdown. The idea should be simple enough: interweave narratives with code in a document, knit the document to dynamically generate results from the code, and you will get a report. This idea was not invented by R Markdown, but came from an early programming paradigm called "Literate Programming" [@knuth1984]\index{Literate Programming}. -->
 
 <!-- Due to the simplicity of Markdown and the powerful R language for data analysis, R Markdown has been widely used in many areas. Before we dive into the technical details, we want to show some examples to give you an idea of its possible applications. -->
 
-### Airbnb's knowledge repository
+### Synthetic Forwards
 
-<!-- Airbnb uses R Markdown to document all their analyses in R, so they can combine code and data visualizations in a single report [@bion2018]. Eventually all reports are carefully peer-reviewed and published to a company knowledge repository, so that anyone in the company can easily find analyses relevant to their team. Data scientists are also able to learn as much as they want from previous work or reuse the code written by previous authors, because the full R Markdown source is available in the repository. -->
+A portfolio consisting of a long call and a short put is a synthetic forward position.
 
-### Homework assignments on RPubs
 
-<!-- A huge number of homework assignments have been published to the website https://RPubs.com (a free publishing platform provided by RStudio), which shows that R Markdown is easy and convenient enough for students to do their homework assignments (see Figure \@ref(fig:rpubs)). When I was still a student, I did most of my homework assignments using Sweave, which was a much earlier implementation of literate programming based on the S language (later R) and LaTeX. I was aware of the importance of reproducible research but did not enjoy LaTeX, and few of my classmates wanted to use Sweave. Right after I graduated, R Markdown was born, and it has been great to see so many students do their homework in the reproducible manner. -->
+Let the current time be $t$.  Consider a call and put on the same underlying, with the same strike price $K$, that both expire at time $T$.  If you have a long position in the call and a short position in the put, then in all states of the world at time $T$ this portfolio has a value of $S_{T} - K$, which is the same value as the payoff as a long forward.
 
-<!-- ```{r rpubs, echo=FALSE, fig.cap='A screenshot of RPubs.com that contains some homework assginments submitted by students.', out.width='100%'} -->
-<!-- knitr::include_graphics('images/rpubs.png', dpi = NA) -->
-<!-- ``` -->
+Suppose that $S_{T} > K$. You exercise your long call, for which you recieve the stock worth $S_{T}$ whilie paying the strike price $K$ for it. The put you are short expires worthless. The total value of these two positions is $S_{T} - K$.
 
-<!-- In a 2016 JSM (Joint Statistical Meetings) talk, I proposed that course instructors could sometimes intentionally insert some wrong values in the source data before providing it to the students for them to analyze the data in the homework, then correct these values the next time, and ask them to do the analysis again. This way, students should be able to realize the problems with the traditional cut-and-paste approach for data analysis (i.e., run the analysis separately and copy the results manually), and the advantage of using R Markdown to automatically generate the report. -->
+On the other hand, suppose $S_{T} < K$. Your short put postion will be exercised, forcing you to buy the stock for $K$ even though it is only worth $S_{T}$.  Your call is worthless, so you won't exercise.  Once again, the combined value of these two position is $S_{T} - K$.
 
-### Personalized mail
+If $S_{T} = K$, nothing happens because both options are worthless. Doing nothing has zero value.  But of course in this situation we have that $S_{T} - K = 0$.
 
-<!-- One thing you should remember about R Markdown is that you can programmatically generate reports, although most of the time you may be just clicking the `Knit` button in RStudio to generate a single report from a single source document. Being able to program reports is a super power of R Markdown. -->
 
-<!-- Mine Çetinkaya-Rundel once wanted to create personalized handouts for her workshop participants. She used a template R Markdown file, and knitted it in a for-loop to generate 20 PDF files for the 20 participants. Each PDF contained both personalized information and common information. You may read the article https://rmarkdown.rstudio.com/articles_mail_merge.html for the technical details. -->
+## Put-Call Parity
+\begin{align*}
+C(t, T, K) - P(t, T, K) = D(t, T)(F(t, T) - K)
+\end{align*}
 
-### 2017 Employer Health Benefits Survey
 
-<!-- The [2017 Employer Health Benefits Survey](https://www.kff.org/health-costs/report/2017-employer-health-benefits-survey/) was designed and analyzed by the Kaiser Family Foundation, NORC at the University of Chicago, and Health Research & Educational Trust. The full PDF report was written in R Markdown (with the **bookdown** package). It has a unique appearance, which was made possible by heavy customizations in the LaTeX template. This example shows you that if you really care about typesetting, you are free to apply your knowledge about LaTeX to create highly sophisticated reports from R Markdown. -->
-
-### Journal articles {#examples-journal}
-
-<!-- Chris Hartgerink explained how and why he used R Markdown to write dynamic research documents in the post at https://elifesciences.org/labs/cad57bcf/composing-reproducible-manuscripts-using-r-markdown. He published a paper titled "Too Good to be False: Nonsignificant Results Revisited" with two co-authors [@hartgerink2017]. The manuscript was written in R Markdown, and results were dynamically generated from the code in R Markdown. -->
-
-<!-- When checking the accuracy of P-values in the psychology literature, his colleagues and he found that P-values could be mistyped or miscalculated, which could lead to inaccurate or even wrong conclusions. If the P-values were dynamically generated and inserted instead of being manually copied from statistical programs, the chance for those problems to exist would be much lower. -->
-
-<!-- @lowndes2017 also shows that using R Markdown (and version control) not only enhances reproducibility, but also produces better scientific research in less time. -->
-
-### Dashboards at eelloo
-
-<!-- R Markdown is used at eelloo (https://eelloo.nl) to design and generate research reports. Here is one of their examples (in Dutch): https://eelloo.nl/groepsrapportages-met-infographics/, where you can find gauges, bar charts, pie charts, wordclouds, and other types of graphs dynamically generated and embedded in dashboards. -->
-
-### Books {#examples-books}
-
-<!-- We will introduce the R Markdown extension **bookdown** in Chapter \@ref(books). It is an R package that allows you to write books and long-form reports with multiple Rmd files. After this package was published, a large number of books have emerged. You can find a subset of them at https://bookdown.org. Some of these books have been printed, and some only have free online versions. -->
-
-<!-- There have also been students who wrote their dissertations/theses with **bookdown**, such as Ed Berry: https://eddjberry.netlify.com/post/writing-your-thesis-with-bookdown/. Chester Ismay has even provided an R package **thesisdown** (https://github.com/ismayc/thesisdown) \index{thesisdown} that can render a thesis in various formats. Several other people have customized this package for their own institutions, such as Zhian N. Kamvar's **beaverdown** (https://github.com/zkamvar/beaverdown) and Ben Marwick's **huskydown** (https://github.com/benmarwick/huskydown). -->
-
-### Websites {#examples-websites}
-
-<!-- The **blogdown** package to be introduced in Chapter \@ref(websites) can be used to build general-purpose websites (including blogs and personal websites) based on R Markdown. You may find tons of examples at https://github.com/rbind or by searching on Twitter: https://twitter.com/search?q=blogdown. Here are a few impressive websites that I can quickly think of off the top of my head: -->
-
-<!-- - Rob J Hyndman's personal website: https://robjhyndman.com (a very comprehensive academic website). -->
-
-<!-- - Amber Thomas's personal website: https://amber.rbind.io (a rich project portfolio). -->
-
-<!-- - Emi Tanaka's personal website: https://emitanaka.github.io (in particular, check out the beautiful showcase page). -->
-
-<!-- - "Live Free or Dichotomize" by Nick Strayer and Lucy D'Agostino McGowan: http://livefreeordichotomize.com (the layout is elegant, and the posts are useful and practical). -->
