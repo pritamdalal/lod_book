@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Learning Options from Data</title>
+  <meta name="description" content="Learning Options from Data">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Learning Options from Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Learning Options from Data" />
+  
+  
+  
+
+<meta name="author" content="Pritam Dalal">
+
+
+<meta name="date" content="2018-11-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="delta-neutral-historical-data.html">
+<link rel="next" href="structure-of-the-book.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Learning Options from Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="delta-neutral-historical-data.html"><a href="delta-neutral-historical-data.html"><i class="fa fa-check"></i>Delta-Neutral Historical Data</a></li>
+<li class="chapter" data-level="" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.1</b> Discounting &amp; Accumulating</a></li>
+<li class="chapter" data-level="1.2" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.2</b> Forward Contracts</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="forward-contracts.html"><a href="forward-contracts.html#airbnbs-knowledge-repository"><i class="fa fa-check"></i><b>1.2.1</b> Airbnb’s knowledge repository</a></li>
+<li class="chapter" data-level="1.2.2" data-path="forward-contracts.html"><a href="forward-contracts.html#homework-assignments-on-rpubs"><i class="fa fa-check"></i><b>1.2.2</b> Homework assignments on RPubs</a></li>
+<li class="chapter" data-level="1.2.3" data-path="forward-contracts.html"><a href="forward-contracts.html#personalized-mail"><i class="fa fa-check"></i><b>1.2.3</b> Personalized mail</a></li>
+<li class="chapter" data-level="1.2.4" data-path="forward-contracts.html"><a href="forward-contracts.html#employer-health-benefits-survey"><i class="fa fa-check"></i><b>1.2.4</b> 2017 Employer Health Benefits Survey</a></li>
+<li class="chapter" data-level="1.2.5" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-journal"><i class="fa fa-check"></i><b>1.2.5</b> Journal articles</a></li>
+<li class="chapter" data-level="1.2.6" data-path="forward-contracts.html"><a href="forward-contracts.html#dashboards-at-eelloo"><i class="fa fa-check"></i><b>1.2.6</b> Dashboards at eelloo</a></li>
+<li class="chapter" data-level="1.2.7" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-books"><i class="fa fa-check"></i><b>1.2.7</b> Books</a></li>
+<li class="chapter" data-level="1.2.8" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-websites"><i class="fa fa-check"></i><b>1.2.8</b> Websites</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning Options from Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="how-to-read-this-book" class="section level2 unnumbered">
+<h2>How to read this book</h2>
+<!-- This book may serve you better as a reference book than a textbook. It contains a large number of technical details, and we do not expect you to read it from beginning to end, since you may easily feel overwhelmed. Instead, think about your background and what you want to do first, and go to the relevant chapters or sections. For example: -->
+<!-- - I just want to finish my course homework (Chapter \@ref(basics) should be more than enough for you). -->
+<!-- - I know this is an R Markdown book, but I use Python more than R (Go to Section \@ref(python)). -->
+<!-- - I want to embed interactive plots in my reports, or want my readers to be able change my model parameters interactively and see results on the fly (Check out Section \@ref(interactive-documents)). -->
+<!-- - I know the output format I want to use, and I want to customize its appearance (Check out the documentation of the specific output format in Chapter \@ref(documents) or Chapter \@ref(presentations)). For example, I want to customize the template for my PowerPoint presentation (Go to Section \@ref(ppt-templates)). -->
+<!-- - I want to build a business dashboard highlighting some key figures and indicators (Go to Chapter \@ref(dashboards)). -->
+<!-- - I heard about `yolo = TRUE` from a friend, and I'm curious what that means in the **xaringan** package (Go to Chapter \@ref(xaringan)). -->
+<!-- - I want to build a personal website (Go to Chapter \@ref(websites)), or write a book (Go to Chapter \@ref(books)). -->
+<!-- - I want to write a paper and submit to the Journal of Statistical Software (Go to Chapter \@ref(journals)). -->
+<!-- - I want to build an interactive tutorial with exercises for my students to learn a topic (Go to Chapter \@ref(learnr)). -->
+<!-- - I'm familiar with R Markdown now, and I want to generate personalized reports for all my customers using the same R Markdown template (Try parameterized reports in Chapter \@ref(parameterized-reports)). -->
+<!-- - I know some JavaScript, and want to build an interface in R to call an interested JavaScript library from R (Learn how to develop HTML widgets in Chapter \@ref(html-widgets)). -->
+<!-- - I want to build future reports with a company branded template that shows our logo and uses our unique color theme (Go to Chapter \@ref(document-templates)). -->
+<!-- If you are not familiar with R Markdown, we recommend that you read at least Chapter \@ref(basics) to learn the basics. All the rest of the chapters in this book can be read in any order you desire. They are pretty much orthogonal to each other. However, to become familiar with R Markdown output formats, you may want to thumb through the HTML document format in Section \@ref(html-document), because many other formats share the same options as this format. -->
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="delta-neutral-historical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structure-of-the-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["rmarkdown.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

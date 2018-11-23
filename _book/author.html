@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Learning Options from Data</title>
+  <meta name="description" content="Learning Options from Data">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Learning Options from Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Learning Options from Data" />
+  
+  
+  
+
+<meta name="author" content="Pritam Dalal">
+
+
+<meta name="date" content="2018-11-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="acknowledgments.html">
+<link rel="next" href="preliminaries.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Learning Options from Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="delta-neutral-historical-data.html"><a href="delta-neutral-historical-data.html"><i class="fa fa-check"></i>Delta-Neutral Historical Data</a></li>
+<li class="chapter" data-level="" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.1</b> Discounting &amp; Accumulating</a></li>
+<li class="chapter" data-level="1.2" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.2</b> Forward Contracts</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="forward-contracts.html"><a href="forward-contracts.html#airbnbs-knowledge-repository"><i class="fa fa-check"></i><b>1.2.1</b> Airbnb’s knowledge repository</a></li>
+<li class="chapter" data-level="1.2.2" data-path="forward-contracts.html"><a href="forward-contracts.html#homework-assignments-on-rpubs"><i class="fa fa-check"></i><b>1.2.2</b> Homework assignments on RPubs</a></li>
+<li class="chapter" data-level="1.2.3" data-path="forward-contracts.html"><a href="forward-contracts.html#personalized-mail"><i class="fa fa-check"></i><b>1.2.3</b> Personalized mail</a></li>
+<li class="chapter" data-level="1.2.4" data-path="forward-contracts.html"><a href="forward-contracts.html#employer-health-benefits-survey"><i class="fa fa-check"></i><b>1.2.4</b> 2017 Employer Health Benefits Survey</a></li>
+<li class="chapter" data-level="1.2.5" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-journal"><i class="fa fa-check"></i><b>1.2.5</b> Journal articles</a></li>
+<li class="chapter" data-level="1.2.6" data-path="forward-contracts.html"><a href="forward-contracts.html#dashboards-at-eelloo"><i class="fa fa-check"></i><b>1.2.6</b> Dashboards at eelloo</a></li>
+<li class="chapter" data-level="1.2.7" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-books"><i class="fa fa-check"></i><b>1.2.7</b> Books</a></li>
+<li class="chapter" data-level="1.2.8" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-websites"><i class="fa fa-check"></i><b>1.2.8</b> Websites</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning Options from Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="author" class="section level1 unnumbered">
+<h1>About the Author</h1>
+<!-- This book is primarily put together by me (Yihui Xie), making use of the existing R documentation of the **rmarkdown** package and the **rmarkdown** website, which were mainly contributed by J.J. Allaire and Garrett Grolemund. -->
+<!-- ## Pritam Dalal {-} -->
+<p>Pritam Dalal founded Options Data Science in 2018. Prior to that he held a variety of trading and analysis roles at firms including Cargill, Wolverine Trading, Two Harbors Investment Corp, and Allianz Investment Management.</p>
+<p>Pritam is an adjunct professor in the Mathematics Department at the University of Minnesota, where he teaches R and Python to graduate students.</p>
+<p>Pritam holds a Bachelors in Mathematics and Economics from the University of California, Berkeley as well as a Masters in Financial Mathematics from the University of Minnnesota, Twin Cities.</p>
+<!-- Yihui Xie (<https://yihui.name>) is a software engineer at RStudio (<https://www.rstudio.com>). He earned his PhD from the Department of Statistics, Iowa State University. He is interested in interactive statistical graphics and statistical computing. As an active R user, he has authored several R packages, such as **knitr**, **bookdown**, **blogdown**, **xaringan**, **tinytex**, **animation**, **DT**, **tufte**, **formatR**, **fun**, **xfun**, **mime**, **highr**, **servr**, and **Rd2roxygen**, among which the **animation** package won the 2009 John M. Chambers Statistical Software Award (ASA). He also co-authored a few other R packages, including **shiny**, **rmarkdown**, and **leaflet**. -->
+<!-- He has authored two books, _Dynamic Documents with knitr_ [@xie2015], and _bookdown: Authoring Books and Technical Documents with R Markdown_ [@xie2016], and co-authored the book, _blogdown: Creating Websites with R Markdown_ [@xie2017]. -->
+<!-- In 2006, he founded the Capital of Statistics (<https://cosx.org>), which has grown into a large online community on statistics in China. He initiated the Chinese R conference in 2008, and has been involved in organizing R conferences in China since then. During his PhD training at Iowa State University, he won the Vince Sposito Statistical Computing Award (2011) and the Snedecor Award (2012) in the Department of Statistics. -->
+<!-- He occasionally rants on Twitter (https://twitter.com/xieyihui), and most of the time you can find him on GitHub (https://github.com/yihui). -->
+<!-- He enjoys spicy food as much as classical Chinese literature. -->
+<!-- ## J.J. Allaire {-} -->
+<!-- J.J. Allaire is the founder of RStudio and the creator of the RStudio IDE. J.J. is an author of several packages in the R Markdown ecosystem including **rmarkdown**, **flexdashboard**, **learnr**, and **radix**.  -->
+<!-- ## Garrett Grolemund {-} -->
+<!-- Garrett Grolemund is the co-author of _R for Data Science_ and author of _Hands-On Programming with R_. He wrote the **lubridate** R package and works for RStudio as an advocate who trains engineers to do data science with R and the Tidyverse. If you use R yourself, you may recognize Garrett from his video courses on Datacamp.com and O'Reilly media, or for his series of popular R cheatsheets distributed by RStudio. -->
+<!-- Garrett earned his PhD in Statistics from Rice University in 2012 under the guidance of Hadley Wickham. Before that, he earned a Bachelor's degree in Psychology from Harvard University and briefly attended law school. Garrett has been one of the foremost promoters of Shiny, R Markdown, and the Tidyverse, documenting and explaining each in detail. -->
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="acknowledgments.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="preliminaries.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/00_author.Rmd",
+"text": "Edit"
+},
+"download": ["rmarkdown.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

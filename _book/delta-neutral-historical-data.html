@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Learning Options from Data</title>
+  <meta name="description" content="Learning Options from Data">
+  <meta name="generator" content="bookdown 0.7 and GitBook 2.6.7">
+
+  <meta property="og:title" content="Learning Options from Data" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Learning Options from Data" />
+  
+  
+  
+
+<meta name="author" content="Pritam Dalal">
+
+
+<meta name="date" content="2018-11-22">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  
+<link rel="prev" href="index.html">
+<link rel="next" href="how-to-read-this-book.html">
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Learning Options from Data</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a><ul>
+<li class="chapter" data-level="" data-path="delta-neutral-historical-data.html"><a href="delta-neutral-historical-data.html"><i class="fa fa-check"></i>Delta-Neutral Historical Data</a></li>
+<li class="chapter" data-level="" data-path="how-to-read-this-book.html"><a href="how-to-read-this-book.html"><i class="fa fa-check"></i>How to read this book</a></li>
+<li class="chapter" data-level="" data-path="structure-of-the-book.html"><a href="structure-of-the-book.html"><i class="fa fa-check"></i>Structure of the book</a></li>
+<li class="chapter" data-level="" data-path="acknowledgments.html"><a href="acknowledgments.html"><i class="fa fa-check"></i>Acknowledgments</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
+<li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
+<li class="chapter" data-level="1.1" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.1</b> Discounting &amp; Accumulating</a></li>
+<li class="chapter" data-level="1.2" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.2</b> Forward Contracts</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="forward-contracts.html"><a href="forward-contracts.html#airbnbs-knowledge-repository"><i class="fa fa-check"></i><b>1.2.1</b> Airbnb’s knowledge repository</a></li>
+<li class="chapter" data-level="1.2.2" data-path="forward-contracts.html"><a href="forward-contracts.html#homework-assignments-on-rpubs"><i class="fa fa-check"></i><b>1.2.2</b> Homework assignments on RPubs</a></li>
+<li class="chapter" data-level="1.2.3" data-path="forward-contracts.html"><a href="forward-contracts.html#personalized-mail"><i class="fa fa-check"></i><b>1.2.3</b> Personalized mail</a></li>
+<li class="chapter" data-level="1.2.4" data-path="forward-contracts.html"><a href="forward-contracts.html#employer-health-benefits-survey"><i class="fa fa-check"></i><b>1.2.4</b> 2017 Employer Health Benefits Survey</a></li>
+<li class="chapter" data-level="1.2.5" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-journal"><i class="fa fa-check"></i><b>1.2.5</b> Journal articles</a></li>
+<li class="chapter" data-level="1.2.6" data-path="forward-contracts.html"><a href="forward-contracts.html#dashboards-at-eelloo"><i class="fa fa-check"></i><b>1.2.6</b> Dashboards at eelloo</a></li>
+<li class="chapter" data-level="1.2.7" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-books"><i class="fa fa-check"></i><b>1.2.7</b> Books</a></li>
+<li class="chapter" data-level="1.2.8" data-path="forward-contracts.html"><a href="forward-contracts.html#examples-websites"><i class="fa fa-check"></i><b>1.2.8</b> Websites</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Learning Options from Data</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="delta-neutral-historical-data" class="section level2 unnumbered">
+<h2>Delta-Neutral Historical Data</h2>
+<p>Nearly all the data analysis examples in this book come from the historical options data that has been contributed by Delta-Neutral. This is a phenominal data set of the highest quality that contains daily option prices for all the options traded on thousands of equity underlyings. The full data set dates back to 2002.</p>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-to-read-this-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": true,
+"facebook": false,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/index.Rmd",
+"text": "Edit"
+},
+"download": ["rmarkdown.pdf"],
+"toc": {
+"collapse": "none"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "";
+    if (src === "" || src === "true") src = "https://cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
