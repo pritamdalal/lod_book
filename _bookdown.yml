@@ -1,6 +1,6 @@
 book_filename: rmarkdown
 repo: https://github.com/rstudio/rmarkdown-book/
-output_dir: _book
+output_dir: docs
 clean: [packages.bib]
 language:
   label:

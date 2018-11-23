@@ -25,15 +25,15 @@
 <meta name="author" content="Pritam Dalal">
 
 
-<meta name="date" content="2018-11-22">
+<meta name="date" content="2018-11-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="author.html">
-<link rel="next" href="discounting-accumulating.html">
+<link rel="prev" href="delta-neutral-historical-data.html">
+<link rel="next" href="structure-of-the-book.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -106,19 +106,30 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="preliminaries" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Preliminaries</h1>
-<p>In this section I develop the basic results from quantitative finance that will be needed later in the book. For a more detailed treatment, I recommend the following execellent texts:</p>
-<p><strong>Options, Futures, and Other Derivatives</strong> by John C. Hull</p>
-<p><strong>Derivative Markets</strong> by Robert L. McDonald</p> 
+<div id="how-to-read-this-book" class="section level2 unnumbered">
+<h2>How to read this book</h2>
+<!-- This book may serve you better as a reference book than a textbook. It contains a large number of technical details, and we do not expect you to read it from beginning to end, since you may easily feel overwhelmed. Instead, think about your background and what you want to do first, and go to the relevant chapters or sections. For example: -->
+<!-- - I just want to finish my course homework (Chapter \@ref(basics) should be more than enough for you). -->
+<!-- - I know this is an R Markdown book, but I use Python more than R (Go to Section \@ref(python)). -->
+<!-- - I want to embed interactive plots in my reports, or want my readers to be able change my model parameters interactively and see results on the fly (Check out Section \@ref(interactive-documents)). -->
+<!-- - I know the output format I want to use, and I want to customize its appearance (Check out the documentation of the specific output format in Chapter \@ref(documents) or Chapter \@ref(presentations)). For example, I want to customize the template for my PowerPoint presentation (Go to Section \@ref(ppt-templates)). -->
+<!-- - I want to build a business dashboard highlighting some key figures and indicators (Go to Chapter \@ref(dashboards)). -->
+<!-- - I heard about `yolo = TRUE` from a friend, and I'm curious what that means in the **xaringan** package (Go to Chapter \@ref(xaringan)). -->
+<!-- - I want to build a personal website (Go to Chapter \@ref(websites)), or write a book (Go to Chapter \@ref(books)). -->
+<!-- - I want to write a paper and submit to the Journal of Statistical Software (Go to Chapter \@ref(journals)). -->
+<!-- - I want to build an interactive tutorial with exercises for my students to learn a topic (Go to Chapter \@ref(learnr)). -->
+<!-- - I'm familiar with R Markdown now, and I want to generate personalized reports for all my customers using the same R Markdown template (Try parameterized reports in Chapter \@ref(parameterized-reports)). -->
+<!-- - I know some JavaScript, and want to build an interface in R to call an interested JavaScript library from R (Learn how to develop HTML widgets in Chapter \@ref(html-widgets)). -->
+<!-- - I want to build future reports with a company branded template that shows our logo and uses our unique color theme (Go to Chapter \@ref(document-templates)). -->
+<!-- If you are not familiar with R Markdown, we recommend that you read at least Chapter \@ref(basics) to learn the basics. All the rest of the chapters in this book can be read in any order you desire. They are pretty much orthogonal to each other. However, to become familiar with R Markdown output formats, you may want to thumb through the HTML document format in Section \@ref(html-document), because many other formats share the same options as this format. -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="author.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="discounting-accumulating.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="delta-neutral-historical-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="structure-of-the-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -148,7 +159,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/01_preliminaries.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/index.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown.pdf"],

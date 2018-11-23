@@ -25,15 +25,15 @@
 <meta name="author" content="Pritam Dalal">
 
 
-<meta name="date" content="2018-11-22">
+<meta name="date" content="2018-11-23">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="preliminaries.html">
-<link rel="next" href="forward-contracts.html">
+<link rel="prev" href="index.html">
+<link rel="next" href="how-to-read-this-book.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -106,26 +106,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="discounting-accumulating" class="section level2">
-<h2><span class="header-section-number">1.1</span> Discounting &amp; Accumulating</h2>
-<p>When you lend money, you are paid interest to compensate for the fact that you can’t use the money to lent for other purposes. In this book I assume loans are totally safe and there is no risk of default. It is useful to the of the loan amount accumulating with interest. I use the following notation and nomenclature to capture this idea of accumulation:</p>
-<p><strong>Definition:</strong> Assume the current time is <span class="math inline">\(t\)</span> and that <span class="math inline">\(T\)</span> is some time in the future. Then one dollar will accumulate to <span class="math inline">\(A(t,T)\)</span> by time <span class="math inline">\(T\)</span>. I will call <span class="math inline">\(A(t,T)\)</span> an <em>accumulation factor</em>.</p>
-<p>If you are going to recieve money in the future, it’s not really worth as much to you as if the money were paid right now. The way we account for this value difference is by essentially <em>discounting</em> by the amount of interest you could have earned between now when you are going to be paid. The is the notion of present value and I express it as follows:</p>
-<p><strong>Definition:</strong> The time <span class="math inline">\(t\)</span> present value of a one dollar cashflow at time <span class="math inline">\(T\)</span> will be denoted by <span class="math inline">\(D(t,T)\)</span>. I will call <span class="math inline">\(D(t,T)\)</span> a discount factor. I will call <span class="math inline">\(D(t, T)\)</span> a <em>discount factor</em>.</p>
-<p>The following statements are true:</p>
-<ol style="list-style-type: decimal">
-<li><p><span class="math inline">\(A(t,T) \geq 1\)</span>.</p></li>
-<li><p><span class="math inline">\(D(t, T) \leq 1\)</span>.</p></li>
-<li><p><span class="math inline">\(D(t,T) = A(t,T)^{-1}\)</span>.</p></li>
-</ol>
+<div id="delta-neutral-historical-data" class="section level2 unnumbered">
+<h2>Delta-Neutral Historical Data</h2>
+<p>Nearly all the data analysis examples in this book come from the historical options data that has been contributed by Delta-Neutral. This is a phenominal data set of the highest quality that contains daily option prices for all the options traded on thousands of equity underlyings. The full data set dates back to 2002.</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="preliminaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="forward-contracts.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="how-to-read-this-book.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -155,7 +146,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/01_preliminaries.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/index.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown.pdf"],
