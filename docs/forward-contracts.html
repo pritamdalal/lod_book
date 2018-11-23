@@ -32,7 +32,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="etfs.html">
+<link rel="prev" href="discounting-accumulating.html">
 <link rel="next" href="put-call-parity.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
@@ -74,13 +74,15 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
-<li class="chapter" data-level="1.1" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.1</b> Discounting &amp; Accumulating</a></li>
-<li class="chapter" data-level="1.2" data-path="stocks-and-dividends.html"><a href="stocks-and-dividends.html"><i class="fa fa-check"></i><b>1.2</b> Stocks and Dividends</a></li>
-<li class="chapter" data-level="1.3" data-path="etfs.html"><a href="etfs.html"><i class="fa fa-check"></i><b>1.3</b> ETFs</a></li>
-<li class="chapter" data-level="1.4" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.4</b> Forward Contracts</a><ul>
-<li class="chapter" data-level="1.4.1" data-path="forward-contracts.html"><a href="forward-contracts.html#synthetic-forwards"><i class="fa fa-check"></i><b>1.4.1</b> Synthetic Forwards</a></li>
+<li class="chapter" data-level="1.1" data-path="stocks-etfs-dividends.html"><a href="stocks-etfs-dividends.html"><i class="fa fa-check"></i><b>1.1</b> Stocks, ETFs, &amp; Dividends</a></li>
+<li class="chapter" data-level="1.2" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.2</b> Discounting &amp; Accumulating</a></li>
+<li class="chapter" data-level="1.3" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.3</b> Forward Contracts</a><ul>
+<li class="chapter" data-level="1.3.1" data-path="forward-contracts.html"><a href="forward-contracts.html#specification-and-payoff"><i class="fa fa-check"></i><b>1.3.1</b> Specification and Payoff</a></li>
+<li class="chapter" data-level="1.3.2" data-path="forward-contracts.html"><a href="forward-contracts.html#the-forward-price"><i class="fa fa-check"></i><b>1.3.2</b> The Forward Price</a></li>
+<li class="chapter" data-level="1.3.3" data-path="forward-contracts.html"><a href="forward-contracts.html#valuing-a-forward-contract"><i class="fa fa-check"></i><b>1.3.3</b> Valuing a Forward Contract</a></li>
+<li class="chapter" data-level="1.3.4" data-path="forward-contracts.html"><a href="forward-contracts.html#synthetic-forwards"><i class="fa fa-check"></i><b>1.3.4</b> Synthetic Forwards</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="put-call-parity.html"><a href="put-call-parity.html"><i class="fa fa-check"></i><b>1.5</b> Put-Call Parity</a></li>
+<li class="chapter" data-level="1.4" data-path="put-call-parity.html"><a href="put-call-parity.html"><i class="fa fa-check"></i><b>1.4</b> Put-Call Parity</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -103,11 +105,35 @@
 
             <section class="normal" id="section-">
 <div id="forward-contracts" class="section level2">
-<h2><span class="header-section-number">1.4</span> Forward Contracts</h2>
-<!-- Now you have learned the very basic concepts of R Markdown. The idea should be simple enough: interweave narratives with code in a document, knit the document to dynamically generate results from the code, and you will get a report. This idea was not invented by R Markdown, but came from an early programming paradigm called "Literate Programming" [@knuth1984]\index{Literate Programming}. -->
-<!-- Due to the simplicity of Markdown and the powerful R language for data analysis, R Markdown has been widely used in many areas. Before we dive into the technical details, we want to show some examples to give you an idea of its possible applications. -->
+<h2><span class="header-section-number">1.3</span> Forward Contracts</h2>
+<p>Forward contracts are simple derivatives that are one of the foundational building blocks in the theory and practice of quantitative finance. The value of forwards are related to option prices via a result known as <em>put-call parity</em>, a finding seminal to much of derivatives theory.</p>
+<div id="specification-and-payoff" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> Specification and Payoff</h3>
+<p>A forward contract this the obligation to transact some underlying asset at some future date, at a fixed price, called the strike price. The party that agrees to buy the underlying, is called the <em>long</em> side; the party that agrees to sell the underlying is the <em>short</em> side. The underlyings we will consider in this book will be stocks or ETFs, but forwards can exist on any kind of underlying: gold, corn, etc.</p>
+<p>The key feature of a forward is that <em>both</em> sides are <em>obligated</em> to execute their side of the transaction - to either buy our sell the asset, at the agreed upon strike price. This stands in contrast to an option, in which the long side has a right, while the short side has an obligation.</p>
+<p>Suppose a forward contract struck at <span class="math inline">\(K\)</span> expires at time <span class="math inline">\(T\)</span>. Suppose that underlying is trading at <span class="math inline">\(S_{T}\)</span> at the time of expiration. The long side has to pay <span class="math inline">\(K\)</span> and in return receives the underlying which has a value of <span class="math inline">\(S_{T}\)</span>. Thus the long position is worth <span class="math inline">\(S_{T} - K\)</span> at expiration. On the other hand, the short side recieves <span class="math inline">\(K\)</span> but has to deliver the underlying, which is worth <span class="math inline">\(S_{T}\)</span>. So the short position is worth <span class="math inline">\(K - S_{T}\)</span>.</p>
+<p>Long Payoff: <span class="math inline">\(S_{T} - K\)</span></p>
+<p>Short Payoff: <span class="math inline">\(S_{T} - K\)</span></p>
+</div>
+<div id="the-forward-price" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> The Forward Price</h3>
+<p>Suppose that the current time is <span class="math inline">\(t\)</span> and that we are considering a forward contract that expires at time <span class="math inline">\(T\)</span>. Suppose further that the underlying is currently trading at <span class="math inline">\(S_{t}\)</span>. We are interested in the following questions: is there strike price of <span class="math inline">\(K\)</span> such that both parties can enter into the forward contract for zero cost, without introducing an arbitrage opportunity for either side?</p>
+<p>It turns out the answer is yes, an this strike price is of such importance that it has been named simply, <em>the forward price</em>. A forward price is determined by two points in time: the current time <span class="math inline">\(t\)</span> and the expiration time <span class="math inline">\(T\)</span>. We will denote the forward price associated with these two times as <span class="math inline">\(F(t, T)\)</span>.</p>
+<p><strong>Forward Pricing Formula:</strong> Suppose we are considering a forward contract at time <span class="math inline">\(t\)</span> which expires at time <span class="math inline">\(T\)</span>. Suppose that the underlying is currently trading at <span class="math inline">\(S_{t}\)</span> and that during the life of the forward, the underlying stock pays dividends <span class="math inline">\(c_{1}, \ldots, c_{n}\)</span> at times <span class="math inline">\(t_{1}, \ldots, t_{n}\)</span>. Then the we have that:</p>
+<span class="math display">\[\begin{align*}
+F(t, T) &amp;= A(t, T) \cdot S_{t} - \sum_{i=1}^{n} A(t, t_{i}, T) \cdot c_{i}
+\end{align*}\]</span>
+<p>In words: the accumulated value of the current stock price less the accumulated value of all the dividend payments during the life of the contract.</p>
+</div>
+<div id="valuing-a-forward-contract" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> Valuing a Forward Contract</h3>
+<p>Suppose that you enter into a forward contract at time <span class="math inline">\(t^{*}\)</span> and the strike price <span class="math inline">\(K\)</span> was chosen such that both parties could enter into the contract for zero cost. Suppose that the time is now <span class="math inline">\(t &gt; t^{*}\)</span>, what would be the value to unwind this contract?</p>
+<p><strong>Fact:</strong> The no arbitrage unwind value of this contract is <span class="math inline">\(D(t, T) \cdot (F(t, T) - K)\)</span>.</p>
+<p>This result really has nothing to do with the fact that the forward contract entered into at time <span class="math inline">\(t^{*}\)</span> or that it’s initial strike what chosen to make it a zero value contract. Ultimately it just gives us a formula for valuing a forward contract at any point.</p>
+<p>Notice that if a forward contract is struck at the current forward price, then it has zero value, which we would expect.</p>
+</div>
 <div id="synthetic-forwards" class="section level3">
-<h3><span class="header-section-number">1.4.1</span> Synthetic Forwards</h3>
+<h3><span class="header-section-number">1.3.4</span> Synthetic Forwards</h3>
 <p>A portfolio consisting of a long call and a short put is a synthetic forward position.</p>
 <p>Let the current time be <span class="math inline">\(t\)</span>. Consider a call and put on the same underlying, with the same strike price <span class="math inline">\(K\)</span>, that both expire at time <span class="math inline">\(T\)</span>. If you have a long position in the call and a short position in the put, then in all states of the world at time <span class="math inline">\(T\)</span> this portfolio has a value of <span class="math inline">\(S_{T} - K\)</span>, which is the same value as the payoff as a long forward.</p>
 <p>Suppose that <span class="math inline">\(S_{T} &gt; K\)</span>. You exercise your long call, for which you recieve the stock worth <span class="math inline">\(S_{T}\)</span> whilie paying the strike price <span class="math inline">\(K\)</span> for it. The put you are short expires worthless. The total value of these two positions is <span class="math inline">\(S_{T} - K\)</span>.</p>
@@ -120,7 +146,7 @@
           </div>
         </div>
       </div>
-<a href="etfs.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="discounting-accumulating.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="put-call-parity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

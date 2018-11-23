@@ -6,6 +6,23 @@ In this section I develop the basic results from quantitative finance that will 
 
 **Derivative Markets** by Robert L. McDonald
 
+## Stocks, ETFs, & Dividends
+
+Issuing shares of stock is a way that companies raise funds for growing their business. The owner of a stock is entitled to a fraction of the companies profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability in the rest of the company, meaning the worst thing that can happen is that shareholder never recieves any profits, and the stock itself also becomes worthless.  In this sense, the value of stock can never be negative. 
+
+Once a stock has been issued by a company, the owner of the stock can sell it to any other entity.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits, and the ability to both are both transfered to whoever purchased it.
+
+Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people are referring to when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from transaction to transaction.  
+
+
+Suppose you want to trade a share of stock, and you want to be able to fill your trade immediately.  If you are a buyer of the stock, you will be charged a certain amount called the ask price.  If you are a seller of the stock you will recieve a certain amount called the bid price.  The bid price is lower than the ask price.
+
+If you are a market for a particular stock, there are three prices that you will surely need to keep your eye one.  The current bid price, the current ask price, and the last price at which trade occurred.  We will often refer to *the* price of a stock at time $T$ and denote by $S_{T}$.  While we usually gloss over what exactly this means, you can choose to interpret it as the average of the bid and ask at time $T$, or the last trade price at time $T$.  In stocks that have high trading volume, these two values will be quite close - but this is not always the case. 
+
+When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. Suppose that a stock is going make a divided at time $T$ and that just prior to the dividend payment is  $S_{t^{*}}$.
+
+
+Properly defining the term *stock* a complicated legal matter.  
 
 ## Discounting & Accumulating
 
@@ -28,17 +45,55 @@ The following statements are true:
 3. $D(t,T) = A(t,T)^{-1}$.
 
 
+**Definition:** Suppose the current time is $t$ and consider a series of cashflows $C_{1}, \ldots, C_{n}$ occurring at future times $t_{1}, \ldots t_{n}$.  Then the time $t$ present value of this stream of cashflows is defined as:
 
-
-## Stocks and Dividends
-
-## ETFs
+\begin{align*}
+PV(\{ C_{1}, \ldots, C_{n} \}) = \sum_{i = 1}^{n} D(t, t_{i}) \cdot C_{i}.
+\end{align*}
 
 ## Forward Contracts
 
-<!-- Now you have learned the very basic concepts of R Markdown. The idea should be simple enough: interweave narratives with code in a document, knit the document to dynamically generate results from the code, and you will get a report. This idea was not invented by R Markdown, but came from an early programming paradigm called "Literate Programming" [@knuth1984]\index{Literate Programming}. -->
+Forward contracts are simple derivatives that are one of the foundational building blocks in the theory and practice of quantitative finance.  The value of forwards are related to option prices via a result known as *put-call parity*, a finding seminal to much of derivatives theory.
 
-<!-- Due to the simplicity of Markdown and the powerful R language for data analysis, R Markdown has been widely used in many areas. Before we dive into the technical details, we want to show some examples to give you an idea of its possible applications. -->
+### Specification and Payoff
+A forward contract this the obligation to transact some underlying asset at some future date, at a fixed price, called the strike price.  The party that agrees to buy the underlying, is called the *long* side; the party that agrees to sell the underlying is the *short* side.  The underlyings we will consider in this book will be stocks or ETFs, but forwards can exist on any kind of underlying: gold, corn, etc.
+
+The key feature of a forward is that *both* sides are *obligated* to execute their side of the transaction - to either buy our sell the asset, at the agreed upon strike price. This stands in contrast to an option, in which the long side has a right, while the short side has an obligation.
+
+Suppose a forward contract struck at $K$ expires at time $T$.  Suppose that underlying is trading at $S_{T}$ at the time of expiration.  The long side has to pay $K$ and in return receives the underlying which has a value of $S_{T}$.  Thus the long position is worth $S_{T} - K$ at expiration.  On the other hand, the short side recieves $K$ but has to deliver the underlying, which is worth $S_{T}$.  So the short position is worth $K - S_{T}$.
+
+Long Payoff: $S_{T} - K$
+
+Short Payoff: $S_{T} - K$
+
+
+### The Forward Price
+Suppose that the current time is $t$ and that we are considering a forward contract that expires at time $T$.  Suppose further that the underlying is currently trading at $S_{t}$.  We are interested in the following questions: is there strike price of $K$ such that both parties can enter into the forward contract for zero cost, without introducing an arbitrage opportunity for either side?  
+
+It turns out the answer is yes, an this strike price is of such importance that it has been named simply, *the forward price*.  A forward price is determined by two points in time: the current time $t$ and the expiration time $T$. We will denote the forward price associated with these two times as $F(t, T)$.
+
+
+**Forward Pricing Formula:**  Suppose we are considering a forward contract at time $t$ which expires at time $T$.  Suppose that the underlying is currently trading at $S_{t}$ and that during the life of the forward, the underlying stock pays dividends $c_{1}, \ldots, c_{n}$ at times $t_{1}, \ldots, t_{n}$.  Then the we have that:
+
+\begin{align*}
+F(t, T) &= A(t, T) \cdot S_{t} - \sum_{i=1}^{n} A(t, t_{i}, T) \cdot c_{i}
+\end{align*}
+
+In words: the accumulated value of the current stock price less the accumulated value of all the dividend payments during the life of the contract.
+
+
+
+### Valuing a Forward Contract
+Suppose that you enter into a forward contract at time $t^{*}$ and the strike price $K$ was chosen such that both parties could enter into the contract for zero cost.  Suppose that the time is now $t > t^{*}$, what would be the value to unwind this contract?
+
+
+**Fact:** The no arbitrage unwind value of this contract is $D(t, T) \cdot (F(t, T) -  K)$.
+
+
+This result really has nothing to do with the fact that the forward contract entered into at time $t^{*}$ or that it's initial strike what chosen to make it a zero value contract.  Ultimately it just gives us a formula for valuing a forward contract at any point.
+
+Notice that if a forward contract is struck at the current forward price, then it has zero value, which we would expect.
+
 
 ### Synthetic Forwards
 
@@ -56,7 +111,7 @@ If $S_{T} = K$, nothing happens because both options are worthless. Doing nothin
 
 ## Put-Call Parity
 \begin{align*}
-C(t, T, K) - P(t, T, K) = D(t, T)(F(t, T) - K)
+C(t, T, K) - P(t, T, K) = D(t, T) \cdot (F(t, T) - K)
 \end{align*}
 
 
