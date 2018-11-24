@@ -25,7 +25,7 @@
 <meta name="author" content="Pritam Dalal">
 
 
-<meta name="date" content="2018-11-23">
+<meta name="date" content="2018-11-24">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,6 +49,43 @@
 
 
 
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -73,8 +110,8 @@
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i>Acknowledgments</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
-<li class="chapter" data-level="1" data-path="option-intuition.html"><a href="option-intuition.html"><i class="fa fa-check"></i><b>1</b> Option Intuition</a><ul>
-<li class="chapter" data-level="1.1" data-path="option-intuition.html"><a href="option-intuition.html#car-insurance"><i class="fa fa-check"></i><b>1.1</b> Car Insurance</a></li>
+<li class="chapter" data-level="1" data-path="options-introduction.html"><a href="options-introduction.html"><i class="fa fa-check"></i><b>1</b> Options Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="options-introduction.html"><a href="options-introduction.html#car-insurance"><i class="fa fa-check"></i><b>1.1</b> Car Insurance</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>2</b> Preliminaries</a><ul>
 <li class="chapter" data-level="2.1" data-path="preliminaries.html"><a href="preliminaries.html#stocks-dividends"><i class="fa fa-check"></i><b>2.1</b> Stocks &amp; Dividends</a></li>
@@ -112,14 +149,15 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="option-intuition" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Option Intuition</h1>
+<div id="options-introduction" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> Options Introduction</h1>
+<p>The purpose of the chapter is to introduce options as painlessly as possible.</p>
 <p>Options are simple contracts that show up everywhere in finance. They can be viewed as the building block of many other financial instruments. The theory of option pricing lies at the foundation of much of quantitative finance.</p>
 <p>Options are insurance contracts wrapped around other financial assets. The asset that is being insured is called the <em>underlying</em>. The underlyings we are going to consider in this book will be stocks and ETFs, but the essential concepts are the same for other underlyings such as interest rates, corn futures, or barrels of oil.</p>
 <p>Let’s build some intuition by considering a type of insurance that you are probably familiar with: car insurance.</p>
 <div id="car-insurance" class="section level2">
 <h2><span class="header-section-number">1.1</span> Car Insurance</h2>
-<p>Wolverine Trading is a successful market-making firm based in Chicago. Following the lead of billionaire Warren Buffet, the partners at Wolverine are interest in getting into the car insurance business, and they have hired us as consultants to help devise a pricing policy for this business.</p>
+<p>Wolverine Trading is a successful market-making firm based in Chicago. Following the lead of billionaire Warren Buffet, who’s major cash-cow is GEICO, the partners at Wolverine are interested in getting into the car insurance business. They have hired us as consultants to help devise a pricing policy for this business.</p>
 <p>The type of underlying that Wolverine would like to insure is: a specific driver coupled with a specific vehicle. The driver that is being insured is going to pay Wolverine <em>premium</em>. In exchange for the premium, Wolve will reimburse the driver whenever damage to the care exceeds a certain dollar amount, called the <em>strike</em> of the contract.</p>
 <p><strong>Intuition Check:</strong> Do you think that Wolverine should charge the same premium irrespective of the underlying? Why or why not?</p>
 <p>After some deliberation, we have arrive upon the following underlying characteristic to base price differentiation on.</p>
@@ -153,6 +191,21 @@
 <h4><strong>Voltility of Underlying</strong></h4>
 <p>Wolve is pricing insurance for two different customers, Sally and Patty. Both are looking to purchase insurance a fancy new self-driving Tesla. They both want a 1-year contract with with a $1,000 strike price. Sally’s friends describe her as calm, chill, responsible, quiet, serene. On the other hand, Patty’s friends describe her: wild, hyper, flakey, loud, and <strong>volatile</strong>.</p>
 <p><strong>Intuition Check:</strong> Who should Wolverine charge more for insurance? Why?</p>
+</div>
+<div id="insurance-payoff-graph" class="section level4 unnumbered">
+<h4><strong>Insurance Payoff Graph</strong></h4>
+<p>It’s 8 a.m. on a Saturday morning. Sally is driving on the freeway heading to her Crossfit class: hands at 10-and-2, eyes intently on the road, soothing classical music playing in the background.</p>
+<p>Patty is also driving on the freeway, making her way home from an all night rave. As she drives, she touches up her makeup and then snaps a few selfies for her IG stories (morning car selfies have the <em>best</em> light..OMG).</p>
+<!-- she has a cigarette in one hand, and with the other she is some snapping some selfies for her IG story - morning car selfies have the *best* light. -->
+<p>Suddenly, Patty loses control and swerves in front of Sally. Patty is riding dirty and has no insurance, but responsible Sally a made sure to switch over to a $1000-strike Wolverine policy. Here is a graph of the <em>payoff</em> to her insurance contract immediately following the accident.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">strike &lt;-<span class="st"> </span><span class="dv">1000</span> 
+damage &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">3000</span>, <span class="dv">500</span>)
+payoff &lt;-<span class="st"> </span><span class="kw">pmax</span>(damage <span class="op">-</span><span class="st"> </span>strike, <span class="dv">0</span>)
+heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
+<span class="kw">plot</span>(damage, payoff, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Payoff to Sally&quot;</span>)
+<span class="kw">lines</span>(damage, payoff, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre></div>
+<p><img src="rmarkdown_files/figure-html/sally_insurance_payoff-1.png" width="672" /></p>
+<p>Notice that if the damage is less than the $1,000 strike price, Sally recieves no reimbursement from her insurance. For every dollar over the strike price, Sally recieves a one-for-one payout. The options we study in the book behave similarly.</p>
 
 </div>
 </div>
