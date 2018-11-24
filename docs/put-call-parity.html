@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="forward-contracts.html">
-
+<link rel="next" href="american.html">
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -74,15 +74,20 @@
 </ul></li>
 <li class="chapter" data-level="" data-path="author.html"><a href="author.html"><i class="fa fa-check"></i>About the Author</a></li>
 <li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a><ul>
-<li class="chapter" data-level="1.1" data-path="stocks-etfs-dividends.html"><a href="stocks-etfs-dividends.html"><i class="fa fa-check"></i><b>1.1</b> Stocks, ETFs, &amp; Dividends</a></li>
-<li class="chapter" data-level="1.2" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.2</b> Discounting &amp; Accumulating</a></li>
-<li class="chapter" data-level="1.3" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.3</b> Forward Contracts</a><ul>
-<li class="chapter" data-level="1.3.1" data-path="forward-contracts.html"><a href="forward-contracts.html#specification-and-payoff"><i class="fa fa-check"></i><b>1.3.1</b> Specification and Payoff</a></li>
-<li class="chapter" data-level="1.3.2" data-path="forward-contracts.html"><a href="forward-contracts.html#the-forward-price"><i class="fa fa-check"></i><b>1.3.2</b> The Forward Price</a></li>
-<li class="chapter" data-level="1.3.3" data-path="forward-contracts.html"><a href="forward-contracts.html#valuing-a-forward-contract"><i class="fa fa-check"></i><b>1.3.3</b> Valuing a Forward Contract</a></li>
-<li class="chapter" data-level="1.3.4" data-path="forward-contracts.html"><a href="forward-contracts.html#synthetic-forwards"><i class="fa fa-check"></i><b>1.3.4</b> Synthetic Forwards</a></li>
+<li class="chapter" data-level="1.1" data-path="stocks-dividends.html"><a href="stocks-dividends.html"><i class="fa fa-check"></i><b>1.1</b> Stocks &amp; Dividends</a></li>
+<li class="chapter" data-level="1.2" data-path="exchange-traded-funds-etfs.html"><a href="exchange-traded-funds-etfs.html"><i class="fa fa-check"></i><b>1.2</b> Exchange Traded Funds (ETFs)</a></li>
+<li class="chapter" data-level="1.3" data-path="discounting-accumulating.html"><a href="discounting-accumulating.html"><i class="fa fa-check"></i><b>1.3</b> Discounting &amp; Accumulating</a></li>
+<li class="chapter" data-level="1.4" data-path="forward-contracts.html"><a href="forward-contracts.html"><i class="fa fa-check"></i><b>1.4</b> Forward Contracts</a><ul>
+<li class="chapter" data-level="1.4.1" data-path="forward-contracts.html"><a href="forward-contracts.html#specification-and-payoff"><i class="fa fa-check"></i><b>1.4.1</b> Specification and Payoff</a></li>
+<li class="chapter" data-level="1.4.2" data-path="forward-contracts.html"><a href="forward-contracts.html#the-forward-price"><i class="fa fa-check"></i><b>1.4.2</b> The Forward Price</a></li>
+<li class="chapter" data-level="1.4.3" data-path="forward-contracts.html"><a href="forward-contracts.html#valuing-a-forward-contract"><i class="fa fa-check"></i><b>1.4.3</b> Valuing a Forward Contract</a></li>
+<li class="chapter" data-level="1.4.4" data-path="forward-contracts.html"><a href="forward-contracts.html#synthetic-forwards"><i class="fa fa-check"></i><b>1.4.4</b> Synthetic Forwards</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="put-call-parity.html"><a href="put-call-parity.html"><i class="fa fa-check"></i><b>1.4</b> Put-Call Parity</a></li>
+<li class="chapter" data-level="1.5" data-path="put-call-parity.html"><a href="put-call-parity.html"><i class="fa fa-check"></i><b>1.5</b> Put-Call Parity</a><ul>
+<li class="chapter" data-level="1.5.1" data-path="put-call-parity.html"><a href="put-call-parity.html#non-dividend-paying-stock"><i class="fa fa-check"></i><b>1.5.1</b> Non-Dividend Paying Stock</a></li>
+<li class="chapter" data-level="1.5.2" data-path="put-call-parity.html"><a href="put-call-parity.html#dividend-paying-stock"><i class="fa fa-check"></i><b>1.5.2</b> Dividend Paying Stock</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="american.html"><a href="american.html"><i class="fa fa-check"></i><b>1.6</b> American</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
@@ -105,20 +110,38 @@
 
             <section class="normal" id="section-">
 <div id="put-call-parity" class="section level2">
-<h2><span class="header-section-number">1.4</span> Put-Call Parity</h2>
+<h2><span class="header-section-number">1.5</span> Put-Call Parity</h2>
+<p>Let the current time be <span class="math inline">\(t\)</span> and consider a put and a call that both expire at time <span class="math inline">\(T\)</span> and that are both struck at <span class="math inline">\(K\)</span>. From the previous section we know that a long call and a short put create a synthetic forward struck at <span class="math inline">\(K\)</span>. We also know how to value any forward contract. Putting these two results together we get following put-call parity identity.</p>
 <span class="math display">\[\begin{align*}
 C(t, T, K) - P(t, T, K) = D(t, T) \cdot (F(t, T) - K)
 \end{align*}\]</span>
-
+<p>Put-call parity is one of the most important and foundational results in all of derivatives theory.</p>
+<div id="non-dividend-paying-stock" class="section level3">
+<h3><span class="header-section-number">1.5.1</span> Non-Dividend Paying Stock</h3>
+<p>Recall that when the stock pays no dividends during the life of the forward, that the forward price is simply the accumulated spot price.</p>
+<span class="math display">\[\begin{align*}
+C(t, T, K) - P(t, T, K) &amp;= D(t, T) \cdot (F(t, T) - K) \\
+                        &amp;= D(t, T) \cdot (A(t, T) \cdot S_{t} - K) \\
+                        &amp;= S_{t} - D(t, T) \cdot K
+\end{align*}\]</span>
 </div>
-<!-- </div> -->
+<div id="dividend-paying-stock" class="section level3">
+<h3><span class="header-section-number">1.5.2</span> Dividend Paying Stock</h3>
+Suppose that during the life of the options, that the underlying stockpays dividends <span class="math inline">\(c_{1}, \ldots, c_{n}\)</span> at times <span class="math inline">\(t_{1}, \ldots, t_{n}\)</span>.
+<span class="math display">\[\begin{align*}
+C(t, T, K) - P(t, T, K) &amp;= D(t, T) \cdot (F(t, T) - K) \\
+                        &amp;= D(t, T) \cdot \bigg(A(t, T) \cdot S_{t} - \sum_{i=1}^{n} A(t, t_{i}, T) \cdot c_{i} - K \bigg) \\
+                        &amp;= S_{t} - PV(\{c_{1}, \ldots, c_{n} \}) - D(t, T) \cdot K
+\end{align*}\]</span>
+</div>
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="forward-contracts.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="forward-contracts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="american.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
