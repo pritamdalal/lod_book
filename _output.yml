@@ -1,11 +1,10 @@
 bookdown::gitbook:
   css: css/style.css
-  split_by: section
   config:
     toc:
-      collapse: none
+      collapse: section
       before: |
-        <li><a href="./">Learning Options from Data</a></li>
+        <li><strong><a href="./">Learning Options from Data</a></strong></li>
       after: |
         <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
     download: [pdf]
