@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="index.html">
-<link rel="next" href="options-introduction.html">
+<link rel="prev" href="basic-results.html">
+
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -119,7 +119,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.2" data-path="basic-results.html"><a href="basic-results.html#stocks-dividends"><i class="fa fa-check"></i><b>2.2</b> Stocks &amp; Dividends</a></li>
 <li class="chapter" data-level="2.3" data-path="basic-results.html"><a href="basic-results.html#exchange-traded-funds-etfs"><i class="fa fa-check"></i><b>2.3</b> Exchange Traded Funds (ETFs)</a></li>
 <li class="chapter" data-level="2.4" data-path="basic-results.html"><a href="basic-results.html#discounting-accumulating"><i class="fa fa-check"></i><b>2.4</b> Discounting &amp; Accumulating</a></li>
-<li class="chapter" data-level="2.5" data-path="basic-results.html"><a href="basic-results.html#option-contracts"><i class="fa fa-check"></i><b>2.5</b> Option Contracts</a></li>
+<li class="chapter" data-level="2.5" data-path="basic-results.html"><a href="basic-results.html#options"><i class="fa fa-check"></i><b>2.5</b> Options</a></li>
 <li class="chapter" data-level="2.6" data-path="basic-results.html"><a href="basic-results.html#forward-contracts"><i class="fa fa-check"></i><b>2.6</b> Forward Contracts</a><ul>
 <li class="chapter" data-level="2.6.1" data-path="basic-results.html"><a href="basic-results.html#specification-and-payoff"><i class="fa fa-check"></i><b>2.6.1</b> Specification and Payoff</a></li>
 <li class="chapter" data-level="2.6.2" data-path="basic-results.html"><a href="basic-results.html#the-forward-price"><i class="fa fa-check"></i><b>2.6.2</b> The Forward Price</a></li>
@@ -129,19 +129,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="2.7" data-path="basic-results.html"><a href="basic-results.html#put-call-parity"><i class="fa fa-check"></i><b>2.7</b> Put-Call Parity</a></li>
 <li class="chapter" data-level="2.8" data-path="basic-results.html"><a href="basic-results.html#rational-option-pricing"><i class="fa fa-check"></i><b>2.8</b> Rational Option Pricing</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="the-markets.html"><a href="the-markets.html"><i class="fa fa-check"></i><b>3</b> The Markets</a><ul>
-<li class="chapter" data-level="3.1" data-path="the-markets.html"><a href="the-markets.html#exchanges"><i class="fa fa-check"></i><b>3.1</b> Exchanges</a></li>
-<li class="chapter" data-level="3.2" data-path="the-markets.html"><a href="the-markets.html#brokers"><i class="fa fa-check"></i><b>3.2</b> Brokers</a></li>
-<li class="chapter" data-level="3.3" data-path="the-markets.html"><a href="the-markets.html#market-makers"><i class="fa fa-check"></i><b>3.3</b> Market-Makers</a></li>
-<li class="chapter" data-level="3.4" data-path="the-markets.html"><a href="the-markets.html#other-liquidity-providers"><i class="fa fa-check"></i><b>3.4</b> Other Liquidity Providers</a></li>
-<li class="chapter" data-level="3.5" data-path="the-markets.html"><a href="the-markets.html#the-buy-side"><i class="fa fa-check"></i><b>3.5</b> The Buy Side</a></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="profit-loss.html"><a href="profit-loss.html"><i class="fa fa-check"></i><b>4</b> Profit &amp; Loss</a><ul>
-<li class="chapter" data-level="4.1" data-path="profit-loss.html"><a href="profit-loss.html#stock-pnl"><i class="fa fa-check"></i><b>4.1</b> Stock PNL</a></li>
-<li class="chapter" data-level="4.2" data-path="profit-loss.html"><a href="profit-loss.html#option-pnl"><i class="fa fa-check"></i><b>4.2</b> Option PNL</a></li>
-<li class="chapter" data-level="4.3" data-path="profit-loss.html"><a href="profit-loss.html#scaling-up"><i class="fa fa-check"></i><b>4.3</b> Scaling Up</a></li>
-<li class="chapter" data-level="4.4" data-path="profit-loss.html"><a href="profit-loss.html#returns"><i class="fa fa-check"></i><b>4.4</b> Returns</a></li>
-</ul></li>
+<li class="chapter" data-level="3" data-path="exchanges-brokers-market-makers.html"><a href="exchanges-brokers-market-makers.html"><i class="fa fa-check"></i><b>3</b> Exchanges, Brokers, Market-Makers</a></li>
 <li class="divider"></li>
 <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
 
@@ -162,23 +150,9 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="author" class="section level1 unnumbered">
-<h1>About the Author</h1>
-<!-- This book is primarily put together by me (Yihui Xie), making use of the existing R documentation of the **rmarkdown** package and the **rmarkdown** website, which were mainly contributed by J.J. Allaire and Garrett Grolemund. -->
-<!-- ## Pritam Dalal {-} -->
-<p>Pritam Dalal founded Options Data Science in 2018. Prior to that he held a variety of trading and analysis roles at firms including Cargill, Wolverine Trading, Two Harbors Investment Corp, and Allianz Investment Management.</p>
-<p>Pritam is an adjunct professor in the Mathematics Department at the University of Minnesota, where he teaches R and Python to graduate students.</p>
-<p>Pritam holds a Bachelors in Mathematics and Economics from the University of California, Berkeley as well as a Masters in Financial Mathematics from the University of Minnnesota, Twin Cities.</p>
-<!-- Yihui Xie (<https://yihui.name>) is a software engineer at RStudio (<https://www.rstudio.com>). He earned his PhD from the Department of Statistics, Iowa State University. He is interested in interactive statistical graphics and statistical computing. As an active R user, he has authored several R packages, such as **knitr**, **bookdown**, **blogdown**, **xaringan**, **tinytex**, **animation**, **DT**, **tufte**, **formatR**, **fun**, **xfun**, **mime**, **highr**, **servr**, and **Rd2roxygen**, among which the **animation** package won the 2009 John M. Chambers Statistical Software Award (ASA). He also co-authored a few other R packages, including **shiny**, **rmarkdown**, and **leaflet**. -->
-<!-- He has authored two books, _Dynamic Documents with knitr_ [@xie2015], and _bookdown: Authoring Books and Technical Documents with R Markdown_ [@xie2016], and co-authored the book, _blogdown: Creating Websites with R Markdown_ [@xie2017]. -->
-<!-- In 2006, he founded the Capital of Statistics (<https://cosx.org>), which has grown into a large online community on statistics in China. He initiated the Chinese R conference in 2008, and has been involved in organizing R conferences in China since then. During his PhD training at Iowa State University, he won the Vince Sposito Statistical Computing Award (2011) and the Snedecor Award (2012) in the Department of Statistics. -->
-<!-- He occasionally rants on Twitter (https://twitter.com/xieyihui), and most of the time you can find him on GitHub (https://github.com/yihui). -->
-<!-- He enjoys spicy food as much as classical Chinese literature. -->
-<!-- ## J.J. Allaire {-} -->
-<!-- J.J. Allaire is the founder of RStudio and the creator of the RStudio IDE. J.J. is an author of several packages in the R Markdown ecosystem including **rmarkdown**, **flexdashboard**, **learnr**, and **radix**.  -->
-<!-- ## Garrett Grolemund {-} -->
-<!-- Garrett Grolemund is the co-author of _R for Data Science_ and author of _Hands-On Programming with R_. He wrote the **lubridate** R package and works for RStudio as an advocate who trains engineers to do data science with R and the Tidyverse. If you use R yourself, you may recognize Garrett from his video courses on Datacamp.com and O'Reilly media, or for his series of popular R cheatsheets distributed by RStudio. -->
-<!-- Garrett earned his PhD in Statistics from Rice University in 2012 under the guidance of Hadley Wickham. Before that, he earned a Bachelor's degree in Psychology from Harvard University and briefly attended law school. Garrett has been one of the foremost promoters of Shiny, R Markdown, and the Tidyverse, documenting and explaining each in detail. -->
+<div id="exchanges-brokers-market-makers" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Exchanges, Brokers, Market-Makers</h1>
+<p>In order to be</p>
 
 </div>
             </section>
@@ -186,8 +160,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="options-introduction.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basic-results.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -217,7 +191,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/00_author.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/03_exchanges_brokers_market_makers.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown.pdf"],

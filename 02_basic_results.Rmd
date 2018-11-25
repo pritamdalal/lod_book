@@ -1,14 +1,28 @@
-# Preliminaries
+# Basic Results
 
-In this section I develop the basic results from quantitative finance that will be needed later in the book.  For a more detailed treatment, I recommend the following execellent texts:
+In this section I introduce basic concepts and results from quantitative finance that will be needed later in the book.  For a more detailed treatment, I recommend the following execellent texts:
 
 **Options, Futures, and Other Derivatives** by John C. Hull
 
 **Derivative Markets** by Robert L. McDonald
 
+
+## Arbitrage
+An *arbitrage* is a risk-less profit that requires no initial investment.  A basic tenets of finance is that arbitrage opportunities should not exist in the markets.  The reason goes, if there an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer exists.
+
+Mathematically minded nerds with lots of time on their hands use arbitrage related arguments to prove theorem about the nature of markets.  In doing so, they tend to stylized and somewhat questionable assumptions about markets, glossing over certain details to make their mathematical stories work.  Abitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).  
+
+There is, however, a strong kernel of truth to these arguement.  If markets signficantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
+
+Keep your eyes peeled for arbs in the market.  And if you find one, please call me.
+
+I am going to present some arbitrage arguments in this chapter.  This is in part because I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. It's also because I occassionally get questions from students that requires resorting to arbitrage arguments.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their pathology by ingulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.
+
+I envy those of you who can take the statements of fact in this chapter as given, and then simply move on to more elevated pursuits. 
+
 ## Stocks & Dividends
 
-Companies can raid funds to grow their business by issuing *shares of stock*. The buyer of the stock - often called a shareholder - pays money to the comapany which the company keeps forever.  In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with resepct to the company.  The worst thing that can happen is that shareholder never recieves any profits, and the stock itself also becomes worthless.  So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages.  In this sense the value of stock can never be negative. 
+Companies can raise funds to grow their business by issuing *shares of stock*. The buyer of the stock - often called a shareholder - pays money to the comapany which the company keeps forever.  In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with resepct to the company.  The worst thing that can happen is that shareholder never recieves any profits, and the stock itself also becomes worthless.  So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages.  In this sense the value of stock can never be negative. 
 
 Once a stock has been issued by a company, the owner of the stock can sell it to another invester.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transfered to the purchaser.
 
@@ -96,6 +110,21 @@ The following statements are true:
 PV(\{ C_{1}, \ldots, C_{n} \}) = \sum_{i = 1}^{n} D(t, t_{i}) \cdot C_{i}.
 \end{align*}
 
+
+#### Forward Accumulating
+Suppose that the current time is $t$ and that $T$ is some time in the (distant) future.  Suppose you know at for all $s \in (t, T)$ that all the values of $A(t,t)$. This is set of accumulation factors is known as the spot yield curve (it is usually quoted in rates, but the idea is the same).
+
+Now, suppose for some particular $t^* \in (t, T)$ you want to work out an arrangement with your bank such that you will deposit one dollar at time $t^*$ and let it accumulate until $T$.  What is the accumlation factor that you should earn?  It turns out that this *forward accumulation factor* is determined by the spot yield curve.  We will denote the quantity $A(t, t^*, T)$. There is a simple no-arbitrage argument for this but I won't bother presenting it here becuase it's not import.  All you need to know is that it satisfies the following equation
+\begin{align*}
+A(t, T) = A(t, t^*) \cdot A(t, t^*, T)
+\end{align*}
+
+
+## Option Contracts
+
+We discussed vanilla (American and European) options at length in the previous section, but I wll 
+
+
 ## Forward Contracts
 
 Forward contracts are simple derivatives that are one of the foundational building blocks in the theory and practice of quantitative finance.  The value of forwards are related to option prices via a result known as *put-call parity*, a finding seminal to much of derivatives theory.
@@ -162,10 +191,10 @@ Let the current time be $t$ and consider a put and a call that both expire at ti
 C(t, T, K) - P(t, T, K) = D(t, T) \cdot (F(t, T) - K)
 \end{align*}
 
-Put-call parity is one of the most important and foundational results in all of derivatives theory.
+Put-call parity is one of the most important and foundational results in all of derivatives theory.  Let's examine a couple special cases more closely.
 
-### Non-Dividend Paying Stock
-Recall that when the stock pays no dividends during the life of the forward, that the forward price is simply the accumulated spot price.
+#### Non-Dividend Paying Stock {-}
+Recall that when the stock pays no dividends during the life of the forward, that the forward price is simply the accumulated spot price.  Thus we can 
 
 \begin{align*}
 C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
@@ -174,7 +203,7 @@ C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
 \end{align*}
 
 
-### Dividend Paying Stock
+#### Dividend Paying Stock {-}
 Suppose that during the life of the options, that the underlying stockpays dividends $c_{1}, \ldots, c_{n}$ at times $t_{1}, \ldots, t_{n}$.
 \begin{align*}
 C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
@@ -182,5 +211,24 @@ C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
                         &= S_{t} - PV(\{c_{1}, \ldots, c_{n} \}) - D(t, T) \cdot K
 \end{align*}
 
-## American 
 
+## Rational Option Pricing
+
+The Black-Schole pricing framework, which will discuss at lenght in later chapters, requires complex assumptions about the random nature of the underlying, and dynamic trading strategies for replicating option payoffs. These complexities are required a specific value to an option, but there is a actually a lot we can say about option prices in general without making any assumptions of the underlying.
+
+
+#### Extreme European Bounds {-}
+The worst thing that can happen with a put or call is that it is not exercised, which means that they can never be worth less than zero.  For a call, the best thing that can happen is that you exercise, which results in owning the stock, a call can never be worth more than the underlying stock.  For a put, the best outcome is that you exercise when the stock is worthless, and you recieve $K$.  Thus, the put can never be worth more that $K$.  These facts are summarized in the following inequalities
+
+\begin{align*}
+0 &\leq C_E(S, K, T) \leq S \\
+0 &\leq P_E(S, K, T) \leq K.
+\end{align*}
+
+
+#### Americans $\geq$ European {-}
+Any strategy that you can execute with a European option, you can execute with the American variant as well.  Thus we have that
+\begin{align*}
+C_A(S, K, T) &\geq C_E(S, K, T) \\
+P_A(S, K, T) &\geq C_E(S, K, T).
+\end{align*}
