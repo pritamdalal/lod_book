@@ -1,0 +1,38 @@
+# Option Pricing
+
+
+What \emph{should} the price of an option be at any given point in time?
+This seems like an innocent question, but it took the collective quantitative finance community over one hundred years to answer in a satisfactory way.  Along the way modern finance was born.
+
+<!-- \vspace{10pt} -->
+<!-- - On your own mathematical finance journey, expect it to take years of concerted effort to fully absorb this material. -->
+<!-- \vspace{10pt} -->
+<!-- - In this class, I'm going to give you an extremely high-level overview of some aspects of option pricing.  Just enough so that we can do some meaningful analysis on options data. -->
+<!-- -  -->
+
+In the 1970s, decades of option pricing research coalesced into a pricing framework that yielded a fairly simple formula that can price vanilla options.  Understanding the framework is more important than memorizing the formula.
+
+**Contract Features**
+
+- p/c - put or call
+
+- $K$ - strike price
+
+- T - expiration date (time to expiration)
+
+**Market Values**
+
+- $S_{t}$ - current underlying price
+
+- $\sigma$ - estimate of the standard deviation log-return of the price of underlying between now and expiration
+
+- $\delta$ - estimate of dividends paid over the life of the option
+
+- $r$ - risk-free interest rate
+
+
+All the inputs of the BSM formula are readily observable, except for $\sigma$, also called volatility.  The options market is the \emph{volatility} markets.
+The market for the underlying stock is the \emph{expected-return}
+market.
+
+**Question:** Suppose Jake is an SPY trader for Wolverine and that on a given day, the price of SPY drops by 10\%.  Should Jake increase or decrease $\sigma$ in his pricing models?

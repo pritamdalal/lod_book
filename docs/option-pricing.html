@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="the-markets.html">
-<link rel="next" href="option-pricing.html">
+<link rel="prev" href="profit-loss.html">
+
 <script src="libs/jquery/jquery.min.js"></script>
 <link href="libs/gitbook/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
@@ -163,75 +163,39 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="profit-loss" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Profit &amp; Loss</h1>
-<p>Daily profit and loss is one of the most basic and important performance measure of an investment or trading strategy. In this chapter we detail how to calculate profit and loss for stock and options trades.</p>
-<div id="stock-pnl" class="section level2">
-<h2><span class="header-section-number">4.1</span> Stock PNL</h2>
-</div>
-<div id="option-pnl" class="section level2">
-<h2><span class="header-section-number">4.2</span> Option PNL</h2>
-<p>Suppose you trade an option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade-date <span class="math inline">\(t_{1}\)</span>. Suppose you hold the option until expiration, which is trade-date <span class="math inline">\(t_{n}\)</span>. The letter <span class="math inline">\(i\)</span> will serve as an index over the trade-dates, so <span class="math inline">\(i = 1,\ldots,n\)</span>.</p>
-<p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade-date <span class="math inline">\(t_{i}\)</span>. Note that <span class="math inline">\(B_{n} = A_{n} =\)</span> option-payoff. We seek to define the following:</p>
-<p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangable in that it is possible to define TTD PNL in terms of daily PNL and vice-versa.</p>
-<p>In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cummulative PNL as the sum of the dailies. I present all both alternative below, for both buys and sells.</p>
-<div id="ttd-as-sum-of-daily---buy" class="section level4 unnumbered">
-<h4>TTD as Sum of Daily - Buy</h4>
-<span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} B_{1} - P &amp; i = 1 \\ B_{i} - B_{i-1} &amp; i &gt; 1 \end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that <span class="math inline">\(C_{j} = B_{j} - P\)</span>.</p>
-</div>
-<div id="ttd-as-sum-of-daily---sell" class="section level4 unnumbered">
-<h4>TTD as Sum of Daily - Sell</h4>
-<span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} P - A_{1} &amp; i = 1 \\ A_{i-1} - A_{i} &amp; i &gt; 1 \end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that <span class="math inline">\(C_{i} = P - A_{i}\)</span>.</p>
-</div>
-<div id="daily-as-change-in-ttd---buy" class="section level4 unnumbered">
-<h4>Daily as Change in TTD - Buy</h4>
-<span class="math display">\[\begin{align*}
-C_{i} &amp;= B_{i} - P \\[10pt]
-D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \end{cases}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that both formulations of <span class="math inline">\(D_{i}\)</span> are equivalent.</p>
-</div>
-<div id="daily-as-change-in-ttd---sell" class="section level4 unnumbered">
-<h4>Daily as Change in TTD - Sell</h4>
-<span class="math display">\[\begin{align*}
-C_{i} &amp;= P - A_{i} \\[10pt]
-D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \end{cases}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that both formulations of <span class="math inline">\(D_{i}\)</span> are equivalent.</p>
-</div>
-</div>
-<div id="scaling-up" class="section level2">
-<h2><span class="header-section-number">4.3</span> Scaling Up</h2>
-<p>It is rare that we will calculuate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades. This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
-<p>[CODING EXERCISE]</p>
-</div>
-<div id="returns" class="section level2">
-<h2><span class="header-section-number">4.4</span> Returns</h2>
-<p>While PNL is an important performance metric, it is often hard to interpret with first normalzing by the amount of capital required to fund the investment. This is precisely what the notion of a return is. We will let <span class="math inline">\(R_{i}\)</span> be the day <span class="math inline">\(t_{i}\)</span> be the return of a trading strategy</p>
+<div id="option-pricing" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Option Pricing</h1>
+<p>What  the price of an option be at any given point in time? This seems like an innocent question, but it took the collective quantitative finance community over one hundred years to answer in a satisfactory way. Along the way modern finance was born.</p>
+<!-- \vspace{10pt} -->
+<!-- - On your own mathematical finance journey, expect it to take years of concerted effort to fully absorb this material. -->
+<!-- \vspace{10pt} -->
+<!-- - In this class, I'm going to give you an extremely high-level overview of some aspects of option pricing.  Just enough so that we can do some meaningful analysis on options data. -->
+<!-- -  -->
+<p>In the 1970s, decades of option pricing research coalesced into a pricing framework that yielded a fairly simple formula that can price vanilla options. Understanding the framework is more important than memorizing the formula.</p>
+<p><strong>Contract Features</strong></p>
+<ul>
+<li><p>p/c - put or call</p></li>
+<li><p><span class="math inline">\(K\)</span> - strike price</p></li>
+<li><p>T - expiration date (time to expiration)</p></li>
+</ul>
+<p><strong>Market Values</strong></p>
+<ul>
+<li><p><span class="math inline">\(S_{t}\)</span> - current underlying price</p></li>
+<li><p><span class="math inline">\(\sigma\)</span> - estimate of the standard deviation log-return of the price of underlying between now and expiration</p></li>
+<li><p><span class="math inline">\(\delta\)</span> - estimate of dividends paid over the life of the option</p></li>
+<li><p><span class="math inline">\(r\)</span> - risk-free interest rate</p></li>
+</ul>
+<p>All the inputs of the BSM formula are readily observable, except for <span class="math inline">\(\sigma\)</span>, also called volatility. The options market is the  markets. The market for the underlying stock is the  market.</p>
+<p><strong>Question:</strong> Suppose Jake is an SPY trader for Wolverine and that on a given day, the price of SPY drops by 10%. Should Jake increase or decrease <span class="math inline">\(\sigma\)</span> in his pricing models?</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="the-markets.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="option-pricing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="profit-loss.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook/js/app.min.js"></script>
@@ -261,7 +225,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/04_profit_and_loss.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/05_option_pricing.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown.pdf"],
