@@ -217,18 +217,78 @@ C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
 The Black-Schole pricing framework, which will discuss at lenght in later chapters, requires complex assumptions about the random nature of the underlying, and dynamic trading strategies for replicating option payoffs. These complexities are required a specific value to an option, but there is a actually a lot we can say about option prices in general without making any assumptions of the underlying.
 
 
-#### Extreme European Bounds {-}
+#### Extreme American Bounds {-}
 The worst thing that can happen with a put or call is that it is not exercised, which means that they can never be worth less than zero.  For a call, the best thing that can happen is that you exercise, which results in owning the stock, a call can never be worth more than the underlying stock.  For a put, the best outcome is that you exercise when the stock is worthless, and you recieve $K$.  Thus, the put can never be worth more that $K$.  These facts are summarized in the following inequalities
 
 \begin{align*}
-0 &\leq C_E(S, K, T) \leq S \\
-0 &\leq P_E(S, K, T) \leq K.
+0 &\leq C_A(S, K, T) \leq S \\
+0 &\leq P_A(S, K, T) \leq K.
 \end{align*}
 
 
 #### Americans $\geq$ European {-}
 Any strategy that you can execute with a European option, you can execute with the American variant as well.  Thus we have that
 \begin{align*}
-C_A(S, K, T) &\geq C_E(S, K, T) \\
-P_A(S, K, T) &\geq C_E(S, K, T).
+C_E(S, K, T) &\geq C_A(S, K, T) \\
+P_E(S, K, T) &\geq C_A(S, K, T).
+\end{align*}
+
+
+#### Call Bounds {-}
+We can string together put-call parity along with the previous two results (add equation numbers), to arrive at the following series of inequalities:
+
+\begin{align*}
+\text{max}\big\{ 0, D(t, T) \cdot ((F(t, T) - K))  \big\} \leq C_E(S, K, T) \leq C_A(S, K, T) \leq S.   
+\end{align*}
+
+From left to right the justification for the three inequalities are as follows:
+
+1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla call is always worth greater that intrinsic.
+
+2. Americans are worth more than Europeans.
+
+3. Extreme upper bound for Amerians.
+
+
+#### Put Bounds {-}
+We can argue for a similar sequence of inequalities for puts:
+
+\begin{align*}
+\text{max}\big\{ 0, D(t, T) \cdot (K - F(t, T))  \big\} \leq P_E(S, K, T) \leq P_A(S, K, T) \leq K. 
+\end{align*}
+
+
+From left to right the justification for the three inequalities are as follows:
+
+1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla put is always worth greater that intrinsic.
+
+2. Americans are worth more than Europeans.
+
+3. Extreme upper bound for Amerians.
+
+
+#### Early Exercise No Dividends {-}
+It is never optimal to early exercise an American call option on a non-dividend paying stock.  For a non-dividend paying underlying, it is always better to sell the call than to exercise.  To see this, recall that from put call parity we have that
+
+\begin{align*}
+C_E(S_t, K T) &= D(t, T) \cdot (F(t, T) - K) + P_E(K, T) \\
+            &= D(t, T) \cdot (A(t, T) \cdot S_t - K)) + P_E(S_t, K, T) \\
+            &= S_t - D(t, T) \cdot K + P_E(S_t, K, T).
+\end{align*}
+
+If we can show that $S_t - D(t, T) \cdot K + P_E(K, T) > S_t - K$ then we are done, because American options are always worth at least as much as Europeans.  This inequality is equivalent to
+\begin{align*}
+K > D(t, T) \cdot K - P_E(S_t, K, T) \iff
+K\cdot(1 - D(t, T)) + P_E(S_t, K, T) > 0
+\end{align*}
+
+But of course this final inequality is true because $D(t, T) < 1$ and $P_E(S_t, K, T) > 0$.
+
+
+#### Early Exercise Single Dividend {-}
+(NOT COMPLETE)  Consider and American call on a stock that pays a single dividend, call it $\delta$, before the option expires, say at time $t^*$.  From put-call parity we have
+\begin{align*}
+C_E(S_t, K, T)  &= D(t, T) \cdot (F(t, T) - K) + P_E(S_t, K, T) \\
+                &= D(t, T) \cdot (A(t, T) \cdot S_t - D(t, t^*)\delta - K) + P(S_t, K, t)
+                &= S_t - D(t, T) \cdot D(t, t^*) \delta - K \cdot D(t, T) + P(S_t, K, t)
 \end{align*}

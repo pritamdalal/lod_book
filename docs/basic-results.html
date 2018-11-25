@@ -315,20 +315,59 @@ C(t, T, K) - P(t, T, K) &amp;= D(t, T) \cdot (F(t, T) - K) \\
 <div id="rational-option-pricing" class="section level2">
 <h2><span class="header-section-number">2.8</span> Rational Option Pricing</h2>
 <p>The Black-Schole pricing framework, which will discuss at lenght in later chapters, requires complex assumptions about the random nature of the underlying, and dynamic trading strategies for replicating option payoffs. These complexities are required a specific value to an option, but there is a actually a lot we can say about option prices in general without making any assumptions of the underlying.</p>
-<div id="extreme-european-bounds" class="section level4 unnumbered">
-<h4>Extreme European Bounds</h4>
+<div id="extreme-american-bounds" class="section level4 unnumbered">
+<h4>Extreme American Bounds</h4>
 <p>The worst thing that can happen with a put or call is that it is not exercised, which means that they can never be worth less than zero. For a call, the best thing that can happen is that you exercise, which results in owning the stock, a call can never be worth more than the underlying stock. For a put, the best outcome is that you exercise when the stock is worthless, and you recieve <span class="math inline">\(K\)</span>. Thus, the put can never be worth more that <span class="math inline">\(K\)</span>. These facts are summarized in the following inequalities</p>
 <span class="math display">\[\begin{align*}
-0 &amp;\leq C_E(S, K, T) \leq S \\
-0 &amp;\leq P_E(S, K, T) \leq K.
+0 &amp;\leq C_A(S, K, T) \leq S \\
+0 &amp;\leq P_A(S, K, T) \leq K.
 \end{align*}\]</span>
 </div>
 <div id="americans-geq-european" class="section level4 unnumbered">
 <h4>Americans <span class="math inline">\(\geq\)</span> European</h4>
 Any strategy that you can execute with a European option, you can execute with the American variant as well. Thus we have that
 <span class="math display">\[\begin{align*}
-C_A(S, K, T) &amp;\geq C_E(S, K, T) \\
-P_A(S, K, T) &amp;\geq C_E(S, K, T).
+C_E(S, K, T) &amp;\geq C_A(S, K, T) \\
+P_E(S, K, T) &amp;\geq C_A(S, K, T).
+\end{align*}\]</span>
+</div>
+<div id="call-bounds" class="section level4 unnumbered">
+<h4>Call Bounds</h4>
+<p>We can string together put-call parity along with the previous two results (add equation numbers), to arrive at the following series of inequalities:</p>
+<span class="math display">\[\begin{align*}
+\text{max}\big\{ 0, D(t, T) \cdot ((F(t, T) - K))  \big\} \leq C_E(S, K, T) \leq C_A(S, K, T) \leq S.   
+\end{align*}\]</span>
+<p>From left to right the justification for the three inequalities are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Extreme lower bound combined with put-call parity. Notice that this is equivalent to saying that a vanilla call is always worth greater that intrinsic.</p></li>
+<li><p>Americans are worth more than Europeans.</p></li>
+<li><p>Extreme upper bound for Amerians.</p></li>
+</ol>
+</div>
+<div id="put-bounds" class="section level4 unnumbered">
+<h4>Put Bounds</h4>
+<p>We can argue for a similar sequence of inequalities for puts:</p>
+<span class="math display">\[\begin{align*}
+\text{max}\big\{ 0, D(t, T) \cdot (K - F(t, T))  \big\} \leq P_E(S, K, T) \leq P_A(S, K, T) \leq K. 
+\end{align*}\]</span>
+<p>From left to right the justification for the three inequalities are as follows:</p>
+<ol style="list-style-type: decimal">
+<li><p>Extreme lower bound combined with put-call parity. Notice that this is equivalent to saying that a vanilla put is always worth greater that intrinsic.</p></li>
+<li><p>Americans are worth more than Europeans.</p></li>
+<li><p>Extreme upper bound for Amerians.</p></li>
+</ol>
+</div>
+<div id="early-exercise-no-dividends" class="section level4 unnumbered">
+<h4>Early Exercise No Dividends</h4>
+<p>It is never optimal to early exercise an American call option on a non-dividend paying stock. For a non-dividend paying underlying, it is always better to sell the call than to exercise. To see this, recall that from put call parity we have that</p>
+<span class="math display">\[\begin{align*}
+C_E(S_t, K T) &amp;= D(t, T) \cdot (F(t, T) - K) + P_E(K, T) \\
+            &amp;= D(t, T) \cdot (A(t, T) \cdot S_t - K)) + P_E(S_t, K, T) \\
+            &amp;= S_t - D(t, T) \cdot K + P_E(S_t, K, T).
+\end{align*}\]</span>
+If we can show that <span class="math inline">\(S_t - D(t, T) \cdot K + P_E(K, T) &gt; S_t - K\)</span> then we are done, because American options are always worth at least as much as Europeans. This inequality is equivalent to
+<span class="math display">\[\begin{align*}
+K &gt; D(t, T) \cdot K - P_E(S, K, T)
 \end{align*}\]</span>
 
 </div>
