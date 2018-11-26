@@ -170,7 +170,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
             <section class="normal" id="section-">
 <div id="basic-results" class="section level1">
-<h1><span class="header-section-number">Chapter 2</span> Basic Results</h1>
+<h1><span class="header-section-number">2</span> Basic Results</h1>
 <p>In this section I introduce basic concepts and results from quantitative finance that will be needed later in the book. For a more detailed treatment, I recommend the following execellent texts:</p>
 <p><strong>Options, Futures, and Other Derivatives</strong> by John C. Hull</p>
 <p><strong>Derivative Markets</strong> by Robert L. McDonald</p>
@@ -367,7 +367,18 @@ C_E(S_t, K T) &amp;= D(t, T) \cdot (F(t, T) - K) + P_E(K, T) \\
 \end{align*}\]</span>
 If we can show that <span class="math inline">\(S_t - D(t, T) \cdot K + P_E(K, T) &gt; S_t - K\)</span> then we are done, because American options are always worth at least as much as Europeans. This inequality is equivalent to
 <span class="math display">\[\begin{align*}
-K &gt; D(t, T) \cdot K - P_E(S, K, T)
+K &gt; D(t, T) \cdot K - P_E(S_t, K, T) \iff \\
+K\cdot(1 - D(t, T)) + P_E(S_t, K, T) &gt; 0
+\end{align*}\]</span>
+<p>But of course this final inequality is true because <span class="math inline">\(D(t, T) &lt; 1\)</span> and <span class="math inline">\(P_E(S_t, K, T) &gt; 0\)</span>.</p>
+</div>
+<div id="early-exercise-single-dividend" class="section level4 unnumbered">
+<h4>Early Exercise Single Dividend</h4>
+(NOT COMPLETE) Consider and American call on a stock that pays a single dividend, call it <span class="math inline">\(\delta\)</span>, before the option expires, say at time <span class="math inline">\(t^*\)</span>. From put-call parity we have
+<span class="math display">\[\begin{align*}
+C_E(S_t, K, T)  &amp;= D(t, T) \cdot (F(t, T) - K) + P_E(S_t, K, T) \\
+                &amp;= D(t, T) \cdot (A(t, T) \cdot S_t - D(t, t^*)\delta - K) + P(S_t, K, t) \\
+                &amp;= S_t - D(t, T) \cdot D(t, t^*) \delta - K \cdot D(t, T) + P(S_t, K, t)
 \end{align*}\]</span>
 
 </div>

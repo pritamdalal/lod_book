@@ -278,7 +278,7 @@ C_E(S_t, K T) &= D(t, T) \cdot (F(t, T) - K) + P_E(K, T) \\
 
 If we can show that $S_t - D(t, T) \cdot K + P_E(K, T) > S_t - K$ then we are done, because American options are always worth at least as much as Europeans.  This inequality is equivalent to
 \begin{align*}
-K > D(t, T) \cdot K - P_E(S_t, K, T) \iff
+K > D(t, T) \cdot K - P_E(S_t, K, T) \iff \\
 K\cdot(1 - D(t, T)) + P_E(S_t, K, T) > 0
 \end{align*}
 
@@ -289,6 +289,6 @@ But of course this final inequality is true because $D(t, T) < 1$ and $P_E(S_t, 
 (NOT COMPLETE)  Consider and American call on a stock that pays a single dividend, call it $\delta$, before the option expires, say at time $t^*$.  From put-call parity we have
 \begin{align*}
 C_E(S_t, K, T)  &= D(t, T) \cdot (F(t, T) - K) + P_E(S_t, K, T) \\
-                &= D(t, T) \cdot (A(t, T) \cdot S_t - D(t, t^*)\delta - K) + P(S_t, K, t)
+                &= D(t, T) \cdot (A(t, T) \cdot S_t - D(t, t^*)\delta - K) + P(S_t, K, t) \\
                 &= S_t - D(t, T) \cdot D(t, t^*) \delta - K \cdot D(t, T) + P(S_t, K, t)
 \end{align*}
