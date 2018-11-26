@@ -1,6 +1,7 @@
 --- 
+knit: "bookdown::render_book"
 title: "Learning Options from Data"
-author: "Pritam Dalal"
+author: ["Pritam Dalal"]
 documentclass: krantz
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
@@ -13,6 +14,8 @@ fontsize: 11pt
 mainfont: Palatino
 monofont: "Source Code Pro"
 monofontoptions: "Scale=0.8"
+github-repo: pritamdalal/lod_book
+cover_image: image/cover.png
 ---
 
 ```{r setup, include=FALSE}
@@ -53,123 +56,13 @@ lapply(c('xfun'), function(pkg) {
 if (!xfun::loadable('sigma', new_session = TRUE)) source('https://install-github.me/jjallaire/sigma')
 ```
 
-# Preface {-}
+# Welcome{-}
 
 
-<!-- Unused YML header stuff -->
-<!-- site: bookdown::bookdown_site -->
-<!-- description: "The first official book authored by the core R Markdown developers that provides a comprehensive and accurate reference to the R Markdown ecosystem. With R Markdown, you can easily create reproducible data analysis reports, presentations, dashboards, interactive applications, books, dissertations, websites, and journal articles, while enjoying the simplicity of Markdown and the great power of R and other languages." -->
-<!-- url: 'https\://bookdown.org/yihui/rmarkdown/' -->
-<!-- github-repo: rstudio/rmarkdown-book -->
-<!-- cover-image: images/cover.png -->
+Welcome to the website for **Learning Options from Data**.  This innovative manual will teach you the theoretical and practical fundamentals of options.  While a bit of math is unavoidable, and infact rather useful, the main tool for learning will be wrangling and analyzing real-world options data.
 
+<a><img src="image/cover.png" width="700" height="280" alt="Cover image" align="center" style="margin: 0 1em 0 1em" /></a>
 
-<!-- The document format "R Markdown" was first introduced in the **knitr** package [@xie2015; @R-knitr] in early 2012. The idea was to embed code chunks (of R or other languages) in Markdown documents. In fact, **knitr** supported several authoring languages from the beginning in addition to Markdown, including LaTeX, HTML, AsciiDoc, reStructuredText, and Textile. Looking back over the five years, it seems to be fair to say that Markdown has become the most popular document format, which is what we expected. The simplicity of Markdown clearly stands out among these document formats. -->
+These pages distill 1000s of hours of formal study through the filter of a decade of trading and analysis work in various areas of quantitative finance.  I have included only what is uselful, timely, and relvant.
 
-<!-- However, the original version of Markdown [invented by John Gruber](https://en.wikipedia.org/wiki/Markdown) was often found overly simple and not suitable to write highly technical documents. For example, there was no syntax for tables, footnotes, math expressions, or citations. Fortunately, John MacFarlane created a wonderful package named Pandoc (http://pandoc.org) to convert Markdown documents (and many other types of documents) to a large variety of output formats. More importantly, the Markdown syntax was significantly enriched. Now we can write more types of elements with Markdown while still enjoying its simplicity. -->
-
-<!-- In a nutshell, R Markdown stands on the shoulders of **knitr** and Pandoc. The former executes the computer code embedded in Markdown, and converts R Markdown to Markdown. The latter renders Markdown to the output format you want (such as PDF, HTML, Word, and so on). -->
-
-<!-- ```{r fig.align='center', echo=FALSE, include=identical(knitr:::pandoc_to(), 'html'), fig.link='https://github.com/rstudio/rmarkdown', out.width='30%'} -->
-<!-- knitr::include_graphics('images/hex-rmarkdown.png', dpi = NA) -->
-<!-- ``` -->
-
-<!-- The **rmarkdown** package [@R-rmarkdown] was first created in early 2014. During the past four years, it has steadily evolved into a relatively complete ecosystem for authoring documents, so it is a good time for us to provide a definitive guide to this ecosystem now. At this point, there are a large number of tasks that you could do with R Markdown: -->
-
-<!-- - Compile a single R Markdown document to a report in different formats, such as PDF, HTML, or Word. -->
-
-<!-- - Create notebooks in which you can directly run code chunks interactively. -->
-
-<!-- - Make slides for presentations (HTML5, LaTeX Beamer, or PowerPoint). -->
-
-<!-- - Produce dashboards with flexible, interactive, and attractive layouts. -->
-
-<!-- - Build interactive applications based on Shiny. -->
-
-<!-- - Write journal articles. -->
-
-<!-- - Author books of multiple chapters. -->
-
-<!-- - Generate websites and blogs. -->
-
-<!-- There is a fundamental assumption underneath R Markdown that users should be aware of: we assume it suffices that only a limited number of features are supported in Markdown. By "features", we mean the types of elements you can create with native Markdown. The limitation is a great feature, not a bug. R Markdown may not be the right format for you if you find these elements not enough for your writing: paragraphs, (section) headers, block quotations, code blocks, (numbered and unnumbered) lists, horizontal rules, tables, inline formatting (emphasis, strikeout, superscripts, subscripts, verbatim, and small caps text), LaTeX math expressions, equations, links, images, footnotes, citations, theorems, proofs, and examples. We believe this list of elements suffice for most technical and non-technical documents. It may not be impossible to support other types of elements in R Markdown, but you may start to lose the simplicity of Markdown if you wish to go that far. -->
-
-<!-- Epictetus once said, "_Wealth consists not in having great possessions, but in having few wants._" The spirit is also reflected in Markdown. If you can control your preoccupation with pursuing typesetting features, you should be much more efficient in writing the content and can become a prolific author. It is entirely possible to succeed with simplicity. Jung Jae-sung was a legendary badminton player with a remarkably simple playing style: he did not look like a talented player and was very short compared to other players, so most of the time you would just see him jump three feet off the ground and smash like thunder over and over again in the back court until he beats his opponents. -->
-
-<!-- Please do not underestimate the customizability of R Markdown because of the simplicity of its syntax. In particular, Pandoc templates can be surprisingly powerful, as long as you understand the underlying technologies such as LaTeX and CSS, and are willing to invest time in the appearance of your output documents (reports, books, presentations, and/or websites). As one example, you may check out the [PDF report](http://files.kff.org/attachment/Report-Employer-Health-Benefits-Annual-Survey-2017) of the [2017 Employer Health Benefits Survey](https://www.kff.org/health-costs/report/2017-employer-health-benefits-survey/). It looks fairly sophisticated, but was actually produced via **bookdown** [@xie2016], which is an R Markdown extension. A custom LaTeX template and a lot of LaTeX tricks were used to generate this report. Not surprisingly, this very book that you are reading right now was also written in R Markdown, and its full source is publicly available in the GitHub repository https://github.com/rstudio/rmarkdown-book. -->
-
-<!-- R Markdown documents are often portable in the sense that they can be compiled to multiple types of output formats. Again, this is mainly due to the simplified syntax of the authoring language, Markdown. The simpler the elements in your document are, the more likely that the document can be converted to different formats. Similarly, if you heavily tailor R Markdown to a specific output format (e.g., LaTeX), you are likely to lose the portability, because not all features in one format work in another format. -->
-
-<!-- Last but not least, your computing results will be more likely to be reproducible if you use R Markdown (or other **knitr**-based source documents), compared to the manual cut-and-paste approach. This is because the results are dynamically generated from computer source code. If anything goes wrong or needs to be updated, you can simply fix or update the source code, compile the document again, and the results will automatically updated. You can enjoy reproducibility and convenience at the same time. -->
-
-## Delta-Neutral Historical Data {-}
-
-Nearly all the data analysis examples in this book come from the historical options data that has been contributed by Delta-Neutral.  This is a phenominal data set of the highest quality that contains daily option prices for all the options traded on  thousands of equity underlyings.  The full data set dates back to 2002.
-
-
-## How to read this book {-}
-
-<!-- This book may serve you better as a reference book than a textbook. It contains a large number of technical details, and we do not expect you to read it from beginning to end, since you may easily feel overwhelmed. Instead, think about your background and what you want to do first, and go to the relevant chapters or sections. For example: -->
-
-<!-- - I just want to finish my course homework (Chapter \@ref(basics) should be more than enough for you). -->
-
-<!-- - I know this is an R Markdown book, but I use Python more than R (Go to Section \@ref(python)). -->
-
-<!-- - I want to embed interactive plots in my reports, or want my readers to be able change my model parameters interactively and see results on the fly (Check out Section \@ref(interactive-documents)). -->
-
-<!-- - I know the output format I want to use, and I want to customize its appearance (Check out the documentation of the specific output format in Chapter \@ref(documents) or Chapter \@ref(presentations)). For example, I want to customize the template for my PowerPoint presentation (Go to Section \@ref(ppt-templates)). -->
-
-<!-- - I want to build a business dashboard highlighting some key figures and indicators (Go to Chapter \@ref(dashboards)). -->
-
-<!-- - I heard about `yolo = TRUE` from a friend, and I'm curious what that means in the **xaringan** package (Go to Chapter \@ref(xaringan)). -->
-
-<!-- - I want to build a personal website (Go to Chapter \@ref(websites)), or write a book (Go to Chapter \@ref(books)). -->
-
-<!-- - I want to write a paper and submit to the Journal of Statistical Software (Go to Chapter \@ref(journals)). -->
-
-<!-- - I want to build an interactive tutorial with exercises for my students to learn a topic (Go to Chapter \@ref(learnr)). -->
-
-<!-- - I'm familiar with R Markdown now, and I want to generate personalized reports for all my customers using the same R Markdown template (Try parameterized reports in Chapter \@ref(parameterized-reports)). -->
-
-<!-- - I know some JavaScript, and want to build an interface in R to call an interested JavaScript library from R (Learn how to develop HTML widgets in Chapter \@ref(html-widgets)). -->
-
-<!-- - I want to build future reports with a company branded template that shows our logo and uses our unique color theme (Go to Chapter \@ref(document-templates)). -->
-
-<!-- If you are not familiar with R Markdown, we recommend that you read at least Chapter \@ref(basics) to learn the basics. All the rest of the chapters in this book can be read in any order you desire. They are pretty much orthogonal to each other. However, to become familiar with R Markdown output formats, you may want to thumb through the HTML document format in Section \@ref(html-document), because many other formats share the same options as this format. -->
-
-## Structure of the book {-}
-
-<!-- This book consists of four parts. Part I covers the basics: Chapter \@ref(installation) introduces how to install the relevant packages, and Chapter \@ref(basics) is an overview of R Markdown, including the possible output formats, the Markdown syntax, the R code chunk syntax, and how to use other languages in R Markdown. -->
-
-<!-- Part II is the detailed documentation of built-in output formats in the **rmarkdown** package, including document formats and presentation formats. -->
-
-<!-- Part III lists about ten R Markdown extensions that enable you to build different applications or generate output documents with different styles. Chapter \@ref(dashboards) introduces the basics of building flexible dashboards with the R package **flexdashboard**. Chapter \@ref(tufte-handouts) documents the **tufte** package, which provides a unique document style used by Edward Tufte. Chapter \@ref(xaringan) introduces the **xaringan** package for another highly flexible and customizable HTML5 presentation format based on the JavaScript library remark.js. Chapter \@ref(revealjs) documents the **revealjs** package, which provides yet another appealing HTML5 presentation format based on the JavaScript library reveal.js. Chapter \@ref(community) introduces a few output formats created by the R community, such as the **prettydoc** package, which features lightweight HTML document formats. Chapter \@ref(websites) teaches you how to build websites using either the **blogdown** package or **rmarkdown**'s built-in site generator. Chapter \@ref(pkgdown) explains the basics of the **pkgdown** package, which can be used to quickly build documentation websites for R packages. Chapter \@ref(books) introduces how to write and publish books with the **bookdown** package. Chapter \@ref(journals) is an overview of the **rticles** package for authoring journal articles. Chapter \@ref(learnr) introduces how to build interactive tutorials with exercises and/or quiz questions. -->
-
-<!-- Part IV covers other topics about R Markdown, and some of them are advanced (in particular, Chapter \@ref(html-widgets)). Chapter \@ref(parameterized-reports) introduces how to generate different reports with the same R Markdown source document and different parameters. Chapter \@ref(html-widgets) teaches developers how to build their own HTML widgets for interactive visualization and applications with JavaScript libraries. Chapter \@ref(document-templates) shows how to create custom R Markdown and Pandoc templates so that you can fully customize the appearance and style of your output document. Chapter \@ref(new-formats) explains how to create your own output formats if the existing formats do not meet your need. Chapter \@ref(shiny-documents) shows how to combine the Shiny framework with R Markdown, so that your readers can interact with the reports by changing the values of certain input widgets and seeing updated results immediately. -->
-
-<!-- Note that this book is intended to be a guide instead of the comprehensive documentation of all topics related to R Markdown. Some chapters are only overviews, and you may need to consult the full documentation elsewhere (often freely available online). Such examples include Chapters \@ref(dashboards), \@ref(websites), \@ref(pkgdown), \@ref(books), and \@ref(learnr). -->
-
-<!-- ## Software information and conventions {#software-info .unnumbered} -->
-
-<!-- The R session information when compiling this book is shown below: -->
-
-<!-- ```{r tidy=FALSE} -->
-<!-- xfun::session_info(c( -->
-<!--   'blogdown', 'bookdown', 'knitr', 'rmarkdown', 'htmltools', -->
-<!--   'reticulate', 'rticles', 'flexdashboard', 'learnr', 'shiny', -->
-<!--   'revealjs', 'pkgdown', 'tinytex', 'xaringan', 'tufte' -->
-<!-- ), dependencies = FALSE) -->
-<!-- ``` -->
-
-<!-- We do not add prompts (`>` and `+`) to R source code in this book, and we comment out the text output with two hashes `##` by default, as you can see from the R session information above. This is for your convenience when you want to copy and run the code (the text output will be ignored since it is commented out). Package names are in bold text (e.g., **rmarkdown**), and inline code and filenames are formatted in a typewriter font (e.g., `knitr::knit('foo.Rmd')`). Function names are followed by parentheses (e.g., `blogdown::serve_site()`). The double-colon operator `::` means accessing an object from a package. -->
-
-<!-- "Rmd" is the filename extension of R Markdown files, and also an abbreviation of R Markdown in this book. -->
-
-## Acknowledgments {-}
-
-The layout of this book was adapted from the `bookdown` file of R Markdown: The Definitive Guide".  Many thanks to Yihui Xie for making the files freely available on Github.
-
-```{block2, type='flushright', html.tag='p'}
-Pritam Dalal  
-Minneapolis, Minnesota
-```
+This website is **free to use** and always will be.  The book is written in [RMarkdown](https://rmarkdown.rstudio.com) with [bookdown](https://bookdown.org).  Many thanks to the developers at RStudio for creating these wonderful packages for authoring - this book would not have been possible without those tools.

@@ -1,4 +1,4 @@
-# Basic Results
+# Quantitative Indulgence
 
 In this section I introduce basic concepts and results from quantitative finance that will be needed later in the book.  For a more detailed treatment, I recommend the following execellent texts:
 

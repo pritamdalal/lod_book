@@ -1,0 +1,115 @@
+# Introduction
+
+The purpose of this initial chapter is to provide some context and motivation for how and why this book was written.  For those of you who want to get tot the good stuff, it can safely be skipped.  
+
+If you're like me, you probably heard some crusty old professor overstate the importance of introductions of books and mistook his pedantry for wisdom.  I urge you to mimic the more productive readers and just skip this chapter until you have 20 minutes fritter away, or you are having trouble sleeping.
+
+
+## Delta-Neutral
+
+This book would not have been possible without the support of by data partner: [Delta Neutral](http://www.historicaloptiondata.com).  When I was asked to teach a finacial data analysis course at the University of Minnesota, I knew I wanted a real-world data set to be the center-piece.  A few years ago, I had purchased a years worth of Delta Neutral's files to complete a backtest that I was working on.  I was immeasurably impressed with the data, especially when compared to that of their competators, both in terms of price and quality.  
+
+
+Delta Neutral was founded in 2002 by [Rick Fortier](https://www.linkedin.com/in/rick-fortier-53061a7/); at the time he was looking for high quality daily option data, and there simply were no reasonable sources.  Options data is complex. Rick and his team have hit a homerun with their product.  When I approached Rick about showcasing his data in my courses, he was excited to help spread knowledge of options and data analysis through this innovative channel. 
+
+Nearly all the data analysis examples in this book come from the Level 3 data.  This is a phenominal data set of the highest quality that contains daily prices for all options traded on thousands of equity underlyings.  The full data set dates back to 2002.  Feel free to reach out me, or to the founder of Delta Netural, if you have further questions about their data offerings: rick@deltaneutral.com.
+
+
+## Why This Book
+
+This book emanated from a course I was asked to teach for Master of Financial Mathematics (MFM) Program at the University of Minnesota.  My initial vision for the course was a short but intensive module on backtesting options trading strategies.  It would be geared towards advanced students who had already had year long sequences in both options theory and computer programming.  The idea was that this module would help the student put their knew skill to the test with a challenging data analysis problem - precisely the kind of project they would be required to execute on the job.   
+
+Due to a scheduling conflict this initial vision had to be modified.  Instead I would be teaching similar material, but at a more introductory level to the first year students. The typical first year MFM student math majors with minimial previous exposure to options or programming.  So generally very smart students with a solid educational foundation, but with little in the way of directly applicabile knowlege to the task of backtesting options.   
+
+As I pondered the task, it occured to me that I was going to have to present both the basic definition of an option as well as the basic definition of a for-loop.  To guide students from that point, to the point of being able to backt trading strategies seemed like an impossibly tall order. But I was intrigued by the challenge and so I accepted.
+
+While designing the course, I knew that I wanted to introduce data analysis material as quickly as possible, but that I was also going to have to cover a lot of options basics up front as well.  I quickly realized that basic coding material has been presented exceptionally well in texts such as [R for Data Science](https://r4ds.had.co.nz/), so I could simply assign readings from these texts as self-study assignments.  
+
+The key motivating insight for me was that many important things about options can be best illustrated by manipulating data.  As I reflected, I concluded that many of my greatest learnings about options came when my hands were very dirty in the data (and *NOT* by writing out equations with a pen and a paper).  Moreover, by learning about options via programming, you also develop the single most important practical skill for a quantitative finance professional: expressing financial ideas in code.
+
+Thus, I set out to write this new approach finance: **Learning Options from Data** (LOD).
+
+## Who Is This Book For?
+
+I classify the target audience for this book in terms of the particular subject matter that they are primarily interested in learning:
+
+**Options and Coding:** The readers who will get the most out of this book will be those that are similar to my MFM students - students who want to learn data analysis in a quantitative finance context, but who still need to build foundations in both areas.  My University of Minnesota courses are based on systematically working through this book, as well as the further reading assignments.
+
+**Coding:** Suppose you are a professional that has a solid knowledge of options, and you would like to build some additional data analysis skills in R or Python.  (Shameless plug:  these are precisely the kind of learners that are served by the bespoke training courses from [Option Data Science](https://pritamdalal.github.io/ods_site/services.html).)  You can use this book by jumping straight to the coding exercises, and perusing the explantory material as needed.  You will spend a fair amount of time on the prerequisite reading assignments from the coding books mentioned in the next section.
+
+**Options:** Suppose you are a data scientist or developer that needs to apply their skills in a quantitative finance context.  For you, the coding will be simple, but you will need to focus on the explanatory finance material to be able to truly understand the coding assignments.  You will spend a fair amount of time on the prerequisite reading assignments from the finance books mentioned in the next section.
+
+**Delta-Neutral:** If you have already purchased, or are considering purchasing, the Delta-Neutral data set, this book can serve as a guided initial exploration of the data. The coding exerices in this book wil greatly accelarate your learning curve.  As you probably know, a huge amount time gets spent figuring out a new data set and performing initial wrangling tasks.  Any head start you can give yourself on the long and arduous journey of data-wrangling, the better.
+
+
+## Prerequisites & Further Reading
+The math prerequisite to mastering options are is strong intuitive understanding of calculus, linear algebra, probablility, and statistics.  In reality, this probably comes from a 3-semester calculus sequece, and semester long undergraduate courses in the other three areas.  The options self-help community would probaby argue that you don't need that much math, but I disagree.  There are certainly diminishing practical returns to advanced subjects like stochastic calculus and functional analysis, but the areas I detail above are a far cry from that. 
+
+In my experience, the most productive finance professionals are those who have a strong intuitive understanding of basic undergraduate mathematics, who roll their eyes at theoretical details, and who focus on implementing their knowledge in code as quickly as possible.
+
+This book is designed for learning both data analysis and finance.  
+
+This book is a hybrid of an introductory data analysis text and an introductory options text.  It's a jack of two trades, and master of neither.  LOD is designed to be a companion to books detailed below. Throughout the I will assign readings from these other books, both for the purposes of addressing basics that have already been exposited well elsewhere, or for a deeper dive into material for those who want to know more.  These additional readings aren't strictly necessary, but will lead to deeper understanding.
+
+**Data Analysis:**
+
+*R for Data Science* - Hadley Wickham and Garrett Grolemond
+
+*Advanced R* - Hadley Wickham
+
+*Python for Data Analysis* - Wes McKinney
+
+*Python Data Science Handbook* - Jake VanderPlas
+
+
+**Quantitative Finance:**
+
+*Options, Futures, and Other Derivatives* - John Hull
+
+*Derivatives Markets* - Robert McDonald
+
+
+
+
+
+## Guiding Philosophies
+
+#### Coding without Context Sucks {-}
+
+I have a huge amount of affection for Hadley Wickham's **R for Data Science** and similar titles.  So much so that this book was written in it's image.  So much so that this morning I spent 20 minutes figuring how to get my welcome pageto look the exactly like his - yeah I know, I've got issues.
+
+Such general coding books, by their very nature, cannot be context specific.  But ultimately, creating visulizations of data relating to cars or flights often left me feeling empty and a bit drowsy.   The truth is that it's always more enjoyable and effective learn data analysis when you care about the data.  That's really the thrust of this book - learning data analysis in the context of options.
+
+#### Type Along {-}
+
+Pen and paper is dead.  If you're not typing code and watching output come out, you're not really learning.  The interactive coding environments of R and Python are ideal for this kind of learning.  Even if you think you have no idea of what is going on, if there is coding example, force yourself to type it out (copy/paste doesn't count) and make sure you get the same output.
+
+#### Don't Reinvent the Wheel {-}
+
+So much for avoiding cliques.  The point is that there has been a ton of great introductory material written on both data analysis and options.  While I do present my take on some of this material, I also assign reading assignment to the texts mentioned above.
+
+
+## Acknowledgments
+
+The layout of this book was adapted from the `bookdown` files of two great books: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) and [R for Data Science](https://r4ds.had.co.nz/).  Many thanks to the authors Yihui Xie, J. J. Allaire, Garrett Grolemund, and Hadley Wickham for making the files freely available on Github.
+
+Many thanks to the students at the University of Minnesota, who's questions and curiosities helped to guide the writing of this book.
+
+
+
+## About the Author
+
+<a><img src="image/John_Conklin_6_crop.jpg" width="250" alt="Cover image" align="right" style="margin: 0 1em 0 1em" /></a>
+
+This book was written by Pritam Dalal, founder of Option Data Science - a boutique consultancy focused on the intersection between data science and volatility markets.
+
+Prior to launching ODS, Pritam held a variety of trading and analysis roles at firms such as Cargill, Wolverine Trading, Allianz Investment Management, and Two Harbors Investment Corp. A common thread running through all of his work has been data-driven analysis, coupled with the ability to communicate those findings to fellow decision makers. These skills have been applied to areas ranging from volatility trading in commodity markets, to equity option market-making, and hedging complex annuities.
+
+In addition to serving clients, Pritam is an adjunct professor in the mathematics department where he [teaches](https://pritamdalal.github.io/fm5990_site/) graduate students about applying data science to quantitative finance.
+
+Pritam holds a Bachelors in Mathematics and Economics from U.C. Berkeley, and a Masters in Financial Mathematics from the University of Minnesota, Twin Cities.
+
+Feel feel to reach him by phone or e-mail: 206.802.5525; dalal030@umn.edu.
+
+
+

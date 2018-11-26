@@ -1,4 +1,4 @@
-# Options Introduction
+# Options 101
 
 The purpose of the chapter is to introduce options as painlessly as possible.
 
