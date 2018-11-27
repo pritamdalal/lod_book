@@ -1,30 +1,34 @@
-# Quantitative Indulgence
+# Quantitative Results
 
-In this section I introduce basic concepts and results from quantitative finance that will be needed later in the book.  For a more detailed treatment, I recommend the following execellent texts:
+In this section I introduce the basic concepts and results from quantitative finance that will be needed later.  It is the most academic chapter, and I hesitated to unleash these gory details, as my initial vision of the book was to be totally practical.
 
-**Options, Futures, and Other Derivatives** by John C. Hull
+I ultimately decided to get a little mathy on you for a couple of reasons.  The first reason is that I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. The second reason is that I frequently get questions from my MFM students that requires resorting to this level of formalism.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their budding pathology by ingulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.  Of course this line of thought is probably just the rationalization of a math addict.
 
-**Derivative Markets** by Robert L. McDonald
+I envy those of you who can take the statements of fact in this chapter as given, and then move on to more elevated pursuits.
+
+<!-- For a more detailed treatment, I recommend the following execellent texts: -->
+
+<!-- **Options, Futures, and Other Derivatives** by John C. Hull -->
+
+<!-- **Derivative Markets** by Robert L. McDonald -->
 
 
 ## Arbitrage
-An *arbitrage* is a risk-less profit that requires no initial investment.  A basic tenets of finance is that arbitrage opportunities should not exist in the markets.  The reason goes, if there an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer exists.
+An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer exists.
 
-Mathematically minded nerds with lots of time on their hands use arbitrage related arguments to prove theorem about the nature of markets.  In doing so, they tend to stylized and somewhat questionable assumptions about markets, glossing over certain details to make their mathematical stories work.  Abitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).  
+Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seemlessly.  Abitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).  
 
 There is, however, a strong kernel of truth to these arguement.  If markets signficantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
 
 Keep your eyes peeled for arbs in the market.  And if you find one, please call me.
 
-I am going to present some arbitrage arguments in this chapter.  This is in part because I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. It's also because I occassionally get questions from students that requires resorting to arbitrage arguments.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their pathology by ingulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.
-
-I envy those of you who can take the statements of fact in this chapter as given, and then simply move on to more elevated pursuits. 
+ 
 
 ## Stocks & Dividends
 
-Companies can raise funds to grow their business by issuing *shares of stock*. The buyer of the stock - often called a shareholder - pays money to the comapany which the company keeps forever.  In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with resepct to the company.  The worst thing that can happen is that shareholder never recieves any profits, and the stock itself also becomes worthless.  So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages.  In this sense the value of stock can never be negative. 
+Companies can raise funds to grow their business by issuing *shares of stock*. The buyer of the stock, called a *shareholder*, pays money to the comapany which the company keeps forever.  In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with resepct to the company.  The worst thing that can happen is that shareholder never recieves any profits, and the stock itself also becomes worthless.  So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages.  In this sense the value of stock can never be negative. 
 
-Once a stock has been issued by a company, the owner of the stock can sell it to another invester.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transfered to the purchaser.
+Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the purchaser.
 
 Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people are referring to when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from transaction to transaction.  
 

@@ -42,14 +42,35 @@ I classify the target audience for this book in terms of the particular subject 
 **Delta-Neutral:** If you have already purchased, or are considering purchasing, the Delta-Neutral data set, this book can serve as a guided initial exploration of the data. The coding exerices in this book wil greatly accelarate your learning curve.  As you probably know, a huge amount time gets spent figuring out a new data set and performing initial wrangling tasks.  Any head start you can give yourself on the long and arduous journey of data-wrangling, the better.
 
 
-## Prerequisites & Further Reading
-The math prerequisite to mastering options are is strong intuitive understanding of calculus, linear algebra, probablility, and statistics.  In reality, this probably comes from a 3-semester calculus sequece, and semester long undergraduate courses in the other three areas.  The options self-help community would probaby argue that you don't need that much math, but I disagree.  There are certainly diminishing practical returns to advanced subjects like stochastic calculus and functional analysis, but the areas I detail above are a far cry from that. 
+## How to Read
+This section details some of the guiding prinicples I enlisted in writing this book; these provide insights on how to use the book for maximum return on your investment of time.
+
+### Guiding Philosophies
+
+#### Coding without Context Sucks {-}
+
+I have a huge amount of affection for Hadley Wickham's **R for Data Science** and similar titles.  So much so that this book was written in it's image.  So much so that this morning I spent 20 minutes figuring how to get my welcome page to look the *exactly* like his - yeah I know, I've got issues.
+
+A general data analysis book like **R4DS**, by by it's very nature, cannot be context specific.  But ultimately, I'm usually left feeling a little bit empty and drowsy performing analysis on toy data sets about cars or flights.   The truth is that it's always more enjoyable and effective learn data analysis when you care about the data.  That's really the thrust of this book - learning data analysis in the context of options.
+
+#### Type Along {-}
+
+Pen and paper is dead.  If you're not typing code and watching output come out, you're not really learning.  The interactive coding environments of R and Python are ideal for this kind of learning.  Even if you think you have no idea of what is going on, if there is a coding example, force yourself to type it out (copy/paste doesn't count) and make sure you get the same result.
+
+#### I'm Don't Reinvent the Wheel {-}
+
+So much for avoiding cliches.  The point is that there has been a ton of great introductory material written on both data analysis and options.  While I do present my take on some of this material, I also assign reading from a few other texts (which are mentioned below).  This book is still only weakly self-contained, and is best studied along side the companion texts.
+
+### Prerequisites
+The math prerequisite to mastering options is a strong intuitive understanding of calculus, linear algebra, probablility, and statistics.  For most people, this can really only be acquired from a 3-semester calculus sequence, and semester long undergraduate courses in the other three areas.  The options self-help community would probaby argue that you don't need that much math, but I disagree.  There are certainly diminishing practical returns to advanced subjects like stochastic calculus and functional analysis, but the areas I detail above are a far cry from that. 
 
 In my experience, the most productive finance professionals are those who have a strong intuitive understanding of basic undergraduate mathematics, who roll their eyes at theoretical details, and who focus on implementing their knowledge in code as quickly as possible.
 
-This book is designed for learning both data analysis and finance.  
+This book is designed for learning data in the context of quantitative finance, but I don't over the basics of either topic thoroughly.  So if you are lacking basic knowledge in either areas, you'll need to spend some time on the suggested reading.  
 
-This book is a hybrid of an introductory data analysis text and an introductory options text.  It's a jack of two trades, and master of neither.  LOD is designed to be a companion to books detailed below. Throughout the I will assign readings from these other books, both for the purposes of addressing basics that have already been exposited well elsewhere, or for a deeper dive into material for those who want to know more.  These additional readings aren't strictly necessary, but will lead to deeper understanding.
+
+### Further Reading
+This book is a hybrid of an introductory data analysis text and an introductory options text.  It's a jack of two trades, and master of neither.  **LOD** is designed to be a companion to the books detailed below. Throughout this text, I will assign readings from these other books for one of two reasons: 1) addressing basics that have already been exposited well elsewhere; 2) a deeper dive into material for those who want to know more.  The amount of further reading you will need will depend on your background and your interests.
 
 **Data Analysis:**
 
@@ -71,27 +92,9 @@ This book is a hybrid of an introductory data analysis text and an introductory 
 
 
 
-
-## Guiding Philosophies
-
-#### Coding without Context Sucks {-}
-
-I have a huge amount of affection for Hadley Wickham's **R for Data Science** and similar titles.  So much so that this book was written in it's image.  So much so that this morning I spent 20 minutes figuring how to get my welcome pageto look the exactly like his - yeah I know, I've got issues.
-
-Such general coding books, by their very nature, cannot be context specific.  But ultimately, creating visulizations of data relating to cars or flights often left me feeling empty and a bit drowsy.   The truth is that it's always more enjoyable and effective learn data analysis when you care about the data.  That's really the thrust of this book - learning data analysis in the context of options.
-
-#### Type Along {-}
-
-Pen and paper is dead.  If you're not typing code and watching output come out, you're not really learning.  The interactive coding environments of R and Python are ideal for this kind of learning.  Even if you think you have no idea of what is going on, if there is coding example, force yourself to type it out (copy/paste doesn't count) and make sure you get the same output.
-
-#### Don't Reinvent the Wheel {-}
-
-So much for avoiding cliques.  The point is that there has been a ton of great introductory material written on both data analysis and options.  While I do present my take on some of this material, I also assign reading assignment to the texts mentioned above.
-
-
 ## Acknowledgments
 
-The layout of this book was adapted from the `bookdown` files of two great books: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) and [R for Data Science](https://r4ds.had.co.nz/).  Many thanks to the authors Yihui Xie, J. J. Allaire, Garrett Grolemund, and Hadley Wickham for making the files freely available on Github.
+The layout of this book was adapted from the `bookdown` files of two great books: [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) and [R for Data Science](https://r4ds.had.co.nz/).  Thank you to the authors Yihui Xie, J. J. Allaire, Garrett Grolemund, and Hadley Wickham for making the files freely available on Github.
 
 Many thanks to the students at the University of Minnesota, who's questions and curiosities helped to guide the writing of this book.
 
