@@ -30,41 +30,42 @@ Companies can raise funds to grow their business by issuing *shares of stock*. T
 
 Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the purchaser.
 
-Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people are referring to when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from transaction to transaction.  
+Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from transaction to transaction.  
 
 Here are some example of companies who's stocks trade heavily in the secondary markets.
 
 **AAPL** - Apple (you seriously have an Android bro) 
 
-**GOOG** - Alphabet (dude iPhones are totally overrated)
+**GOOG** - Alphabet (...dude iPhones are totally overrated)
 
-**FB** - Facebook (please like my pictures and make me feel cool)
+**FB** - Facebook (please like my pics and make me feel cool)
 
 **XOM** - Exxon Mobile (I'm self-righteous about the environment...until I check my 401K)
 
-Suppose you want to trade a share of stock, and you want to be able to fill your trade immediately.  If you are a buyer of the stock, you will be charged a certain amount called the ask price.  If you are a seller of the stock you will recieve a certain amount called the bid price.  The bid price is lower than the ask price.  These so-called *bid-ask spreads* exist in other financial markets as well, including options markets.
+Suppose you want to trade a share of stock, and you want to be able to fill your order immediately.  If you are a buyer of the stock, you will be charged a certain amount called the *ask* price.  If you are a seller of the stock you will recieve a certain amount called the *bid* price.  The bid price is lower than the ask price.  These so-called *bid-ask spreads* exist in other financial markets as well, including options markets.
 
-If you are a market for a particular stock, there are three prices that you will surely need to keep your eye one.  The current bid price, the current ask price, and the last price at which a trade occurred.  We will often refer to *the price of a stock at time* $t$ and denote by $S_{t}$.  We can ofen gloss over what the phrase *the price of the stock* exactly means, you can safely choose to interpret it in one of two way: 1) the current mid price, which is as the average of the bid and ask at time $t$; 2) the last trade price as of time $t$.  For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case. 
+If you are a market participant for a particular stock, there are three prices that you will surely need to keep your eye one.  The current bid price, the current ask price, and the last price at which a trade occurred.  I will often refer to *the price of a stock at time* $t$ and denote by $S_{t}$.  Typically, you can safely gloss over what the phrase *the price of the stock* exactly means. If you need to get into the minutae, you will find that I  probably mean one of the following: 1) the current mid price, which is as the average of the bid and ask at time $t$; 2) the last trade price as of time $t$.  For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case. 
 
-The upshot of our previous discussion about exchanges is that $S_{t}$ varies through time.  As it turns out, it is useful to think of the of $S_{t}$ as a series of random variable.  In fancy math circles this is know as a *stochastic process*.  It is my intention to try to avoid the nerdery of fancy math as much as possible, but sometimes we will be forced to indulge is such evils.  My apologies in advanced.
+The upshot of our previous discussion about exchanges is that $S_{t}$ varies through time.  As it turns out, it is useful to think of the of $S_{t}$ as a series of random variable.  In fancy math circles this is know as a *stochastic process*.  It is my intention to avoid mathematical nerdery as much as possible, but sometimes I will be forced to indulge is such evils.  My apologies in advanced.
 
-When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  This question leads to our first *qunatitative* result.
-
-
-**Theorem:** Suppose that a stock is going make a divided payment of $c$ at time $T$ and that just prior to the dividend payment is trading at a price of $S^{*}$.  Then then price of the stock just after the divident payment is $S_{T} = S^{*} - c$.
+When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  As it turns out it does, and this question leads to our first *qunatitative* result involving an arbitrage argument.
 
 
-Properly defining the concept of a share of *stock* is a complicated legal exercise.  Similarly, an accurate description of how stocks are sold in the secondary market would require it's own large (and boring) book.  The amount of detail you will depend on your use-case.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
+**Theorem:** Suppose that a stock is going make a divided payment of $c$ at time $T$ and that just prior to the dividend payment is trading at a price of $S^{*}$.  Then then price of the stock just after the dividend payment is $S_{T} = S^{*} - c$.
+
+**Proof:** NEED TO FILL IN.
+
+Properly defining the concept of a share of *stock* is a complicated legal exercise.  Similarly, an accurate description of how stocks are bought and sold in the secondary market would require its own large (and boring) book.  The amount of detail you will ultimately know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
 
 For the purposes of this book, the following stylized facts will suffice.
 
-1. Stocks give their claims to the companies profits.  This is a limited liability investment in that the value of a stock can never be negative.
+1. A shareholder owns stock which give them claim to a company's future profits.  This is a limited liability investment in that the value of a stock can never be negative.
 
-2. After their initial issuance, Share of stock can be in the secondary market.
+2. After their initial issuance, shares of stock can be bought and sold in the secondary market.
 
 3. Trading of stocks on the secondary market occurs on exchanges, with trades occurring thousands or millions of times a day during business hours.
 
-4. The exchange creates complex auction mechanisms to match buyers and seller. The rules are such that trades can occur and different prices for every transaction.
+4. The exchange creates complex auction mechanisms to match buyers and sellers. The rules of these auctions are such that trades can occur at different prices for every transaction.  Trade prices can and do vary greatly from transaction to transaction.
 
 5. The stream of trade prices is often denoted as $S_{t}$ can be conceptualized as a stochastic process.
 
