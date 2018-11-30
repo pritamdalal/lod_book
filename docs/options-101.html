@@ -216,7 +216,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </div>
 <div id="voltility-of-underlying" class="section level4 unnumbered">
 <h4>Voltility of Underlying</h4>
-<p>Wolve is pricing insurance for two different customers, Sally and Patty. Both are looking to purchase insurance a fancy new self-driving Tesla. They both want a 1-year contract with with a $1,000 strike price. Sally’s friends describe her as calm, chill, responsible, quiet, serene. On the other hand, Patty’s friends describe her: wild, hyper, flakey, loud, and volatile.</p>
+<p>Wolve is pricing insurance for two different customers, Sally and Patty. Both are looking to purchase insurance a fancy new self-driving Tesla. They both want a 1-year contract with with a $1,000 strike price. Sally’s friends describe her as calm, chill, responsible, quiet, serene. On the other hand, Patty’s friends describe her: wild, hyper, flaky, loud, and volatile.</p>
 <p><strong>Intuition Check:</strong> Who should Wolverine charge more for insurance? Why?</p>
 </div>
 <div id="insurance-payoff-graph" class="section level4 unnumbered">
@@ -232,7 +232,7 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 <span class="kw">plot</span>(damage, payoff, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Payoff to Sally&quot;</span>)
 <span class="kw">lines</span>(damage, payoff, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</code></pre></div>
 <p><img src="rmarkdown_files/figure-html/sally_insurance_payoff-1.png" width="672" /></p>
-<p>Notice that if the damage is less than the $1,000 strike price, Sally recieves no reimbursement from her insurance. For every dollar over the strike price, Sally recieves a one-for-one payout. Publicly traded option contracts, which are the subject of this book, behave similarly.</p>
+<p>Notice that if the damage is less than the $1,000 strike price, Sally receives no reimbursement from her insurance. For every dollar over the strike price, Sally receives a one-for-one payout. Publicly traded option contracts, which are the subject of this book, behave similarly.</p>
 </div>
 </div>
 <div id="vanilla-options" class="section level2">
@@ -259,7 +259,7 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 <p>Sentences like those in the previous paragraph can be a little confusing at first. There are a lot of “buys” and “sells”&quot; floating around. Don’t worry, it will get less confusing over time, and at some level you will never get over need to splash some cold water on your face, take a walk around the block, then go back to the definition of puts and calls.</p>
 <p><strong>Exercises:</strong> Ruobing has purchased an American call on SPY with a strike price of $250. He paid $10 in premium. Farez was the option seller on this transaction. It’s now the final day of the contract and Ruobing has still not exercised his right.</p>
 <ol style="list-style-type: decimal">
-<li><p>Under what circumstances will Ruobing choose to excericse his right?</p></li>
+<li><p>Under what circumstances will Ruobing choose to exercise his right?</p></li>
 <li><p>Under what circumstances does Ruobing make money?</p></li>
 <li><p>Under what circumstances does Farez make money?</p></li>
 <li><p>What are the min and max of Ruobing’s PNL (include premium)?</p></li>
@@ -272,7 +272,7 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 <p>European options are very similar to Americans. The only difference is that the owner of a European option can only exercise their right immediately after the final trading day of the contract. Recall that with American the option holder can <em>early exercise</em> at any point before expiration.</p>
 <p>To summarize: European options have an exercise date (point). American options have an exercise window - it starts today and ends on expiration.</p>
 <p>It turns out that in most cases it is not optimal to early exercise an American option (we will explore these arguments in the following chapter). For this reason, we will consider American and European the options as being the same (only the most pedantic of quants will take issue with this).</p>
-<p>Because there is only one point of time at which a European option can be exercised, the notion of a payoff function is completely straight-forward: it is the value of exercising at the time of expiration. With American options, the notion of a payoff function is complicated by the possibility of early exerise. However, we will lean on the fact that it is almost never optimal to early exercise an American options, and also define their payoff function as the value of exercising at the time of expiration.</p>
+<p>Because there is only one point of time at which a European option can be exercised, the notion of a payoff function is completely straight-forward: it is the value of exercising at the time of expiration. With American options, the notion of a payoff function is complicated by the possibility of early exercise. However, we will lean on the fact that it is almost never optimal to early exercise an American options, and also define their payoff function as the value of exercising at the time of expiration.</p>
 </div>
 <div id="payoff-function" class="section level4 unnumbered">
 <h4>Payoff Function</h4>
@@ -293,7 +293,7 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 </ol></li>
 <li>Recall that the current time is <span class="math inline">\(t\)</span> and let <span class="math inline">\(S_{t}\)</span> be the current price of the stock.
 <ol style="list-style-type: lower-alpha">
-<li>If you own the put, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>. What ineqality do you hope holds true between between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
+<li>If you own the put, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>. What inequality do you hope holds true between between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
 <li>If you own the call, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>? How about between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
 </ol></li>
 </ol>
@@ -323,7 +323,7 @@ Q^{*} = \sum_{i=1}^{n} Q_{i}.
 </div>
 <div id="value" class="section level4 unnumbered">
 <h4>Value</h4>
-<p>The other meanings of long/short has to do with how you depending on the direction of change of the price of an asset.</p>
+<p>The other meaning of long/short has to do with how you depending on the direction of change of the price of an asset.</p>
 <p>You are said to be <em>long</em> an asset if you make money when the value of that asset goes up. You are said to be <em>short</em> an asset if you make money when the value of that asset goes down.</p>
 <p>So for example, if you hold AAPL in your 401(K), then you are long AAPL because the value of your retirement savings increases when Apple’s stock price rises. Similarly, if you have a net short position in a call, then you are short that call (in both senses) because when the value of the call rises, you lose money because that is your liability.</p>
 <p>Things get a little confusing when we mix the two meanings of long/short in the context of options. Enjoy the following exercises - such sentences are ubiquitous in options markets - and remember splash the cold water liberally:</p>

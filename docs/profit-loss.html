@@ -187,8 +187,8 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade-date <span class="math inline">\(t_{i}\)</span>. Note that <span class="math inline">\(B_{n} = A_{n} =\)</span> option-payoff. We seek to define the following:</p>
 <p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
 <p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangable in that it is possible to define TTD PNL in terms of daily PNL and vice-versa.</p>
-<p>In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cummulative PNL as the sum of the dailies. I present all both alternative below, for both buys and sells.</p>
+<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL and vice versa.</p>
+<p>In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cumulative PNL as the sum of the dailies. I present all both alternative below, for both buys and sells.</p>
 <div id="ttd-as-sum-of-daily---buy" class="section level4 unnumbered">
 <h4>TTD as Sum of Daily - Buy</h4>
 <span class="math display">\[\begin{align*}
@@ -228,12 +228,12 @@ D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \
 </div>
 <div id="scaling-up" class="section level2">
 <h2><span class="header-section-number">5.3</span> Scaling Up</h2>
-<p>It is rare that we will calculuate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades. This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
+<p>It is rare that we will calculate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades. This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
 <p>[CODING EXERCISE]</p>
 </div>
 <div id="returns" class="section level2">
 <h2><span class="header-section-number">5.4</span> Returns</h2>
-<p>While PNL is an important performance metric, it is often hard to interpret with first normalzing by the amount of capital required to fund the investment. This is precisely what the notion of a return is. We will let <span class="math inline">\(R_{i}\)</span> be the day <span class="math inline">\(t_{i}\)</span> be the return of a trading strategy</p>
+<p>While PNL is an important performance metric, it is often hard to interpret with first normalizing by the amount of capital required to fund the investment. This is precisely what the notion of a return is. We will let <span class="math inline">\(R_{i}\)</span> be the day <span class="math inline">\(t_{i}\)</span> be the return of a trading strategy</p>
 
 </div>
 </div>
