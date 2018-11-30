@@ -13,9 +13,9 @@ Let $B_{i}$ and $A_{i}$ be the end-of-day bid and ask prices of the option for t
 
 **TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
 
-Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangable in that it is possible to define TTD PNL in terms of daily PNL and vice-versa.
+Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL and vice versa.
 
-In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cummulative PNL as the sum of the dailies.  I present all both alternative below, for both buys and sells.
+In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cumulative PNL as the sum of the dailies.  I present all both alternative below, for both buys and sells.
 
 #### TTD as Sum of Daily - Buy {-}
 
@@ -69,11 +69,11 @@ D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases}
 **Exercise:** Show that both formulations of $D_{i}$ are equivalent.
 
 ## Scaling Up
-It is rare that we will calculuate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades.  This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.
+It is rare that we will calculate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades.  This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.
 
 [CODING EXERCISE]
 
 
 ## Returns
 
-While PNL is an important performance metric, it is often hard to interpret with first normalzing by the amount of capital required to fund the investment.  This is precisely what the notion of a return is.  We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy
+While PNL is an important performance metric, it is often hard to interpret with first normalizing by the amount of capital required to fund the investment.  This is precisely what the notion of a return is.  We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy

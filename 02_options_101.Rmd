@@ -57,7 +57,7 @@ Wolve Auto has three different contract tenors they can offer to Sandra for her 
 
 #### Voltility of Underlying {-}
 
-Wolve is pricing insurance for two different customers, Sally and Patty. Both are looking to purchase insurance a fancy new self-driving Tesla.   They both want a 1-year contract with with a $1,000 strike price.  Sally's friends describe her as calm, chill, responsible, quiet, serene.  On the other hand, Patty's friends describe her: wild, hyper, flakey, loud, and volatile.
+Wolve is pricing insurance for two different customers, Sally and Patty. Both are looking to purchase insurance a fancy new self-driving Tesla.   They both want a 1-year contract with with a $1,000 strike price.  Sally's friends describe her as calm, chill, responsible, quiet, serene.  On the other hand, Patty's friends describe her: wild, hyper, flaky, loud, and volatile.
  
 **Intuition Check:** Who should Wolverine charge more for insurance? Why?
 
@@ -84,7 +84,7 @@ lines(damage, payoff, type = "l")
 ```
 
 
-Notice that if the damage is less than the \$1,000 strike price, Sally recieves no reimbursement from her insurance.  For every dollar over the strike price, Sally recieves a one-for-one payout.  Publicly traded option contracts, which are the subject of this book, behave similarly.
+Notice that if the damage is less than the \$1,000 strike price, Sally receives no reimbursement from her insurance.  For every dollar over the strike price, Sally receives a one-for-one payout.  Publicly traded option contracts, which are the subject of this book, behave similarly.
 
 
 ## Vanilla Options
@@ -126,7 +126,7 @@ Sentences like those in the previous paragraph can be a little confusing at firs
 **Exercises:** Ruobing has purchased an American call on SPY with a strike price of \$250.  He paid \$10 in premium.  Farez was the option seller on this transaction.  It's now the final day of the contract and Ruobing has still not exercised his right. 
 
 
-1. Under what circumstances will Ruobing choose to excericse his right?
+1. Under what circumstances will Ruobing choose to exercise his right?
 
 1. Under what circumstances does Ruobing make money?
 
@@ -147,7 +147,7 @@ To summarize: European options have an exercise date (point).  American options 
 
 It turns out that in most cases it is not optimal to early exercise an American option (we will explore these arguments in the following chapter).  For this reason, we will consider American and European the options as being the same (only the most pedantic of quants will take issue with this).
 
-Because there is only one point of time at which a European option can be exercised, the notion of a payoff function is completely straight-forward: it is the value of exercising at the time of expiration.  With American options, the notion of a payoff function is complicated by the possibility of early exerise.  However, we will lean on the fact that it is almost never optimal to early exercise an American options, and also define their payoff function as the value of exercising at the time of expiration.
+Because there is only one point of time at which a European option can be exercised, the notion of a payoff function is completely straight-forward: it is the value of exercising at the time of expiration.  With American options, the notion of a payoff function is complicated by the possibility of early exercise.  However, we will lean on the fact that it is almost never optimal to early exercise an American options, and also define their payoff function as the value of exercising at the time of expiration.
 
 
 
@@ -180,7 +180,7 @@ Call Buyer Payoff: $\pi_{c}(S_{T}) = \max \big \{(S_{T} - K), 0 \big \}$
 
 
 1. Recall that the current time is $t$ and let $S_{t}$ be the current price of the stock.
-    a. If you own the put, which inequality do you hope is true between $S_{t}$ and $S_{T}$.  What ineqality do you hope holds true between between $S_{T}$ and $K$?
+    a. If you own the put, which inequality do you hope is true between $S_{t}$ and $S_{T}$.  What inequality do you hope holds true between between $S_{T}$ and $K$?
     b. If you own the call, which inequality do you hope is true between $S_{t}$ and $S_{T}$? How about between $S_{T}$ and $K$?
 
 
@@ -222,7 +222,7 @@ So, we say that you are *long* a contract if you are a net buyer of the contract
 
 #### Value {-}
 
-The other meanings of long/short has to do with how you depending on the direction of change of the price of an asset.
+The other meaning of long/short has to do with how you depending on the direction of change of the price of an asset.
 
 You are said to be *long* an asset if you make money when the value of that asset goes up.  You are said to be *short* an asset if you make money when the value of that asset goes down.
 
