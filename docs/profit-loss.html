@@ -177,18 +177,19 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="profit-loss" class="section level1">
 <h1><span class="header-section-number">5</span> Profit &amp; Loss</h1>
-<p>Daily profit and loss is one of the most basic and important performance measure of an investment or trading strategy. In this chapter we detail how to calculate profit and loss for stock and options trades.</p>
+<p>The most basic and important performance measure of a trading strategy is its daily <em>profit and loss</em>, which we usually shorten to simply <em>PNL</em>. In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into statements about PNL. It is my opinion that analyzing PNLs is the best way to internalize knowledge of options, which is in part why I wrote this book.</p>
+<p>In this chapter we consider how to calculate profit and loss for stocks and options trades.</p>
 <div id="stock-pnl" class="section level2">
 <h2><span class="header-section-number">5.1</span> Stock PNL</h2>
 </div>
 <div id="option-pnl" class="section level2">
 <h2><span class="header-section-number">5.2</span> Option PNL</h2>
-<p>Suppose you trade an option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade-date <span class="math inline">\(t_{1}\)</span>. Suppose you hold the option until expiration, which is trade-date <span class="math inline">\(t_{n}\)</span>. The letter <span class="math inline">\(i\)</span> will serve as an index over the trade-dates, so <span class="math inline">\(i = 1,\ldots,n\)</span>.</p>
-<p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade-date <span class="math inline">\(t_{i}\)</span>. Note that <span class="math inline">\(B_{n} = A_{n} =\)</span> option-payoff. We seek to define the following:</p>
+<p>Suppose we trade an option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. The letter <span class="math inline">\(i\)</span> will serve as an index over the trade dates, so <span class="math inline">\(i = 1,\ldots,n\)</span>.</p>
+<p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade date <span class="math inline">\(t_{i}\)</span>. Note that both <span class="math inline">\(B_{n}\)</span> and <span class="math inline">\(A_{n}\)</span> are equal to the option payoff. We seek to define the following:</p>
 <p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
 <p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL and vice versa.</p>
-<p>In my own work, I find it most useful to calculate daily PNLs of each trade, and then define the cumulative PNL as the sum of the dailies. I present all both alternative below, for both buys and sells.</p>
+<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa.</p>
+<p>In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs. We will consider both alternatives below. It is useful to consider buys and sells separately.</p>
 <div id="ttd-as-sum-of-daily---buy" class="section level4 unnumbered">
 <h4>TTD as Sum of Daily - Buy</h4>
 <span class="math display">\[\begin{align*}
@@ -228,12 +229,13 @@ D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \
 </div>
 <div id="scaling-up" class="section level2">
 <h2><span class="header-section-number">5.3</span> Scaling Up</h2>
-<p>It is rare that we will calculate the PNL of a single stock trade or options trade. Rather, we will want to calculate the PNL of a portfolio of trades. This is a trivial matter, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
+<p>In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades. Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades. In practice, for large numbers of trades, you have to be careful because unforseen errors - say from missing data, or an erroneous price - can be hard to identify.</p>
 <p>[CODING EXERCISE]</p>
 </div>
 <div id="returns" class="section level2">
 <h2><span class="header-section-number">5.4</span> Returns</h2>
-<p>While PNL is an important performance metric, it is often hard to interpret with first normalizing by the amount of capital required to fund the investment. This is precisely what the notion of a return is. We will let <span class="math inline">\(R_{i}\)</span> be the day <span class="math inline">\(t_{i}\)</span> be the return of a trading strategy</p>
+<p>While PNL is an important performance metric, it is often hard to interpret without first normalizing by the amount of capital required to fund the investment. This is precisely what the notion of a return is.</p>
+<!-- We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy -->
 
 </div>
 </div>
@@ -273,7 +275,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/rmarkdown-book/edit/master/04_profit_and_loss.Rmd",
+"link": "https://github.com/rstudio/rmarkdown-book/edit/master/05_profit_and_loss.Rmd",
 "text": "Edit"
 },
 "download": ["rmarkdown.pdf"],

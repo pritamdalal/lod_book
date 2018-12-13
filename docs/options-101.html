@@ -289,8 +289,8 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 </div>
 <div id="payoff-function" class="section level4 unnumbered">
 <h4>Payoff Function</h4>
-<p>At this point we will introduce some mathematical notation, as it it the most efficient way to discuss certain aspects of options.</p>
-<p>Suppose the current date is <span class="math inline">\(t\)</span> . Consider a put and call have the same underlying, the same strike price <span class="math inline">\(K\)</span>, the same expiration <span class="math inline">\(T\)</span>, where <span class="math inline">\(T &gt; t\)</span>. Let <span class="math inline">\(S_{T}\)</span> be the price of the stock at expiration. Let <span class="math inline">\(\pi_{b}\)</span> be the put buyer’s payoff, and let <span class="math inline">\(\pi_{c}\)</span> be the call buyer’s payoff. Then we have that:</p>
+<p>At this point we will introduce some mathematical notation, as it is the most efficient way to discuss certain aspects of options.</p>
+<p>Suppose the current date is <span class="math inline">\(t\)</span> . Consider a put and call have the same underlying, the same strike price <span class="math inline">\(K\)</span>, and the same expiration <span class="math inline">\(T\)</span>, where <span class="math inline">\(T &gt; t\)</span>. Let <span class="math inline">\(S_{T}\)</span> be the price of the stock at the time of expiration. We will denote the put buyer’s payoff as <span class="math inline">\(\pi_{b}\)</span>, and the call buyer’s payoff as <span class="math inline">\(\pi_{c}\)</span>. We can think of these payoffs as functions of <span class="math inline">\(S_{T}\)</span> and we have that:</p>
 <p>Put Buyer Payoff: <span class="math inline">\(\pi_{p}(S_{T}) = \max \big \{(K - S_{T}),0 \big \}\)</span></p>
 <p>Call Buyer Payoff: <span class="math inline">\(\pi_{c}(S_{T}) = \max \big \{(S_{T} - K), 0 \big \}\)</span></p>
 <p><strong>Exercises:</strong></p>
@@ -306,7 +306,7 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 </ol></li>
 <li>Recall that the current time is <span class="math inline">\(t\)</span> and let <span class="math inline">\(S_{t}\)</span> be the current price of the stock.
 <ol style="list-style-type: lower-alpha">
-<li>If you own the put, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>. What inequality do you hope holds true between between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
+<li>If you own the put, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>. Which inequality do you hope holds true between between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
 <li>If you own the call, which inequality do you hope is true between <span class="math inline">\(S_{t}\)</span> and <span class="math inline">\(S_{T}\)</span>? How about between <span class="math inline">\(S_{T}\)</span> and <span class="math inline">\(K\)</span>?</li>
 </ol></li>
 </ol>
@@ -314,17 +314,18 @@ heading &lt;-<span class="st"> &quot;insurance payoff&quot;</span>
 </div>
 <div id="long-vs-short" class="section level2">
 <h2><span class="header-section-number">2.3</span> Long vs Short</h2>
-<p>If you spend time around financial markets you are likely to encounter the jargon terms and “short” and “long”. These terms can be a bit confusing to the uninitiated, but used in moderation they provide a useful shorthand. In this section we unpack this jargon, and we will make use of it throughtout the text.</p>
-<p>Only rarely will the speakers be discussing mullets.</p>
+<p>If you spend time around financial markets you are likely to encounter the jargon terms and “short” and “long”. These terms can be a bit confusing to the uninitiated, but used in moderation they provide a useful shorthand. In this section we unpack this jargon; we will make use of it throughtout the text.</p>
+<!-- Only rarely will the speakers be discussing mullets. -->
 <div id="buyers-vs-sellers" class="section level4 unnumbered">
 <h4>Buyers vs Sellers</h4>
-<p>Let’s return to the car insurance industry for a moment. In any transaction there is a buyer and a seller. In the car insurance market there are certain classes of entities that buy the insurance, and other classes of entities that sell the insurance. For example, I have purchased car insurance from State Farm and GEICO. But there would never be a situation in which GEICO or State Farm would buy a car insurance policy from me.</p>
-<p>Options markets are different in this respect. Various classes of entities - market-makers, hedge-funds, retail traders - buy options as well as sell options. For example, on given trading day, I may sell an option which a hedge-fund may buy from me on an exchange. On the following day, I may buy a different option from that same hedge fund.</p>
-<p>Said in a different way, in the options market, any particular entity can be a buyer of options, <em>and simultaneously</em> a seller of options.</p>
+<p>Let’s return to the car insurance industry for a moment. In any transaction there is a buyer and a seller. In the car insurance market there are certain classes of entities that buy the insurance, and other classes of entities that sell the insurance. For example, I have purchased policies from State Farm and GEICO. But there would never be a situation in which GEICO or State Farm would buy an insurance policy from me.</p>
+<p>Option markets are different in this respect. Various classes of entities - market-makers, hedge-funds, retail traders - buy options as well as sell options. For example, on a given trading day, I may sell an option which a hedge-fund will buy from me on an exchange. On the following day, I may buy a different option from that same hedge fund.</p>
+<p>Said in a different way, in the options market, any particular entity can be a buyer of options <em>and simultaneously</em> a seller of options.</p>
 </div>
 <div id="net-position" class="section level4 unnumbered">
 <h4>Net Position</h4>
-<p>As you saw in earlier exercises, the payoff of the option sell is the negative of the payoff of the option buyer. So let’s associate the number <span class="math inline">\(+1\)</span> with the act of buying an option, and let’s associate the number <span class="math inline">\(-1\)</span> with the act of selling an option contract. More generally, we can associate a <em>quantity</em> number <span class="math inline">\(Q\)</span> with an options trade. If <span class="math inline">\(Q&gt;0\)</span> then the trade is to buy <span class="math inline">\(Q\)</span> options. If <span class="math inline">\(Q &lt; 0\)</span> then the trade is to sell <span class="math inline">\(|Q|\)</span> options.</p>
+<p>As you saw in earlier exercises, the payoff of the option seller is the negative of the payoff of the option buyer. Thus, let us associate the number <span class="math inline">\(+1\)</span> with the act of buying an option, and associate the number <span class="math inline">\(-1\)</span> with the act of selling an option contract.</p>
+<p>More generally, we can assign a <em>quantity</em> number <span class="math inline">\(Q\)</span> with an options trade. If <span class="math inline">\(Q &gt; 0\)</span> then the trade is to buy <span class="math inline">\(Q\)</span> options. If <span class="math inline">\(Q &lt; 0\)</span> then the trade is to sell <span class="math inline">\(|Q|\)</span> options.</p>
 <p><strong>Intuition Check:</strong> What is the payoff function for buying <span class="math inline">\(Q\)</span> options and holding them until they expire?</p>
 Suppose a trader named Lewei has engaged in <span class="math inline">\(n\)</span> trades on a particular contract <span class="math inline">\(\mathcal{O}\)</span>. And suppose that the quantities of the trades were <span class="math inline">\(Q_{1}, \ldots, Q_{n}\)</span>. Liwei’s <em>net position</em> in the option <span class="math inline">\(\mathcal{O}\)</span> is <span class="math inline">\(Q^{*}\)</span> where
 <span class="math display">\[\begin{align*}
@@ -333,14 +334,14 @@ Q^{*} = \sum_{i=1}^{n} Q_{i}.
 <p>This concept of net position brings us to our first meanings of <em>long</em> and <em>short</em>:</p>
 <p><strong>Long:</strong> If <span class="math inline">\(Q^{*}&gt;0\)</span> we say that Lewei is <em>long</em> <span class="math inline">\(Q^{*}\)</span> contracts of <span class="math inline">\(\mathcal{O}\)</span>. More generally, we would say that Lewei has a <em>net long</em> position in <span class="math inline">\(\mathcal{O}\)</span>.</p>
 <p><strong>Short:</strong> If <span class="math inline">\(Q^{*}&lt;0\)</span> we say that Lewei is <em>short</em> <span class="math inline">\(|Q^{*}|\)</span> contracts of <span class="math inline">\(\mathcal{O}\)</span>. More generally, we would say that Lewei has a <em>net short</em> position in <span class="math inline">\(\mathcal{O}\)</span>.</p>
-<p>So, we say that you are <em>long</em> a contract if you are a net buyer of the contract, and we say you are <em>short</em> the contract if you are a net seller of the contract.</p>
+<p>Said differently: you are <em>long</em> a contract if you are a net buyer of the contract, and we say you are <em>short</em> the contract if you are a net seller of the contract.</p>
 </div>
 <div id="value" class="section level4 unnumbered">
 <h4>Value</h4>
 <p>The other meaning of long/short has to do with how you fair depending on the direction of change of the price of an asset.</p>
 <p>You are said to be <em>long</em> an asset if you make money when the value of that asset goes up. You are said to be <em>short</em> an asset if you make money when the value of that asset goes down.</p>
 <p>So for example, if you hold AAPL in your 401(K), then you are long AAPL because the value of your retirement savings increases when Apple’s stock price rises. Similarly, if you have a net short position in a call, then you are short that call (in both senses) because when the value of the call rises, you lose money because that is your liability.</p>
-<p>Things get a little confusing when we mix the two meanings of long/short in the context of options. Enjoy the following exercises - such sentences are ubiquitous in options markets. And remember splash the cold water liberally.</p>
+<p>Things get a little confusing when we mix the two meanings of long/short while discussing options. Enjoy the following exercises, such sentences are ubiquitous in options markets. *And remember splash the cold water liberally.)</p>
 <p><strong>Exercises:</strong></p>
 <ol style="list-style-type: decimal">
 <li><p>If you have a net long position in a put, are you long or short the underlying?</p></li>

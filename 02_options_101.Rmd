@@ -174,9 +174,9 @@ Because there is only one point of time at which a European option can be exerci
 
 #### Payoff Function {-}
 
-At this point we will introduce some mathematical notation, as it it the most efficient way to discuss certain aspects of options.
+At this point we will introduce some mathematical notation, as it is the most efficient way to discuss certain aspects of options.
 
-Suppose the current date is $t$ .  Consider a put and call have the same underlying, the same strike price $K$, the same expiration $T$, where $T > t$.  Let $S_{T}$ be the price of the stock at expiration.  Let $\pi_{b}$ be the put buyer's payoff, and let $\pi_{c}$ be the call buyer's payoff.  Then we have that:
+Suppose the current date is $t$ .  Consider a put and call have the same underlying, the same strike price $K$, and the same expiration $T$, where $T > t$.  Let $S_{T}$ be the price of the stock at the time of expiration.  We will denote the put buyer's payoff as $\pi_{b}$, and the call buyer's payoff as $\pi_{c}$.  We can think of these payoffs as functions of $S_{T}$ and we have that:
 
 
 Put Buyer Payoff: $\pi_{p}(S_{T}) = \max \big \{(K - S_{T}),0 \big \}$
@@ -201,7 +201,7 @@ Call Buyer Payoff: $\pi_{c}(S_{T}) = \max \big \{(S_{T} - K), 0 \big \}$
 
 
 1. Recall that the current time is $t$ and let $S_{t}$ be the current price of the stock.
-    a. If you own the put, which inequality do you hope is true between $S_{t}$ and $S_{T}$.  What inequality do you hope holds true between between $S_{T}$ and $K$?
+    a. If you own the put, which inequality do you hope is true between $S_{t}$ and $S_{T}$.  Which inequality do you hope holds true between between $S_{T}$ and $K$?
     b. If you own the call, which inequality do you hope is true between $S_{t}$ and $S_{T}$? How about between $S_{T}$ and $K$?
 
 
@@ -209,22 +209,24 @@ Call Buyer Payoff: $\pi_{c}(S_{T}) = \max \big \{(S_{T} - K), 0 \big \}$
 
 ## Long vs Short
 
-If you spend time around financial markets you are likely to encounter the jargon terms and "short" and "long".  These terms can be a bit confusing to the uninitiated, but used in moderation they provide a useful shorthand.  In this section we unpack this jargon, and we will make use of it throughtout the text.
+If you spend time around financial markets you are likely to encounter the jargon terms and "short" and "long".  These terms can be a bit confusing to the uninitiated, but used in moderation they provide a useful shorthand.  In this section we unpack this jargon; we will make use of it throughtout the text.
 
-Only rarely will the speakers be discussing mullets.
+<!-- Only rarely will the speakers be discussing mullets. -->
 
 #### Buyers vs Sellers {-}
 
-Let's return to the car insurance industry for a moment.  In any transaction there is a buyer and a seller.  In the car insurance market there are certain classes of entities that buy the insurance, and other classes of entities that sell the insurance.  For example, I have purchased car insurance from State Farm and GEICO.  But there would never be a situation in which GEICO or State Farm would buy a car insurance policy from me.
+Let's return to the car insurance industry for a moment.  In any transaction there is a buyer and a seller.  In the car insurance market there are certain classes of entities that buy the insurance, and other classes of entities that sell the insurance.  For example, I have purchased policies from State Farm and GEICO.  But there would never be a situation in which GEICO or State Farm would buy an insurance policy from me.
 
-Options markets are different in this respect.  Various classes of entities - market-makers, hedge-funds, retail traders - buy options as well as sell options.  For example, on given trading day, I may sell an option which a hedge-fund may buy from me on an exchange.  On the following day, I may buy a different option from that same hedge fund.
+Option markets are different in this respect.  Various classes of entities - market-makers, hedge-funds, retail traders - buy options as well as sell options.  For example, on a given trading day, I may sell an option which a hedge-fund will buy from me on an exchange.  On the following day, I may buy a different option from that same hedge fund.
 
-Said in a different way, in the options market, any particular entity can be a buyer of options, *and simultaneously* a seller of options.
+Said in a different way, in the options market, any particular entity can be a buyer of options *and simultaneously* a seller of options.
 
 
 #### Net Position {-}
 
-As you saw in earlier exercises, the payoff of the option sell is the negative of the payoff of the option buyer.  So let's associate the number $+1$ with the act of buying an option, and let's associate the number $-1$ with the act of selling an option contract.  More generally, we can associate a *quantity* number $Q$ with an options trade. If $Q>0$ then the trade is to buy $Q$ options.  If $Q < 0$ then the trade is to sell $|Q|$ options.   
+As you saw in earlier exercises, the payoff of the option seller is the negative of the payoff of the option buyer.  Thus, let us associate the number $+1$ with the act of buying an option, and associate the number $-1$ with the act of selling an option contract.  
+
+More generally, we can assign a *quantity* number $Q$ with an options trade. If $Q > 0$ then the trade is to buy $Q$ options.  If $Q < 0$ then the trade is to sell $|Q|$ options.   
 
 
 **Intuition Check:** What is the payoff function for buying $Q$ options and holding them until they expire?
@@ -240,7 +242,7 @@ This concept of net position brings us to our first meanings of *long* and *shor
 
 **Short:** If $Q^{*}<0$ we say that Lewei is *short* $|Q^{*}|$ contracts of $\mathcal{O}$.  More generally, we would say that Lewei has a *net short* position in $\mathcal{O}$.
 
-So, we say that you are *long* a contract if you are a net buyer of the contract, and we say you are *short* the contract if you are a net seller of the contract. 
+Said differently: you are *long* a contract if you are a net buyer of the contract, and we say you are *short* the contract if you are a net seller of the contract. 
 
 #### Value {-}
 
@@ -250,7 +252,7 @@ You are said to be *long* an asset if you make money when the value of that asse
 
 So for example, if you hold AAPL in your 401(K), then you are long AAPL because the value of your retirement savings increases when Apple's stock price rises.  Similarly, if you have a net short position in a call, then you are short that call (in both senses) because when the value of the call rises, you lose money because that is your liability.
 
-Things get a little confusing when we mix the two meanings of long/short in the context of options.  Enjoy the following exercises - such sentences are ubiquitous in options markets.  And remember splash the cold water liberally.
+Things get a little confusing when we mix the two meanings of long/short while discussing options.  Enjoy the following exercises, such sentences are ubiquitous in options markets.  *And remember splash the cold water liberally.)
 
 **Exercises:**
 
