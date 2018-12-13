@@ -59,10 +59,10 @@ if (!xfun::loadable('sigma', new_session = TRUE)) source('https://install-github
 # Welcome{-}
 
 
-Welcome to the website for **Learning Options from Data**.  This innovative manual will teach you the theoretical and practical fundamentals of options.  While a bit of math is unavoidable, and in fact rather useful, the main tool for learning will be wrangling and analyzing real-world options data.
+Welcome to the website for **Learning Options from Data**.  This innovative manual will teach you the theoretical and practical fundamentals of options.  Like most serious finance books, mathematics will be an invaluable medium for communicating ideas.  But unlike standard quantitative treatments of the subject of options, mathematics will not be our only tool.  In fact, our primary means of learning and discovery will be the wrangling and analyzing of real-world options data; hence the title: Learning Options from Data.
 
 <a><img src="image/cover.png" width="700" height="280" alt="Cover image" align="center" style="margin: 0 1em 0 1em" /></a>
 
-These pages distill 1000s of hours of formal study through the filter of a decade of trading and analysis work in various areas of quantitative finance.  I have included only what is useful, timely, and relevant.
+These pages distill thousands of hours of formal study through the filter of a decade of trading and analysis work in various areas of quantitative finance.  I have included only what is useful, timely, and relevant.
 
-This website is **free to use** and always will be.  The book is written in [RMarkdown](https://rmarkdown.rstudio.com) with [bookdown](https://bookdown.org).  Many thanks to the developers at R Studio for creating these wonderful packages for authoring - this book would not have been possible without those tools.
+This website is **free to use** and always will be.  **Learning Options from Data** is written in [RMarkdown](https://rmarkdown.rstudio.com) along with [bookdown](https://bookdown.org).  Many thanks to the developers at R Studio for creating such wonderful packages for authoring - this book would not have been possible without those tools.
