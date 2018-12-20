@@ -25,7 +25,7 @@ An *arbitrage* is a risk-less profit that requires no initial investment. One of
 
 <!-- Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).   -->
 
-Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve question assumptions about the market, sometimes to the point of making them of little to use to finance practitioners.
+Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve question assumptions about the market; they are often of little to use to finance practitioners.
 
 There is, however, a strong kernel of truth in arbitrage arguments.  If markets significantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
 
@@ -39,32 +39,45 @@ Companies can raise funds to grow their business by issuing *shares of stock*. T
 
 Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the purchaser.
 
-Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from transaction to transaction.  
+Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.  
 
-Here are some example of companies who's stocks trade heavily in the secondary markets.
+Here are some examples of companies who's stocks trade heavily in the secondary markets.
 
-**AAPL** - Apple (you seriously have an Android bro) 
+**AAPL** - Apple 
+<!-- (you seriously have an Android bro)  -->
 
-**GOOG** - Alphabet (...dude iPhones are totally overrated)
+**GOOG** - Alphabet 
+<!-- (...dude iPhones are totally overrated) -->
 
-**FB** - Facebook (please like my pics and make me feel cool)
+**FB** - Facebook 
+<!-- (please like my pics and make me feel cool) -->
 
-**XOM** - Exxon Mobile (I'm self-righteous about the environment...until I check my 401K)
+**XOM** - Exxon Mobile 
+<!-- (I'm self-righteous about the environment...until I check my 401K) -->
 
 Suppose you want to trade a share of stock, and you want to be able to fill your order immediately.  If you are a buyer of the stock, you will be charged a certain amount called the *ask* price.  If you are a seller of the stock you will receive a certain amount called the *bid* price.  The bid price is lower than the ask price.  These so-called *bid-ask spreads* exist in other financial markets as well, including options markets.
 
-If you are a market participant for a particular stock, there are three prices that you will surely need to keep your eye one.  The current bid price, the current ask price, and the last price at which a trade occurred.  I will often refer to *the price of a stock at time* $t$ and denote by $S_{t}$.  Typically, you can safely gloss over what the phrase *the price of the stock* exactly means. If you need to get into the minutiae, you will find that I  probably mean one of the following: 1) the current mid price, which is as the average of the bid and ask at time $t$; 2) the last trade price as of time $t$.  For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case. 
+If you are a market participant for a particular stock, there are at least three different prices that you will need to be aware of.  The current bid price, the current ask price, and the last price at which a trade occurred.
 
-The upshot of our previous discussion about exchanges is that $S_{t}$ varies through time.  As it turns out, it is useful to think of the of $S_{t}$ as a series of random variable.  In fancy math circles this is know as a *stochastic process*.  It is my intention to avoid mathematical nerdery as much as possible, but sometimes I will be forced to indulge is such evils.  My apologies in advanced.
+Through out the course of this book, we will often refer to *the price of a stock at time* $t$ and denote by $S_{t}$; usually this will refer to one of the following: 1) the current mid price, which is as the average of the bid and ask at time $t$; 2) the last trade price as of time $t$.  For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case.
 
-When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  As it turns out it does, and this question leads to our first *qunatitative* result involving an arbitrage argument.
+For options, which are traded much less frequently than stocks.  There is often a much bigger bid-ask spread, and long spans of time between trades, so it is important to clarify what is meant by the phrase *the price at time t*.
+<!-- Typically, we can safely gloss over what the phrase *the price of the stock* exactly means. -->
+
+
+
+The upshot of our previous discussion about exchanges is that $S_{t}$ varies through time.  As it turns out, it is useful to think of the of $S_{t}$ as a series of random variable.  In math circles this is know as a *stochastic process*.  
+
+<!-- It is my intention to avoid mathematical nerdery as much as possible, but sometimes I will be forced to indulge is such evils.  My apologies in advanced. -->
+
+When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  As it turns out it does, and this question leads to our first *quantitative* result involving an arbitrage argument.
 
 
 **Theorem:** Suppose that a stock is going make a divided payment of $c$ at time $T$ and that just prior to the dividend payment is trading at a price of $S^{*}$.  Then then price of the stock just after the dividend payment is $S_{T} = S^{*} - c$.
 
 **Proof:** NEED TO FILL IN.
 
-Properly defining the concept of a share of *stock* is a complicated legal exercise.  Similarly, an accurate description of how stocks are bought and sold in the secondary market would require its own large (and boring) book.  The amount of detail you will ultimately know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
+Properly defining the concept of a share of *stock* is a complicated legal exercise.  Similarly, a detailed account of how stocks are bought and sold in the secondary market would require its own large book.  The amount of detail you will ultimately know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
 
 For the purposes of this book, the following stylized facts will suffice.
 
@@ -83,23 +96,26 @@ For the purposes of this book, the following stylized facts will suffice.
 
 ## Exchange Traded Funds (ETFs)
 
-Investing in stocks and other assets is usually an overly costly and complex proposition for an individual.  For this reason, there are various vehicles for small investors to pool their money, and for it to then be invested under the auspices of investment professionals.  The most common for of investment pooling is a mutual fund.  More esoteric manifestations are hedge funds, unit investment trust (UIT), and real estate investment trusts (REIT). The distinction between these is of general interest, but won't be of huge importance to us in this book.
+Investing in stocks and other assets is usually an overly costly and complex proposition for an individual.  For this reason, there are various vehicles for small investors to pool their money and for it to be invested as a single fund.  The most common form of investment pooling is a *mutual fund*.  More esoteric manifestations are hedge funds, unit investment trust (UIT), and real estate investment trusts (REIT). The distinction between these is of general interest, but won't be of huge importance to us in this book.
 
-A fairly recent innovation in the world of pooled investments is exchange traded funds (ETFs).  Relative to mutual funds and hedge funds, ETFs engage in simpler strategies that are easier to execute.  For this reason, it take fewer people to manage the fund and costs are low.  In addition, shares of ETFs are traded on exchanges in the exact same way as share of stock.  ETFs also pay dividends in the same way that stocks do.  Here are some popular ETFs:
+A fairly recent innovation in the world of pooled investments is exchange traded funds (ETFs).  Relative to mutual funds and hedge funds, ETFs engage in simpler strategies that are easier to execute.  For this reason, it take fewer people to manage the fund and costs are low.  In addition, shares of ETF ownership are traded on exchanges in the exact same way as shares of stock.  ETF pay dividends in the same way that stocks do.  Here are some popular ETFs:
 
 **SPY** - SPDR SP500 - tracks the S&P500.
 
 **IWM** - iShares Russell 2000.
 
-**GLD** - invests in gold future.
+**GLD** - invests in gold futures.
 
 **XLF** - SPDR Financial - tracks the performance of financial services sector. 
 
-For the purpose of this course, we will treat stocks and ETFs as largely the same.
+In this book we will consider options who's underlyings are stocks and ETFs.  We will treat these two underlyings as largely the same.
+
 
 ## Discounting & Accumulating
 
-When you lend money, you are paid interest to compensate for the fact that you can't use the money to lent for other purposes. In this book I assume loans are totally safe and there is no risk of default.  It is useful to the of the loan amount accumulating with interest. I use the following notation and nomenclature to capture this idea of accumulation:
+When you lend money, you are paid interest to compensate for the fact that you can't use the money to lent for other purposes. In this book we assume that loans are totally safe in that there is no risk of default.  
+
+It is useful to conceptualize payment of interest as an *accumulation* over time. We will use the following notation and nomenclature to capture this idea of accumulation:
 
 **Definition:** Assume the current time is $t$ and that $T$ is some time in the future. Then one dollar will accumulate to $A(t,T)$ by time $T$.  I will call $A(t,T)$ an *accumulation factor*.
 
