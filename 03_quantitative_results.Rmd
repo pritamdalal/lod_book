@@ -1,24 +1,33 @@
 # Quantitative Results
 
-In this section I introduce the basic concepts and results from quantitative finance that will be needed later.  It is the most academic chapter, and I hesitated to unleash these gory details, as my initial vision of the book was to be totally practical.
+In this section we consider the basic quantitative foundations of option pricing theory.  
 
-I ultimately decided to get a little mathy on you for a couple of reasons.  The first reason is that I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. The second reason is that I frequently get questions from my MFM students that requires resorting to this level of formalism.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their budding pathology by indulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.  Of course this line of thought is probably just the rationalization of a math addict.
 
-I envy those of you who can take the statements of fact in this chapter as given, and then move on to more elevated pursuits.
+<!-- NOTE: In later stages of the book, see how necessary this chapter is and then give guidance on what can be skipped and what cannot. -->
 
-<!-- For a more detailed treatment, I recommend the following execellent texts: -->
+<!-- If you have a strong grasp over these results, or are simply not interested in the theoretical details, this chapter can be skipped. -->
 
-<!-- **Options, Futures, and Other Derivatives** by John C. Hull -->
+<!-- In this section I introduce the basic concepts and results from quantitative finance that will be needed later.  It is the most academic chapter, and I hesitated to unleash these gory details, as my initial vision of the book was to be totally practical. -->
 
-<!-- **Derivative Markets** by Robert L. McDonald -->
+<!-- I ultimately decided to get a little mathy on you for a couple of reasons.  The first reason is that I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. The second reason is that I frequently get questions from my MFM students that requires resorting to this level of formalism.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their budding pathology by indulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.  Of course this line of thought is probably just the rationalization of a math addict. -->
+
+<!-- I envy those of you who can take the statements of fact in this chapter as given, and then move on to more elevated pursuits. -->
+
+For a more detailed treatment, I recommend the following execellent texts:
+
+**Options, Futures, and Other Derivatives** by John C. Hull
+
+**Derivative Markets** by Robert L. McDonald
 
 
 ## Arbitrage
 An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer exists.
 
-Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).  
+<!-- Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).   -->
 
-There is, however, a strong kernel of truth to these argument.  If markets significantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
+Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve question assumptions about the market, sometimes to the point of making them of little to use to finance practitioners.
+
+There is, however, a strong kernel of truth in arbitrage arguments.  If markets significantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
 
 Keep your eyes peeled for arbs in the market.  And if you find one, please call me.
 
