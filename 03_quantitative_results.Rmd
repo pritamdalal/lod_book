@@ -1,19 +1,22 @@
 # Quantitative Results
 
-In this section we consider the basic quantitative foundations of option pricing theory.  
+In this section we consider the basic quantitative foundations of option pricing theory.  For a more detailed treatment, I recommend the following execellent texts:  
 
 
 <!-- NOTE: In later stages of the book, see how necessary this chapter is and then give guidance on what can be skipped and what cannot. -->
 
 <!-- If you have a strong grasp over these results, or are simply not interested in the theoretical details, this chapter can be skipped. -->
 
+
+
+<!-- ANTI MATH RANTING {begin} -->
 <!-- In this section I introduce the basic concepts and results from quantitative finance that will be needed later.  It is the most academic chapter, and I hesitated to unleash these gory details, as my initial vision of the book was to be totally practical. -->
 
 <!-- I ultimately decided to get a little mathy on you for a couple of reasons.  The first reason is that I'm a recovering quantitative finance nerd, and writing this book is something of a relapse for me. The second reason is that I frequently get questions from my MFM students that requires resorting to this level of formalism.  Out of of a genuine interest for their well beings, I try to let the know that getting caught up such details is a frivolous waste of time.  And even though it pains me to contribute to their budding pathology by indulging in such pedantry, I figure they have paid tuition so I probably owe them an answer.  Of course this line of thought is probably just the rationalization of a math addict. -->
 
 <!-- I envy those of you who can take the statements of fact in this chapter as given, and then move on to more elevated pursuits. -->
+<!-- ANTI MATH RANTING {end} -->
 
-For a more detailed treatment, I recommend the following execellent texts:
 
 **Options, Futures, and Other Derivatives** by John C. Hull
 
@@ -21,11 +24,11 @@ For a more detailed treatment, I recommend the following execellent texts:
 
 
 ## Arbitrage
-An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer exists.
+An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer available.
 
 <!-- Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).   -->
 
-Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve question assumptions about the market; they are often of little to use to finance practitioners.
+Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve questionable assumptions about the market, and they are often of little to use to finance practitioners.
 
 There is, however, a strong kernel of truth in arbitrage arguments.  If markets significantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
 
@@ -37,7 +40,7 @@ Keep your eyes peeled for arbs in the market.  And if you find one, please call 
 
 Companies can raise funds to grow their business by issuing *shares of stock*. The buyer of the stock, called a *shareholder*, pays money to the company which the company keeps forever.  In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with respect to the company.  The worst thing that can happen is that shareholder never receives any profits, and the stock itself also becomes worthless.  So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages.  In this sense the value of stock can never be negative. 
 
-Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the purchaser.
+Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the new owner.
 
 Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.  
 
@@ -59,11 +62,16 @@ Suppose you want to trade a share of stock, and you want to be able to fill your
 
 If you are a market participant for a particular stock, there are at least three different prices that you will need to be aware of.  The current bid price, the current ask price, and the last price at which a trade occurred.
 
-Through out the course of this book, we will often refer to *the price of a stock at time* $t$ and denote by $S_{t}$; usually this will refer to one of the following: 1) the current mid price, which is as the average of the bid and ask at time $t$; 2) the last trade price as of time $t$.  For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case.
+Through out the course of this book, we will often refer to *the price of a stock at time* $t$, and denote it with something like $S_{t}$.  In doing so, we will be referring to one of the following: 
+
+1. The current mid price, which is as the average of the bid and ask at time $t$.
+
+2. The last trade price as of time $t$.  
+
+For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case.
 
 For options, which are traded much less frequently than stocks.  There is often a much bigger bid-ask spread, and long spans of time between trades, so it is important to clarify what is meant by the phrase *the price at time t*.
 <!-- Typically, we can safely gloss over what the phrase *the price of the stock* exactly means. -->
-
 
 
 The upshot of our previous discussion about exchanges is that $S_{t}$ varies through time.  As it turns out, it is useful to think of the of $S_{t}$ as a series of random variable.  In math circles this is know as a *stochastic process*.  
@@ -77,17 +85,17 @@ When profits are distributed to the owners of a stock, this is done on a per sha
 
 **Proof:** NEED TO FILL IN.
 
-Properly defining the concept of a share of *stock* is a complicated legal exercise.  Similarly, a detailed account of how stocks are bought and sold in the secondary market would require its own large book.  The amount of detail you will ultimately know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
+Properly defining the concept of a share of *stock* is a complicated legal exercise, and a precise account of how stocks are bought and sold in the secondary market would require its own large book.  The amount of detail you will ultimately need know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
 
 For the purposes of this book, the following stylized facts will suffice.
 
-1. A shareholder owns stock which give them claim to a company's future profits.  This is a limited liability investment in that the value of a stock can never be negative.
+1. A shareholder purchases stock which gives them claims to a company's future profits.  This is a limited liability investment in that the value of a stock can never be negative.
 
 2. After their initial issuance, shares of stock can be bought and sold in the secondary market.
 
 3. Trading of stocks on the secondary market occurs on exchanges, with trades occurring thousands or millions of times a day during business hours.
 
-4. The exchange creates complex auction mechanisms to match buyers and sellers. The rules of these auctions are such that trades can occur at different prices for every transaction.  Trade prices can and do vary greatly from transaction to transaction.
+4. The exchange creates complex auction mechanisms to match buyers and sellers. The rules of these auctions are such that trades can occur at different prices for every transaction.  Trade prices can vary greatly from transaction to transaction.
 
 5. The stream of trade prices is often denoted as $S_{t}$ can be conceptualized as a stochastic process.
 
@@ -96,9 +104,9 @@ For the purposes of this book, the following stylized facts will suffice.
 
 ## Exchange Traded Funds (ETFs)
 
-Investing in stocks and other assets is usually an overly costly and complex proposition for an individual.  For this reason, there are various vehicles for small investors to pool their money and for it to be invested as a single fund.  The most common form of investment pooling is a *mutual fund*.  More esoteric manifestations are hedge funds, unit investment trust (UIT), and real estate investment trusts (REIT). The distinction between these is of general interest, but won't be of huge importance to us in this book.
+Investing in stocks and other assets is usually an overly costly and complex endeavor for an individual.  For this reason, there are various vehicles for small investors to pool their money and for it to be invested as a single fund.  The most common form of investment pooling is a *mutual fund*.  More esoteric manifestations are hedge funds, unit investment trust (UIT), and real estate investment trusts (REIT). The distinction between these is of general interest, but won't be of huge importance to us in this book.
 
-A fairly recent innovation in the world of pooled investments is exchange traded funds (ETFs).  Relative to mutual funds and hedge funds, ETFs engage in simpler strategies that are easier to execute.  For this reason, it take fewer people to manage the fund and costs are low.  In addition, shares of ETF ownership are traded on exchanges in the exact same way as shares of stock.  ETF pay dividends in the same way that stocks do.  Here are some popular ETFs:
+A fairly recent innovation in the world of pooled investments is exchange traded funds (ETFs).  Relative to mutual funds and hedge funds, ETFs engage in simpler strategies that are easier to execute.  For this reason, it take fewer people to manage the fund and costs are low.  In addition, shares of ETF ownership are traded on exchanges in the exact same way as shares of stock.  ETFs pay dividends in the same way that stocks do.  Here are some popular ETFs:
 
 **SPY** - SPDR SP500 - tracks the S&P500.
 
@@ -113,17 +121,18 @@ In this book we will consider options who's underlyings are stocks and ETFs.  We
 
 ## Discounting & Accumulating
 
-When you lend money, you are paid interest to compensate for the fact that you can't use the money to lent for other purposes. In this book we assume that loans are totally safe in that there is no risk of default.  
+When you lend money, you are paid interest to compensate for the fact that you can't use the lent funds for other purposes. In this book we assume that loans are totally safe in that there is no risk of default.  
 
 It is useful to conceptualize payment of interest as an *accumulation* over time. We will use the following notation and nomenclature to capture this idea of accumulation:
 
-**Definition:** Assume the current time is $t$ and that $T$ is some time in the future. Then one dollar will accumulate to $A(t,T)$ by time $T$.  I will call $A(t,T)$ an *accumulation factor*.
+**Definition:** Assume the current time is $t$ and that $T$ is some time in the future. Then one dollar will accumulate to $A(t,T)$ by time $T$.  We will call $A(t,T)$ an *accumulation factor*.
 
-If you are going to receive money in the future, it's not really worth as much to you as if the money were paid right now.  The way we account for this value difference is by essentially *discounting* by the amount of interest you could have earned between now when you are going to be paid. The is the notion of present value and I express it as follows:
+If you are going to receive money in the future, it's not really worth as much to you as if the money were paid right now.  The way we account for this value difference is by *discounting* by the amount of interest you could have earned between now when you are going to be paid. This is the notion of *present value*.  We express it as follows:
 
 
-**Definition:** The time $t$ present value of a one dollar cash flow at time $T$ will be denoted by $D(t,T)$. I will call $D(t,T)$ a discount factor. I will call $D(t, T)$ a *discount factor*.
+**Definition:** Let $t$ be some time before time $T$.  The time $t$ present value of a one dollar cash flow at time $T$, will be denoted by $D(t,T)$. We call $D(t,T)$ a *discount factor*. 
 
+<!-- I will call $D(t, T)$ a *discount factor*. -->
 
 The following statements are true:
 
@@ -134,37 +143,45 @@ The following statements are true:
 3. $D(t,T) = A(t,T)^{-1}$.
 
 
-**Definition:** Suppose the current time is $t$ and consider a series of cash flows $C_{1}, \ldots, C_{n}$ occurring at future times $t_{1}, \ldots t_{n}$.  Then the time $t$ present value of this stream of cash flows is defined as:
+**Definition:** Suppose the current time is $t$.  Consider a series of cash flows $C_{1}, \ldots, C_{n}$ occurring at future times $t_{1}, \ldots, t_{n}$.  Then the time $t$ present value of this stream of cash flows is defined as:
 
 \begin{align*}
 PV(\{ C_{1}, \ldots, C_{n} \}) = \sum_{i = 1}^{n} D(t, t_{i}) \cdot C_{i}.
 \end{align*}
 
 
-#### Forward Accumulating
-Suppose that the current time is $t$ and that $T$ is some time in the (distant) future.  Suppose you know at for all $s \in (t, T)$ that all the values of $A(t,t)$. This is set of accumulation factors is known as the spot yield curve (it is usually quoted in rates, but the idea is the same).
+#### Forward Accumulating {-}
+Suppose that the current time is $t$ and that $T$ is some time in the (distant) future.  Suppose that for all times $s$ between $t$ and $T$, we know the values $A(t,s)$. This set of accumulation factors is known as the spot yield curve (it is usually quoted as interest rates, but the idea is the same).
 
-Now, suppose for some particular $t^* \in (t, T)$ you want to work out an arrangement with your bank such that you will deposit one dollar at time $t^*$ and let it accumulate until $T$.  What is the accumulation factor that you should earn?  It turns out that this *forward accumulation factor* is determined by the spot yield curve.  We will denote the quantity $A(t, t^*, T)$. There is a simple no-arbitrage argument for this but I won't bother presenting it here because it's not import.  All you need to know is that it satisfies the following equation
+Now, suppose for some future time $t^*$ you want to work out an arrangement with your bank such that you will deposit one dollar at time $t^*$ and let it accumulate until $T$.  What is the accumulation factor that you should earn?  Do you have to wait until time $t^*$ to find out, or can you lock one in now.
+
+
+It turns out that this *forward accumulation factor* is determined by the spot yield curve.  We will denote the quantity $A(t, t^*, T)$, and we have that:
+
 \begin{align*}
 A(t, T) = A(t, t^*) \cdot A(t, t^*, T)
 \end{align*}
 
+**Proof:**
 
 ## Option Contracts
 
-We discussed vanilla (American and European) options at length in the previous section, but I will discuss them here for completeness of the chapter. 
+We discussed vanilla (American and European) options at length in the previous chapter.  We discuss them here again more formally.
+
+
+**NEED TO FINISH**
 
 
 ## Forward Contracts
 
-Forward contracts are simple derivatives that are one of the foundational building blocks in the theory and practice of quantitative finance.  The value of forwards are related to option prices via a result known as *put-call parity*, a finding seminal to much of derivatives theory.
+Forward contracts are simple derivatives that are one of the foundational building blocks of quantitative finance.  The value of forwards are related to option prices via a result known as *put-call parity*, a finding that is seminal to much of derivatives theory.
 
 ### Specification and Payoff
-A forward contract this the obligation to transact some underlying asset at some future date, at a fixed price, called the strike price.  The party that agrees to buy the underlying, is called the *long* side; the party that agrees to sell the underlying is the *short* side.  The underlyings we will consider in this book will be stocks or ETFs, but forwards can exist on any kind of underlying: gold, corn, etc.
+A forward contract is the obligation to transact some underlying asset at some future date.  The transaction occurs at a fixed price, called the *strike price*.  The party that agrees to buy the underlying is called the *long* side. The party that agrees to sell the underlying is the *short* side.  The underlyings we will consider in this book will be stocks or ETFs, but forwards can exist on any kind of underlying: gold, corn, etc.
 
 The key feature of a forward is that *both* sides are *obligated* to execute their side of the transaction - to either buy our sell the asset, at the agreed upon strike price. This stands in contrast to an option, in which the long side has a right, while the short side has an obligation.
 
-Suppose a forward contract struck at $K$ expires at time $T$.  Suppose that underlying is trading at $S_{T}$ at the time of expiration.  The long side has to pay $K$ and in return receives the underlying which has a value of $S_{T}$.  Thus the long position is worth $S_{T} - K$ at expiration.  On the other hand, the short side receives $K$ but has to deliver the underlying, which is worth $S_{T}$.  So the short position is worth $K - S_{T}$.
+Consider a forward contract struck at $K$ expiring at time $T$.  Suppose that underlying is trading at $S_{T}$ at the time of expiration.  The long side has agreed to pay $K$, and in return receives the underlying which has a value of $S_{T}$.  Thus the long position is worth $S_{T} - K$ at expiration.  On the other hand, the short side receives $K$ but has to deliver the underlying, which is worth $S_{T}$.  So the short position is worth $K - S_{T}$.
 
 Long Payoff: $S_{T} - K$
 
@@ -172,9 +189,9 @@ Short Payoff: $S_{T} - K$
 
 
 ### The Forward Price
-Suppose that the current time is $t$ and that we are considering a forward contract that expires at time $T$.  Suppose further that the underlying is currently trading at $S_{t}$.  We are interested in the following questions: is there strike price of $K$ such that both parties can enter into the forward contract for zero cost, without introducing an arbitrage opportunity for either side?  
+Suppose that the current time is $t$ and that we are considering a forward contract that expires at time $T$.  Suppose further that the underlying is currently trading at $S_{t}$.  We are interested in the following question: is there strike price of $K$ such that both parties can enter into the forward contract for zero cost, without introducing an arbitrage opportunity for either side?  
 
-It turns out the answer is yes, an this strike price is of such importance that it has been named simply, *the forward price*.  A forward price is determined by two points in time: the current time $t$ and the expiration time $T$. We will denote the forward price associated with these two times as $F(t, T)$.
+It turns out the answer is yes, an this strike price is of such importance that it has been named simply, *the forward price*.  The forward price is determined by two points in time: the current time $t$ and the expiration time $T$. We will denote the forward price associated with these two times as $F(t, T)$.
 
 
 **Forward Pricing Formula:**  Suppose we are considering a forward contract at time $t$ which expires at time $T$.  Suppose that the underlying is currently trading at $S_{t}$ and that during the life of the forward, the underlying stock pays dividends $c_{1}, \ldots, c_{n}$ at times $t_{1}, \ldots, t_{n}$.  Then the we have that:
@@ -183,10 +200,13 @@ It turns out the answer is yes, an this strike price is of such importance that 
 F(t, T) &= A(t, T) \cdot S_{t} - \sum_{i=1}^{n} A(t, t_{i}, T) \cdot c_{i}
 \end{align*}
 
-In words we have that the forward price is the accumulated value of the current stock price less the accumulated value of all the dividend payments during the life of the contract.
+**Proof:**
+
+In words, we have that the forward price is the accumulated value of the current stock price less the accumulated value of all the dividend payments during the life of the contract.
 
 
-Notice that for non-dividend paying stocks we have that: $F(t, T) = A(t, T) \cdot S_{t}$.
+Notice that for non-dividend paying stocks, the forward price is simply the accumulated value of the current stock price: $F(t, T) = A(t, T) \cdot S_{t}$.
+
 
 ### Valuing a Forward Contract
 Suppose that you enter into a forward contract at time $t^{*}$ and the strike price $K$ was chosen such that both parties could enter into the contract for zero cost.  Suppose that the time is now $t > t^{*}$, what would be the value to unwind this contract?
@@ -195,6 +215,8 @@ Suppose that you enter into a forward contract at time $t^{*}$ and the strike pr
 **Fact:** The no arbitrage unwind value of this contract is $D(t, T) \cdot (F(t, T) -  K)$.
 
 
+**Proof:**
+
 This result really has nothing to do with the fact that the forward contract entered into at time $t^{*}$ or that it's initial strike what chosen to make it a zero value contract.  Ultimately it just gives us a formula for valuing a forward contract at any point.
 
 Notice that if a forward contract is struck at the current forward price, then it has zero value, which we would expect.
@@ -202,7 +224,7 @@ Notice that if a forward contract is struck at the current forward price, then i
 
 ### Synthetic Forwards
 
-A portfolio consisting of a long call and a short put is a synthetic forward position.
+A portfolio consisting of a long call and a short put is a synthetic forward position.  More specifically, you simultaneously hold a long call and a short put, both with the same strike $K$, and both expiring at the same time $T$, then your payoff at time $T$ will be the same as a long forward contract struck at $K$ and expiring at $T$.  Let's see how this is the case.
 
 
 Let the current time be $t$.  Consider a call and put on the same underlying, with the same strike price $K$, that both expire at time $T$.  If you have a long position in the call and a short position in the put, then in all states of the world at time $T$ this portfolio has a value of $S_{T} - K$, which is the same value as the payoff as a long forward.
@@ -215,40 +237,50 @@ If $S_{T} = K$, nothing happens because both options are worthless. Doing nothin
 
 
 ## Put-Call Parity
-Let the current time be $t$ and consider a put and a call that both expire at time $T$ and that are both struck at $K$.  From the previous section we know that a long call and a short put create a synthetic forward struck at $K$.  We also know how to value any forward contract.  Putting these two results together we get following put-call parity identity.
+Our discussion of synthetic forwards leads us to one of the most important results in all of derivatives theory: *put-call parity*.
+
+Let the current time be $t$.  Consider a put and a call that both expire at time $T$, both struck at $K$.  We know that the long call combined with the short put create a synthetic forward with strike price $K$.  From previous sections we also know how to value a forward contract.  Putting these two results together we get following put-call parity identity:
 
 \begin{align*}
-C(t, T, K) - P(t, T, K) = D(t, T) \cdot (F(t, T) - K)
+C(t, T, K) - P(t, T, K) = D(t, T) \cdot (F(t, T) - K).
 \end{align*}
 
-Put-call parity is one of the most important and foundational results in all of derivatives theory.  Let's examine a couple special cases more closely.
+Let's examine a couple special cases more closely.
 
 #### Non-Dividend Paying Stock {-}
-Recall that when the stock pays no dividends during the life of the forward, that the forward price is simply the accumulated spot price.  Thus we can 
+Recall that when the stock pays no dividends during the life of the forward, that the forward price is simply the accumulated spot price.  Thus, we have
 
 \begin{align*}
 C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
                         &= D(t, T) \cdot (A(t, T) \cdot S_{t} - K) \\
-                        &= S_{t} - D(t, T) \cdot K
+                        &= S_{t} - D(t, T) \cdot K.
 \end{align*}
 
 
 #### Dividend Paying Stock {-}
-Suppose that during the life of the options, that the underlying stock pays dividends $c_{1}, \ldots, c_{n}$ at times $t_{1}, \ldots, t_{n}$.
+Suppose that during the life of the options the underlying stock pays dividends of $c_{1}, \ldots, c_{n}$ at times $t_{1}, \ldots, t_{n}$.  Then we have that
+
 \begin{align*}
 C(t, T, K) - P(t, T, K) &= D(t, T) \cdot (F(t, T) - K) \\
                         &= D(t, T) \cdot \bigg(A(t, T) \cdot S_{t} - \sum_{i=1}^{n} A(t, t_{i}, T) \cdot c_{i} - K \bigg) \\
-                        &= S_{t} - PV(\{c_{1}, \ldots, c_{n} \}) - D(t, T) \cdot K
+                        &= S_{t} - PV(\{c_{1}, \ldots, c_{n} \}) - D(t, T) \cdot K.
 \end{align*}
 
 
 ## Rational Option Pricing
 
-The Black-Scholes pricing framework, which will discuss at length in later chapters, requires complex assumptions about the random nature of the underlying, and dynamic trading strategies for replicating option payoffs. These complexities are required a specific value to an option, but there is a actually a lot we can say about option prices in general without making any assumptions of the underlying.
+The Black-Scholes pricing framework, which we will discuss at length in later chapters, requires complex assumptions about the random nature of the underlying, and dynamic trading strategies for replicating option payoffs. These complexities are required to give a specific value of to an option.  But there is a actually a lot we can say about option prices without making any assumptions of the underlying.  This line of reasoning is called *rational option pricing*.
 
+Not only does rational pricing yield practically useful results, understanding these arguments helps to build intuition about options.
 
 #### Extreme American Bounds {-}
-The worst thing that can happen with a put or call is that it is not exercised, which means that they can never be worth less than zero.  For a call, the best thing that can happen is that you exercise, which results in owning the stock, a call can never be worth more than the underlying stock.  For a put, the best outcome is that you exercise when the stock is worthless, and you receive $K$.  Thus, the put can never be worth more that $K$.  These facts are summarized in the following inequalities
+Our first results place crude bounds on the price of options.
+
+The worst thing that can happen with either a long put or long call position, is that it is not exercised.   So vanilla options can never have negative value.
+
+As a call buyer, the best outcome is that you exercise, which results in owning the stock  Thus, call can never be worth more than the underlying stock.  As a put buyer, the best outcome is that you exercise when the stock is worthless, and you receive $K$.  Thus, the put can never be worth more that $K$.  
+
+These facts are summarized in the following inequalities:
 
 \begin{align*}
 0 &\leq C_A(S, K, T) \leq S \\
@@ -257,7 +289,8 @@ The worst thing that can happen with a put or call is that it is not exercised, 
 
 
 #### Americans $\geq$ European {-}
-Any strategy that you can execute with a European option, you can execute with the American variant as well.  Thus we have that
+Any strategy that you can execute with a European option, you can execute with the American variant as well.  Thus, American are worth at least as much as their European equivalents.  This is summarize with the following inequalities:
+
 \begin{align*}
 C_E(S, K, T) &\geq C_A(S, K, T) \\
 P_E(S, K, T) &\geq C_A(S, K, T).
@@ -271,9 +304,9 @@ We can string together put-call parity along with the previous two results (add 
 \text{max}\big\{ 0, D(t, T) \cdot ((F(t, T) - K))  \big\} \leq C_E(S, K, T) \leq C_A(S, K, T) \leq S.   
 \end{align*}
 
-From left to right the justification for the three inequalities are as follows:
+From left to right, the justification for these three are as follows:
 
-1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla call is always worth greater that intrinsic.
+1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla call is always worth more than it's intrinsic value.
 
 2. Americans are worth more than Europeans.
 
@@ -288,9 +321,9 @@ We can argue for a similar sequence of inequalities for puts:
 \end{align*}
 
 
-From left to right the justification for the three inequalities are as follows:
+Here is the justification:
 
-1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla put is always worth greater that intrinsic.
+1. Extreme lower bound combined with put-call parity.  Notice that this is equivalent to saying that a vanilla put is always worth more than intrinic.
 
 2. Americans are worth more than Europeans.
 
