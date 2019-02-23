@@ -5,8 +5,58 @@ The most basic and important performance measure of a trading strategy is its da
 In this chapter we consider how to calculate profit and loss for stocks and options trades.
 
 ## Stock PNL
+As mentioned above, once fractional limited liability ownership of companies has been created via the initial issuance of stocks, that stock can be traded in the secondary market.  These trades occur on exchanges, all throughout the trading day, and most of the stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares being transacted on a daily basis.
+
+At the end of each trading day, it is a market convention to take note of where a particular stock was trading just before the close of the market.  This price is often referred as the settle price for that day.  They exact way that settlement prices are determined is outside the scope of this book.
+
+Daily settle prices will be relevant to us for two reasons:
+
+1. Settle prices are used to determine the payoff of an option.
+
+1. Settle prices are used to determine the daily PNL of a stock position.
+
+In this section we will concern ourselves with #2.
+
+
+As a matter convention, we will let natural numbers, indexed with $i$, represent consecutive trading days.  And we will let $S_{i}$ prepresent the price of a particular stock on day $i$.
+
+
+### Marking to Mid
+Let $\mathcal{S}$ be a particular stock.  Suppose we purchase one share of it in the middle of the day 1, and that the trade price is $S^{*}$.  Now, let $S_{i}$ be the settle price for day $i=1,\ldots,n$.  
+
+We seek to define the following:  
+
+**Daily:** $D_{i}$ -  the *daily PNL* for the trade as of end-of-day $t_i$.  
+
+**TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
+
+\begin{align*}
+D_{i} &= \begin{cases} S_{1} - S^{*} & i = 1 \\ S_{i} - S_{i-1} & i > 1 \end{cases} \\[10pt]
+C_{i} &= \sum_{k=1}^{i} D_{k} = S_{i} - S^{*}
+\end{align*}
+
+
+
+The fact that $C_{i} = S_{i} - S^{*}$ can be interpreted with the following intuitive statement: the stock purchase is worth the difference between its current price, and what you paid for it. 
+
+This is a simple calcluation that is perfectly fine in many situation.  The tacit assumption is that if you unwound your position, you would do so at the mid prices.  However, this isn't quite true in practice, and depending on your application, and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid.  This is what we will do in the next section.
+
+
+### Marking to Bid
+Suppose now that instead of a single end of day mid price, we have two end of day prices: a bid price and ask price, denoted $B_{i}$ and $A_{i}$.  In this situation, $S_{i}$ would lie between
+
+If we are marking our stock trade to the bid, the we would need to modify the definiton of our daily and cumulative PNL as follows:
+
+\begin{align*}
+D_{i} &= \begin{cases} B_{1} - S^{*} & i = 1 \\ B_{i} - B_{i-1} & i > 1 \end{cases} \\[10pt]
+C_{i} &= \sum_{k=1}^{i} D_{k} = B_{i} - S^{*}
+\end{align*}
+
+By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid.  If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.
+
 
 ## Option PNL
+
 Suppose we trade an option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  The letter $i$ will serve as an index over the trade dates, so $i = 1,\ldots,n$. 
 
 Let $B_{i}$ and $A_{i}$ be the end-of-day bid and ask prices of the option for trade date $t_{i}$. Note that both $B_{n}$ and $A_{n}$ are equal to the option payoff.  We seek to define the following:  
@@ -18,6 +68,18 @@ Let $B_{i}$ and $A_{i}$ be the end-of-day bid and ask prices of the option for t
 Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa.
 
 In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs.  We will consider both alternatives below.  It is useful to consider buys and sells separately.
+
+### Total PNL At Expiration
+The easiest PNL concept for an option trade is the the total PNL at the time of expiration.
+
+Suppose option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  Let $\Pi$ be the payoff of the option.  Then at the time of expiration, the total PNLs for for the long and shorts positions2 are as follows:
+
+
+Long: $\Pi - P$
+
+Short: $P - \Pi$
+
+
 
 #### TTD as Sum of Daily - Buy {-}
 

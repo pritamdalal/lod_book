@@ -144,8 +144,13 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="4.5" data-path="the-markets.html"><a href="the-markets.html#the-buy-side"><i class="fa fa-check"></i><b>4.5</b> The Buy Side</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="profit-loss.html"><a href="profit-loss.html"><i class="fa fa-check"></i><b>5</b> Profit &amp; Loss</a><ul>
-<li class="chapter" data-level="5.1" data-path="profit-loss.html"><a href="profit-loss.html#stock-pnl"><i class="fa fa-check"></i><b>5.1</b> Stock PNL</a></li>
-<li class="chapter" data-level="5.2" data-path="profit-loss.html"><a href="profit-loss.html#option-pnl"><i class="fa fa-check"></i><b>5.2</b> Option PNL</a></li>
+<li class="chapter" data-level="5.1" data-path="profit-loss.html"><a href="profit-loss.html#stock-pnl"><i class="fa fa-check"></i><b>5.1</b> Stock PNL</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-mid"><i class="fa fa-check"></i><b>5.1.1</b> Marking to Mid</a></li>
+<li class="chapter" data-level="5.1.2" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-bid"><i class="fa fa-check"></i><b>5.1.2</b> Marking to Bid</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="profit-loss.html"><a href="profit-loss.html#option-pnl"><i class="fa fa-check"></i><b>5.2</b> Option PNL</a><ul>
+<li class="chapter" data-level="5.2.1" data-path="profit-loss.html"><a href="profit-loss.html#total-pnl-at-expiration"><i class="fa fa-check"></i><b>5.2.1</b> Total PNL At Expiration</a></li>
+</ul></li>
 <li class="chapter" data-level="5.3" data-path="profit-loss.html"><a href="profit-loss.html#scaling-up"><i class="fa fa-check"></i><b>5.3</b> Scaling Up</a></li>
 <li class="chapter" data-level="5.4" data-path="profit-loss.html"><a href="profit-loss.html#returns"><i class="fa fa-check"></i><b>5.4</b> Returns</a></li>
 </ul></li>
@@ -182,6 +187,38 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p>In this chapter we consider how to calculate profit and loss for stocks and options trades.</p>
 <div id="stock-pnl" class="section level2">
 <h2><span class="header-section-number">5.1</span> Stock PNL</h2>
+<p>As mentioned above, once fractional limited liability ownership of companies has been created via the initial issuance of stocks, that stock can be traded in the secondary market. These trades occur on exchanges, all throughout the trading day, and most of the stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares being transacted on a daily basis.</p>
+<p>At the end of each trading day, it is a market convention to take note of where a particular stock was trading just before the close of the market. This price is often referred as the settle price for that day. They exact way that settlement prices are determined is outside the scope of this book.</p>
+<p>Daily settle prices will be relevant to us for two reasons:</p>
+<ol style="list-style-type: decimal">
+<li><p>Settle prices are used to determine the payoff of an option.</p></li>
+<li><p>Settle prices are used to determine the daily PNL of a stock position.</p></li>
+</ol>
+<p>In this section we will concern ourselves with #2.</p>
+<p>As a matter convention, we will let natural numbers, indexed with <span class="math inline">\(i\)</span>, represent consecutive trading days. And we will let <span class="math inline">\(S_{i}\)</span> prepresent the price of a particular stock on day <span class="math inline">\(i\)</span>.</p>
+<div id="marking-to-mid" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Marking to Mid</h3>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a particular stock. Suppose we purchase one share of it in the middle of the day 1, and that the trade price is <span class="math inline">\(S^{*}\)</span>. Now, let <span class="math inline">\(S_{i}\)</span> be the settle price for day <span class="math inline">\(i=1,\ldots,n\)</span>.</p>
+<p>We seek to define the following:</p>
+<p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
+<p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
+<span class="math display">\[\begin{align*}
+D_{i} &amp;= \begin{cases} S_{1} - S^{*} &amp; i = 1 \\ S_{i} - S_{i-1} &amp; i &gt; 1 \end{cases} \\[10pt]
+C_{i} &amp;= \sum_{k=1}^{i} D_{k} = S_{i} - S^{*}
+\end{align*}\]</span>
+<p>The fact that <span class="math inline">\(C_{i} = S_{i} - S^{*}\)</span> can be interpreted with the following intuitive statement: the stock purchase is worth the difference between its current price, and what you paid for it.</p>
+<p>This is a simple calcluation that is perfectly fine in many situation. The tacit assumption is that if you unwound your position, you would do so at the mid prices. However, this isn’t quite true in practice, and depending on your application, and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid. This is what we will do in the next section.</p>
+</div>
+<div id="marking-to-bid" class="section level3">
+<h3><span class="header-section-number">5.1.2</span> Marking to Bid</h3>
+<p>Suppose now that instead of a single end of day mid price, we have two end of day prices: a bid price and ask price, denoted <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span>. In this situation, <span class="math inline">\(S_{i}\)</span> would lie between</p>
+<p>If we are marking our stock trade to the bid, the we would need to modify the definiton of our daily and cumulative PNL as follows:</p>
+<span class="math display">\[\begin{align*}
+D_{i} &amp;= \begin{cases} B_{1} - S^{*} &amp; i = 1 \\ B_{i} - B_{i-1} &amp; i &gt; 1 \end{cases} \\[10pt]
+C_{i} &amp;= \sum_{k=1}^{i} D_{k} = B_{i} - S^{*}
+\end{align*}\]</span>
+<p>By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid. If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.</p>
+</div>
 </div>
 <div id="option-pnl" class="section level2">
 <h2><span class="header-section-number">5.2</span> Option PNL</h2>
@@ -191,6 +228,12 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
 <p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa.</p>
 <p>In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs. We will consider both alternatives below. It is useful to consider buys and sells separately.</p>
+<div id="total-pnl-at-expiration" class="section level3">
+<h3><span class="header-section-number">5.2.1</span> Total PNL At Expiration</h3>
+<p>The easiest PNL concept for an option trade is the the total PNL at the time of expiration.</p>
+<p>Suppose option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. Let <span class="math inline">\(\Pi\)</span> be the payoff of the option. Then at the time of expiration, the total PNLs for for the long and shorts positions2 are as follows:</p>
+<p>Long: <span class="math inline">\(\Pi - P\)</span></p>
+<p>Short: <span class="math inline">\(P - \Pi\)</span></p>
 <div id="ttd-as-sum-of-daily---buy" class="section level4 unnumbered">
 <h4>TTD as Sum of Daily - Buy</h4>
 <span class="math display">\[\begin{align*}
@@ -226,6 +269,7 @@ D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \
 \end{align*}\]</span>
 <p> </p>
 <p><strong>Exercise:</strong> Show that both formulations of <span class="math inline">\(D_{i}\)</span> are equivalent.</p>
+</div>
 </div>
 </div>
 <div id="scaling-up" class="section level2">
