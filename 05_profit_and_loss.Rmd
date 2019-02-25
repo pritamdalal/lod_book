@@ -1,28 +1,34 @@
 # Profit & Loss
+The most basic performance measure of a particular trade is its daily *profit and loss*, usually shortened to *PNL*.  In essence, daily pnl measures how much the trade increased or decreased in value on a particular day?  We will also be interested in *cummualative PNL* - also know as *trade-to-date (TTD) PNL* - which measures the total amount a trade has increased or decreased in value since its inception.
 
-The most basic and important performance measure of a trading strategy is its daily *profit and loss*, which we usually shorten to simply *PNL*.  In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into statements about PNL.  It is my opinion that analyzing PNLs is the best way to internalize knowledge of options, which is in part why I wrote this book.
 
-In this chapter we consider how to calculate profit and loss for stocks and options trades.
+In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into statements about PNL.  
+
+<!-- It is my opinion that analyzing PNLs is the best way to internalize knowledge of options, which is in part why I wrote this book. -->
+
+In this chapter we explore how to calculate profit and loss for trades on options and stock.
 
 ## Stock PNL
-As mentioned above, once fractional limited liability ownership of companies has been created via the initial issuance of stocks, that stock can be traded in the secondary market.  These trades occur on exchanges, all throughout the trading day, and most of the stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares being transacted on a daily basis.
+As mentioned in the *Quantitative Results* chapter, after a stock has been issued, it can be traded in the secondary market.  These trades occur on various exchanges, throughout the day, on most business days.  The stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares transacted daily.
 
-At the end of each trading day, it is a market convention to take note of where a particular stock was trading just before the close of the market.  This price is often referred as the settle price for that day.  They exact way that settlement prices are determined is outside the scope of this book.
+For a given trading day, the final trade price of a stock is referred to as the *close* price.  The series of close prices of a stock give information about the performace of the stock as an investement.  
 
-Daily settle prices will be relevant to us for two reasons:
+Daily close prices will be relevant to us for two reasons:
 
-1. Settle prices are used to determine the payoff of an option.
+1. The payoff of an equity option is determined by the close price of its underlying on the option expiration date.
 
-1. Settle prices are used to determine the daily PNL of a stock position.
+1. Close prices are used to determine the daily PNL of a stock position.
 
 In this section we will concern ourselves with #2.
 
 
-As a matter convention, we will let natural numbers, indexed with $i$, represent consecutive trading days.  And we will let $S_{i}$ prepresent the price of a particular stock on day $i$.
+
+### The Notation the Trade
+Half the battle in discussing PNL rigorously is setting up the notation. 
 
 
-### Marking to Mid
-Let $\mathcal{S}$ be a particular stock.  Suppose we purchase one share of it in the middle of the day 1, and that the trade price is $S^{*}$.  Now, let $S_{i}$ be the settle price for day $i=1,\ldots,n$.  
+Let $\mathcal{S}$ be a particular stock, and let $t_i, \ldots t_n$ be consecutive trading days.  Suppose that we purchase one share of stock in the middle of of the day on $t_i$, for a purchase price of $S^o$.  Suppose further that we hold that share until day $t_n$, at which time we sell it for $S^c$.
+
 
 We seek to define the following:  
 
@@ -30,29 +36,36 @@ We seek to define the following:
 
 **TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
 
+In words, the daily PNL of our single share purchase is simply the dollar change in the price of the stock.  The cummulative PNL is the sum of the daily PNLs.
+
+
+### Marking to Mid
+ <!-- Suppose we purchase one share of it in the middle of the day $t_1$, and that the trade price is $S^{*}$.  Now, let $S_{t_i}$ be the settle price for day $i=1,\ldots,n$.   -->
+
 \begin{align*}
-D_{i} &= \begin{cases} S_{1} - S^{*} & i = 1 \\ S_{i} - S_{i-1} & i > 1 \end{cases} \\[10pt]
-C_{i} &= \sum_{k=1}^{i} D_{k} = S_{i} - S^{*}
+D_{i} &= \begin{cases} S_{1} - S^{o}, & i = 1 \\ S_{i} - S_{i-1}, & 1 < i < n \\ S^{c} - S_{n-1}, & i = n\end{cases} \\[10pt]
+C_{i} &= \sum_{k=1}^{i} D_{k}
 \end{align*}
 
 
+The fact that $C_{i} = S_{i} - S^{*}$ can be interpreted as the following intuitive statement: the stock purchase is worth the difference between its current price and the price we paid for it.
 
-The fact that $C_{i} = S_{i} - S^{*}$ can be interpreted with the following intuitive statement: the stock purchase is worth the difference between its current price, and what you paid for it. 
-
-This is a simple calcluation that is perfectly fine in many situation.  The tacit assumption is that if you unwound your position, you would do so at the mid prices.  However, this isn't quite true in practice, and depending on your application, and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid.  This is what we will do in the next section.
+The tacit assumption of this simple calculation is that if we unwind our position, we would do so at the *mid* price.  However, this isn't quite true in practice.  Depending on your application and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid.  This is what we will do in the next section.
 
 
 ### Marking to Bid
-Suppose now that instead of a single end of day mid price, we have two end of day prices: a bid price and ask price, denoted $B_{i}$ and $A_{i}$.  In this situation, $S_{i}$ would lie between
+Suppose now that instead of a single end of day price, that our data set tells us both the bid price and thd ask price, denoted $B_{i}$ and $A_{i}$.
 
-If we are marking our stock trade to the bid, the we would need to modify the definiton of our daily and cumulative PNL as follows:
+If we want to *mark* our stock trade to the bid, then we would need to modify the definiton of our daily and cumulative PNL as follows:
 
 \begin{align*}
 D_{i} &= \begin{cases} B_{1} - S^{*} & i = 1 \\ B_{i} - B_{i-1} & i > 1 \end{cases} \\[10pt]
 C_{i} &= \sum_{k=1}^{i} D_{k} = B_{i} - S^{*}
 \end{align*}
 
-By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid.  If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.
+By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid.  
+
+This type of If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.
 
 
 ## Option PNL
