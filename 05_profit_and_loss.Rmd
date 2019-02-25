@@ -211,8 +211,6 @@ For the long position, show that for $i < n$ we have that  $C_i = M_{i} - P$.
 ```
 
 
-
-
 <!-- #### TTD as Sum of Daily - Sell {-} -->
 
 
@@ -288,8 +286,9 @@ I_{i} = I_{0} + \sum_{k=1}^{i} D_{k}
 \end{align*}
 
 ```
+<br>
+Said in words, $I_i$ is simply the initial capital, plus cummulative pnl of the portfolio up until the end of trade date $t_{i}$,
 
-In words, $I_i$ is simply the initial capital, plus cummulative pnl of the portfolio up until trade date $t_{i}$,
 <br>
 ```{exercise}
 Show that:
@@ -299,7 +298,57 @@ Show that:
 
 ```
 
-### Asset Price Returns
+### Stock Price Returns
 
-Asset returns are a simpler concept, that is related to the 
-<!-- We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy -->
+Stock price returns is a related concept that we will address in this section.
+
+Let $\mathcal{S}$ be a stock and let $t_{0}, \ldots ,t_{1}$ be consectutive trading days.  And let $S_i$ be the close price for trade date $t_i$.  Then stock price returns for $\mathcal{S}$ are defined as follows.
+
+```{definition, name="Stock Price Returns"}
+Let $t_i$ and $t_j$ be tradind days with $0 < i < j$.  The **return** of stock $\mathcal{S}$ between $t_i$ and $t_j$ is denoted $r_{i,j}$ and is defined to be
+  
+\begin{align*}
+r_{i,j} = \frac{S_j - S_i}{S_i} = \frac{S_j}{S_j} - 1.
+\end{align*}
+
+
+When $j = i + 1$, meaning that $t_{i}$ and $t_{j}$ are consecutive trading days, then this return is called the **one day return** and is denoted $r_{j}$.  
+```
+
+
+<br>
+
+```{exercise}
+Show that 
+
+\begin{align*}
+
+r_{0,n} = \Bigg( \prod_{k = 1}^{n} \big( 1 + r_k \big) \Bigg) - 1
+  
+\end{align*}
+```
+
+
+
+<!-- **Note:** I would suggest not using an analogous definition of a price return for options.  Such a definition would be  -->
+
+
+## Volatility
+
+Both portfolio returns and price returns give a sense for growth or decline of the value of an investment.  We will also be concerned with overall variability of portfolios and stock prices.  One important measure of this overall variability is the volatility.
+
+```{definition}
+Let $r_{1}, \ldots , r_{n}$ be returns (either portfolio or price) for consecutive trading days $t_1, \ldots t_n$.  Then the volaility of these returns is their annualized standard deviation:
+
+\begin{align*}  
+\sigma = \text{SD}((r_{1}, \ldots , r_{n})) \cdot \sqrt{252}.
+\end{align*}
+```
+
+
+The factor of $\sqrt{252}$ arises from the market convention of annualizing the volatility, since there are 252 trading days in a year.
+
+This calculation comes up often in option pricing, because an important factor in the price of an option is the volatility of its underlying.
+
+
+
