@@ -145,15 +145,21 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 </ul></li>
 <li class="chapter" data-level="5" data-path="profit-loss.html"><a href="profit-loss.html"><i class="fa fa-check"></i><b>5</b> Profit &amp; Loss</a><ul>
 <li class="chapter" data-level="5.1" data-path="profit-loss.html"><a href="profit-loss.html#stock-pnl"><i class="fa fa-check"></i><b>5.1</b> Stock PNL</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="profit-loss.html"><a href="profit-loss.html#the-notation-the-trade"><i class="fa fa-check"></i><b>5.1.1</b> The Notation the Trade</a></li>
+<li class="chapter" data-level="5.1.1" data-path="profit-loss.html"><a href="profit-loss.html#intuition-and-notation"><i class="fa fa-check"></i><b>5.1.1</b> Intuition and Notation</a></li>
 <li class="chapter" data-level="5.1.2" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-mid"><i class="fa fa-check"></i><b>5.1.2</b> Marking to Mid</a></li>
 <li class="chapter" data-level="5.1.3" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-bid"><i class="fa fa-check"></i><b>5.1.3</b> Marking to Bid</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="profit-loss.html"><a href="profit-loss.html#option-pnl"><i class="fa fa-check"></i><b>5.2</b> Option PNL</a><ul>
 <li class="chapter" data-level="5.2.1" data-path="profit-loss.html"><a href="profit-loss.html#total-pnl-at-expiration"><i class="fa fa-check"></i><b>5.2.1</b> Total PNL At Expiration</a></li>
+<li class="chapter" data-level="5.2.2" data-path="profit-loss.html"><a href="profit-loss.html#intuition-and-notation-1"><i class="fa fa-check"></i><b>5.2.2</b> Intuition and Notation</a></li>
+<li class="chapter" data-level="5.2.3" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-mid-1"><i class="fa fa-check"></i><b>5.2.3</b> Marking to Mid</a></li>
+<li class="chapter" data-level="5.2.4" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-bidask"><i class="fa fa-check"></i><b>5.2.4</b> Marking to Bid/Ask</a></li>
 </ul></li>
 <li class="chapter" data-level="5.3" data-path="profit-loss.html"><a href="profit-loss.html#scaling-up"><i class="fa fa-check"></i><b>5.3</b> Scaling Up</a></li>
-<li class="chapter" data-level="5.4" data-path="profit-loss.html"><a href="profit-loss.html#returns"><i class="fa fa-check"></i><b>5.4</b> Returns</a></li>
+<li class="chapter" data-level="5.4" data-path="profit-loss.html"><a href="profit-loss.html#returns"><i class="fa fa-check"></i><b>5.4</b> Returns</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="profit-loss.html"><a href="profit-loss.html#portfolio-returns"><i class="fa fa-check"></i><b>5.4.1</b> Portfolio Returns</a></li>
+<li class="chapter" data-level="5.4.2" data-path="profit-loss.html"><a href="profit-loss.html#asset-price-returns"><i class="fa fa-check"></i><b>5.4.2</b> Asset Price Returns</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="option-pricing.html"><a href="option-pricing.html"><i class="fa fa-check"></i><b>6</b> Option Pricing</a><ul>
 <li class="chapter" data-level="6.1" data-path="option-pricing.html"><a href="option-pricing.html#black-scholes-merton"><i class="fa fa-check"></i><b>6.1</b> Black-Scholes-Merton</a></li>
@@ -198,99 +204,225 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>Close prices are used to determine the daily PNL of a stock position.</p></li>
 </ol>
 <p>In this section we will concern ourselves with #2.</p>
-<div id="the-notation-the-trade" class="section level3">
-<h3><span class="header-section-number">5.1.1</span> The Notation the Trade</h3>
-<p>Half the battle in discussing PNL rigorously is setting up the notation.</p>
-<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a particular stock, and let <span class="math inline">\(t_i, \ldots t_n\)</span> be consecutive trading days. Suppose that we purchase one share of stock in the middle of of the day on <span class="math inline">\(t_i\)</span>, for a purchase price of <span class="math inline">\(S^o\)</span>. Suppose further that we hold that share until day <span class="math inline">\(t_n\)</span>, at which time we sell it for <span class="math inline">\(S^c\)</span>.</p>
+<div id="intuition-and-notation" class="section level3">
+<h3><span class="header-section-number">5.1.1</span> Intuition and Notation</h3>
+<p>Half the battle in discussing PNL rigorously first developing an intuition for what you are try to convey, and then setting up the notation appropriately.</p>
+<p>Let’s say we purchase a share of stock, hold it for a few days, and then sell it. Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point. That is precisely what daily PNL and TTD PNL convey.</p>
+<p>Intuitively, the daily PNL of our single share purchase is simply the dollar change in the price of the stock. The cummulative PNL the total amount of dollar change in the price of the stock since the purchase - this is the same as the sum of the daily PNLs.</p>
+<p>Now let’s set up the notation for a more rigorous treatment.</p>
+<p>Let <span class="math inline">\(\mathcal{S}\)</span> be a particular stock, and let <span class="math inline">\(t_1, \ldots t_n\)</span> be consecutive trading days. Suppose that we purchase one share of <span class="math inline">\(\mathcal{S}\)</span> in the middle of day <span class="math inline">\(t_1\)</span>, for a purchase price of <span class="math inline">\(S^o\)</span>. Suppose further that we hold that share until day <span class="math inline">\(t_n\)</span>, at which time we sell it for <span class="math inline">\(S^c\)</span>.</p>
 <p>We seek to define the following:</p>
 <p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
 <p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p>In words, the daily PNL of our single share purchase is simply the dollar change in the price of the stock. The cummulative PNL is the sum of the daily PNLs.</p>
 </div>
 <div id="marking-to-mid" class="section level3">
 <h3><span class="header-section-number">5.1.2</span> Marking to Mid</h3>
-<p><!-- Suppose we purchase one share of it in the middle of the day $t_1$, and that the trade price is $S^{*}$.  Now, let $S_{t_i}$ be the settle price for day $i=1,\ldots,n$.   --></p>
+<p>Suppose that our price data consists solely of closing prices <span class="math inline">\(S_1, \ldots\, S_n\)</span>. Recall that our initial purchase price to enter the trade was <span class="math inline">\(S^o\)</span> and that our sale price to exit the trade was <span class="math inline">\(S^c\)</span>.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-1" class="definition"><strong>Definition 5.1  (Stock Purchase Marking to Mid)  </strong></span>
 <span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} S_{1} - S^{o}, &amp; i = 1 \\ S_{i} - S_{i-1}, &amp; 1 &lt; i &lt; n \\ S^{c} - S_{n-1}, &amp; i = n\end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k}
+D_{i} &amp;= \begin{cases} S_{1} - S^{o} &amp; i = 1 \\ S_{i} - S_{i-1} &amp; 1 &lt; i &lt; n \\ S^{c} - S_{n-1} &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (S^{c} - S_{n-1}) &amp; i = n\end{cases} 
 \end{align*}\]</span>
-<p>The fact that <span class="math inline">\(C_{i} = S_{i} - S^{*}\)</span> can be interpreted as the following intuitive statement: the stock purchase is worth the difference between its current price and the price we paid for it.</p>
-<p>The tacit assumption of this simple calculation is that if we unwind our position, we would do so at the <em>mid</em> price. However, this isn’t quite true in practice. Depending on your application and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid. This is what we will do in the next section.</p>
+</div>
+
+<p>Notice that on the first day of the trade, day <span class="math inline">\(t_{1}\)</span>, the daily PNL is the difference between the close price and the purchase price. On the final day of the trade, <span class="math inline">\(t_n\)</span>, the daily PNL is the difference between the sale price and the previous close.</p>
+
+<div class="exercise">
+<span id="exr:unnamed-chunk-2" class="exercise"><strong>Exercise 5.1  </strong></span>Show that for <span class="math inline">\(i &lt; n\)</span> we have that <span class="math inline">\(C_i = S_{i} - S^o\)</span>.
+</div>
+ <br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-3" class="exercise"><strong>Exercise 5.2  </strong></span>What is a simpler expression for <span class="math inline">\(C_n\)</span>?
+</div>
+<p> <br> The fact that <span class="math inline">\(C_{i} = S_{i} - S^{o}\)</span> can be interpreted as the following intuitive statement: the stock purchase is worth the difference between its current price and the price we paid for it.</p>
+<p>The tacit assumption of this simple calculation is that if we unwind our position, we would do so at the <em>mid</em> price. For situations which involve infrequent trading of stocks, this type of analysis is perfectly fine.</p>
+<p>However, depending on your application and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid. This is what we will do in the next section.</p>
 </div>
 <div id="marking-to-bid" class="section level3">
 <h3><span class="header-section-number">5.1.3</span> Marking to Bid</h3>
-<p>Suppose now that instead of a single end of day price, that our data set tells us both the bid price and thd ask price, denoted <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span>.</p>
+<p>Suppose now that instead of a single end of day close price, that our data set tells us both the bid price and thd ask price at the end of the day. These will be denoted <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span>, respectively.</p>
 <p>If we want to <em>mark</em> our stock trade to the bid, then we would need to modify the definiton of our daily and cumulative PNL as follows:</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-4" class="definition"><strong>Definition 5.2  (Stock Purchase Marking to Bid)  </strong></span>
 <span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} B_{1} - S^{*} &amp; i = 1 \\ B_{i} - B_{i-1} &amp; i &gt; 1 \end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k} = B_{i} - S^{*}
+D_{i} &amp;= \begin{cases} B_{1} - S^{o} &amp; i = 1 \\ B_{i} - B_{i-1} &amp; 1 &lt; i &lt; n \\ S^{c} - B_{n-1} &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (S^{c} - B_{n-1}) &amp; i = n\end{cases} 
 \end{align*}\]</span>
+</div>
+
 <p>By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid.</p>
-<p>This type of If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.</p>
+<p>If you are analyzing a trading system that involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.</p>
 </div>
 </div>
 <div id="option-pnl" class="section level2">
 <h2><span class="header-section-number">5.2</span> Option PNL</h2>
-<p>Suppose we trade an option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. The letter <span class="math inline">\(i\)</span> will serve as an index over the trade dates, so <span class="math inline">\(i = 1,\ldots,n\)</span>.</p>
-<p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade date <span class="math inline">\(t_{i}\)</span>. Note that both <span class="math inline">\(B_{n}\)</span> and <span class="math inline">\(A_{n}\)</span> are equal to the option payoff. We seek to define the following:</p>
-<p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
-<p>Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values. The daily PNL is the one day change in the trade-to-date PNL. The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa.</p>
-<p>In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs. We will consider both alternatives below. It is useful to consider buys and sells separately.</p>
+<p>Since options are more complex than stock, their PNL caclulations can seem more formidable. However, these PNLs operate on the exact same principles.</p>
+<p>Let’s begin with the simplest PNL calculation for options: total PNL on expiration date.</p>
 <div id="total-pnl-at-expiration" class="section level3">
 <h3><span class="header-section-number">5.2.1</span> Total PNL At Expiration</h3>
-<p>The easiest PNL concept for an option trade is the the total PNL at the time of expiration.</p>
-<p>Suppose option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. Let <span class="math inline">\(\Pi\)</span> be the payoff of the option. Then at the time of expiration, the total PNLs for for the long and shorts positions2 are as follows:</p>
+<p>Suppose we trade a vanilla option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. Let <span class="math inline">\(\Pi\)</span> be the payoff of the option. Then at the time of expiration, the total PNLs (i.e. TTD PNL) for for the long and short positions are as follows:</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-5" class="definition"><strong>Definition 5.3  (Option TTD PNL at Expiration)  </strong></span></p>
 <p>Long: <span class="math inline">\(\Pi - P\)</span></p>
-<p>Short: <span class="math inline">\(P - \Pi\)</span></p>
-<div id="ttd-as-sum-of-daily---buy" class="section level4 unnumbered">
-<h4>TTD as Sum of Daily - Buy</h4>
-<span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} B_{1} - P &amp; i = 1 \\ B_{i} - B_{i-1} &amp; i &gt; 1 \end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that <span class="math inline">\(C_{j} = B_{j} - P\)</span>.</p>
+Short: <span class="math inline">\(P - \Pi\)</span>
 </div>
-<div id="ttd-as-sum-of-daily---sell" class="section level4 unnumbered">
-<h4>TTD as Sum of Daily - Sell</h4>
-<span class="math display">\[\begin{align*}
-D_{i} &amp;= \begin{cases} P - A_{1} &amp; i = 1 \\ A_{i-1} - A_{i} &amp; i &gt; 1 \end{cases} \\[10pt]
-C_{i} &amp;= \sum_{k=1}^{i} D_{k}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that <span class="math inline">\(C_{i} = P - A_{i}\)</span>.</p>
+<p> <br> When you buy an option, you pay a (strictly positive) premium up front and recieve a (non-negative) payoff at expiration. Thus, your total PNL at expiration is the difference between the payoff you recieve and the premium you paid.</p>
+<p>When you sell an option, you receive premium up front and you are obligated to make a payoff at the time of expiration. Thus, your total PNL at expiration is the difference between the upfront premium you recieved and the payoff you make at the time of expiration.</p>
 </div>
-<div id="daily-as-change-in-ttd---buy" class="section level4 unnumbered">
-<h4>Daily as Change in TTD - Buy</h4>
-<span class="math display">\[\begin{align*}
-C_{i} &amp;= B_{i} - P \\[10pt]
-D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \end{cases}
-\end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that both formulations of <span class="math inline">\(D_{i}\)</span> are equivalent.</p>
+<div id="intuition-and-notation-1" class="section level3">
+<h3><span class="header-section-number">5.2.2</span> Intuition and Notation</h3>
+<p>The notational setup for option PNL is very similar to that of stock PNL.</p>
+<p>Suppose we trade an option <span class="math inline">\(\mathcal{O}\)</span> at a price <span class="math inline">\(P\)</span> on trade date <span class="math inline">\(t_{1}\)</span>, and we hold that position until expiration, which is trade date <span class="math inline">\(t_{n}\)</span>. The letter <span class="math inline">\(i\)</span> will serve as an index over the trade dates, so <span class="math inline">\(i = 1,\ldots,n\)</span>.</p>
+<p>Let <span class="math inline">\(B_{i}\)</span> and <span class="math inline">\(A_{i}\)</span> be the end-of-day bid and ask prices of the option for trade date <span class="math inline">\(t_{i}\)</span>. Note that both <span class="math inline">\(B_{n}\)</span> and <span class="math inline">\(A_{n}\)</span> are equal to the option payoff, which we denote as <span class="math inline">\(\Pi\)</span>. We seek to define the following:</p>
+<p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
+<p><strong>TTD:</strong> <span class="math inline">\(C_{i}\)</span> - the <em>trade-to-date PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
+<p>Intuitively, the daily PNL of an option trade is the dollar change in the value of the position for that day. The cummulative PNL is the total dollar change - this is the same as the sum of the daily PNLs.</p>
+<!-- Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa. -->
+<!-- In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs.  We will consider both alternatives below.  It is useful to consider buys and sells separately. -->
+<p>Option markets have much wider spread than equity markets, so it’s important to account for bid-ask spread in most analysis of options markets. However, marking to mid can be a valid approach for certain applications, so we will present both approaches.</p>
+<p>For both approaches we separate long and short option positions</p>
 </div>
-<div id="daily-as-change-in-ttd---sell" class="section level4 unnumbered">
-<h4>Daily as Change in TTD - Sell</h4>
+<div id="marking-to-mid-1" class="section level3">
+<h3><span class="header-section-number">5.2.3</span> Marking to Mid</h3>
+<p>Let <span class="math inline">\(M_i\)</span> be the mid price at the end of trade date <span class="math inline">\(t_i\)</span>. Thus, <span class="math inline">\(M_i\)</span> is the the average of <span class="math inline">\(A_i\)</span> and <span class="math inline">\(B_i\)</span>. When marking to mid prices the PNL for the long position is as follows.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-6" class="definition"><strong>Definition 5.4  (Long Option - Marking to Mid)  </strong></span>
 <span class="math display">\[\begin{align*}
-C_{i} &amp;= P - A_{i} \\[10pt]
-D_{i} &amp;= \begin{cases} C_{1} &amp; i = 1 \\ C_{i} - C_{i-1} &amp; i &gt; 1 \end{cases}
+D_{i} &amp;= \begin{cases} M_11 - P &amp; i = 1 \\ M_{i} - M_{i-1} &amp; 1 &lt; i &lt; n \\ \Pi - M_{n-1} &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (\Pi - M_{n-1}) &amp; i = n\end{cases} 
 \end{align*}\]</span>
-<p> </p>
-<p><strong>Exercise:</strong> Show that both formulations of <span class="math inline">\(D_{i}\)</span> are equivalent.</p>
 </div>
+
+<p>The PNL definitions of the short position are simple the negatives of the definitions for the long position.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-7" class="definition"><strong>Definition 5.5  (Short Option - Marking to Mid)  </strong></span>
+<span class="math display">\[\begin{align*}
+D_{i} &amp;= \begin{cases} P - M_1 &amp; i = 1 \\  M_{i-1} - M_{i} &amp; 1 &lt; i &lt; n \\ M_{n-1} - \Pi &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (M_{n-1} - \Pi) &amp; i = n\end{cases} 
+\end{align*}\]</span>
+</div>
+
+<br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-8" class="exercise"><strong>Exercise 5.3  </strong></span>For the long position, show that for <span class="math inline">\(i &lt; n\)</span> we have that <span class="math inline">\(C_i = M_{i} - P\)</span>.
+</div>
+ <br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-9" class="exercise"><strong>Exercise 5.4  </strong></span>For the long position, show that <span class="math inline">\(C_n = \Pi - P\)</span>.
+</div>
+ <br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-10" class="exercise"><strong>Exercise 5.5  </strong></span>For the short position, show that for <span class="math inline">\(i &lt; n\)</span> we have that <span class="math inline">\(C_i = P - M_i\)</span>.
+</div>
+ <br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-11" class="exercise"><strong>Exercise 5.6  </strong></span>For the short position, show that <span class="math inline">\(C_n = P - \Pi\)</span>.
+</div>
+
+</div>
+<div id="marking-to-bidask" class="section level3">
+<h3><span class="header-section-number">5.2.4</span> Marking to Bid/Ask</h3>
+<p>For a long option position, it is appropriate to mark to bid because to unwind the position we would need to sell the options at the bid price. As for the PNL formulae, we simply replace the mid prices with the bid prices.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-12" class="definition"><strong>Definition 5.6  (Long Option - Marking to Bid)  </strong></span>
+<span class="math display">\[\begin{align*}
+D_{i} &amp;= \begin{cases} B_1 - P &amp; i = 1 \\ B_{i} - B_{i-1} &amp; 1 &lt; i &lt; n \\ \Pi - B_{n-1} &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (\Pi - B_{n-1}) &amp; i = n\end{cases} 
+\end{align*}\]</span>
+</div>
+
+<p>For a short option position, we mark to the ask because unwinding the position would involve buying back the option at the ask price. So, the PNL formulae are modified by replacing the mid prices with the ask price.</p>
+
+<div class="definition">
+<span id="def:unnamed-chunk-13" class="definition"><strong>Definition 5.7  (Short Option - Marking to Ask)  </strong></span>
+<span class="math display">\[\begin{align*}
+D_{i} &amp;= \begin{cases} P - A_1 &amp; i = 1 \\  A_{i-1} - A_{i} &amp; 1 &lt; i &lt; n \\ A_{n-1} - \Pi &amp; i = n\end{cases} \\[10pt]
+
+C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (A_{n-1} - \Pi) &amp; i = n\end{cases} 
+\end{align*}\]</span>
+</div>
+
+<br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-14" class="exercise"><strong>Exercise 5.7  </strong></span>For the long position, show that for <span class="math inline">\(i &lt; n\)</span> we have that <span class="math inline">\(C_i = M_{i} - P\)</span>.
+</div>
+
+<!-- #### TTD as Sum of Daily - Sell {-} -->
+<!-- \begin{align*} -->
+<!-- D_{i} &= \begin{cases} P - A_{1} & i = 1 \\ A_{i-1} - A_{i} & i > 1 \end{cases} \\[10pt] -->
+<!-- C_{i} &= \sum_{k=1}^{i} D_{k} -->
+<!-- \end{align*} -->
+<!-- &nbsp; -->
+<!-- **Exercise:** Show that $C_{i} = P - A_{i}$.  -->
+<!-- #### Daily as Change in TTD - Buy {-} -->
+<!-- \begin{align*} -->
+<!-- C_{i} &= B_{i} - P \\[10pt] -->
+<!-- D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases} -->
+<!-- \end{align*} -->
+<!-- &nbsp; -->
+<!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
+<!-- #### Daily as Change in TTD - Sell {-} -->
+<!-- \begin{align*} -->
+<!-- C_{i} &= P - A_{i} \\[10pt] -->
+<!-- D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases} -->
+<!-- \end{align*} -->
+<!-- &nbsp; -->
+<!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
 </div>
 </div>
 <div id="scaling-up" class="section level2">
 <h2><span class="header-section-number">5.3</span> Scaling Up</h2>
-<p>In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades. Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades. In practice, for large numbers of trades, you have to be careful because unforseen errors - say from missing data, or an erroneous price - can be hard to identify.</p>
-<p>[CODING EXERCISE]</p>
+<p>In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades. Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
+<p>In the language of mathematics, portfolio pnls are linear combinations of the pnls of trades on individual shares of stocks and options. From a coding perspective, calculating a portfolio PNL from the PNLs of its constituent trades is a simple matter of grouping and aggregation.</p>
+<p>In practice, for large numbers of trades, the only real challenge is that of missing or erroneous price data. But this complexity arise from data integrity, not from the underlying quantititative finance or programming.</p>
 </div>
 <div id="returns" class="section level2">
 <h2><span class="header-section-number">5.4</span> Returns</h2>
-<p>While PNL is an important performance metric, it is often hard to interpret without first normalizing by the amount of capital required to fund the investment. This is precisely what the notion of a return is.</p>
-<!-- We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy -->
+<p>Suppose you are a trader and you are analyzing your book of trades. You do you’re daily calculations and you see that your daily PNL is a loss of $10,000. A loss is never good, but how badly do you feel about this?</p>
+<p>This is a difficult question to answer, but one critical peice of information is how big a book of trades you are managing. For example, if you are a retail trader who’s total investment size is $20,000, then a $10K loss would mean you were down 50% in one day, which should be cause for concern. On the other hand, if you are a portfolio manager of a $100 million dollar fund, then $10K is effectively zero.</p>
+<p>So, while PNL is an important performance metric, it is often hard to interpret without first normalizing by the amount of capital required to fund the investment. This is precisely what the notion of a return is.</p>
+<div id="portfolio-returns" class="section level3">
+<h3><span class="header-section-number">5.4.1</span> Portfolio Returns</h3>
+<p>Let <span class="math inline">\(\mathcal{P}\)</span> be some portfolio of of trades. Suppose we are interested in analyzing the returns of this portfolio on trade days <span class="math inline">\(t_1, \ldots, t_n\)</span>. This portfolio of trades could be as simple as buy one share of stock on day <span class="math inline">\(t_1\)</span> and then sell it on day <span class="math inline">\(t_n\)</span>. Or it could be highly complex automated trading strategy in which thousands of options and shares of stock are traded every day.</p>
+<p>Let <span class="math inline">\(I_{0}\)</span> be the amount of capital required to fund the investments at the outset. Let <span class="math inline">\(D_{i}\)</span> be the daily pnl for <span class="math inline">\(\mathcal{P}\)</span> for day <span class="math inline">\(t_{i}\)</span>. Then the daily return for the portfolio are defined as follows:</p>
 
+<div class="definition">
+<p><span id="def:unnamed-chunk-15" class="definition"><strong>Definition 5.8  (Portfolio Return)  </strong></span>Let <span class="math inline">\(r_{i}\)</span> denote the daily return for portfolio <span class="math inline">\(\mathcal{P}\)</span> on trade date <span class="math inline">\(t_{i}\)</span>. Then we have that</p>
+<span class="math display">\[\begin{align*}
+r_{i} = \frac{D_i}{I_i}
+\end{align*}\]</span>
+<p>where,</p>
+<span class="math display">\[\begin{align*}
+I_{i} = I_{0} + \sum_{k=1}^{i} D_{k}
+\end{align*}\]</span>
+</div>
+
+In words, <span class="math inline">\(I_i\)</span> is simply the initial capital, plus cummulative pnl of the portfolio up until trade date <span class="math inline">\(t_{i}\)</span>, <br> 
+<div class="exercise">
+<span id="exr:unnamed-chunk-16" class="exercise"><strong>Exercise 5.8  </strong></span>Show that:
+<span class="math display">\[\begin{align*}
+\frac{I_{n}}{I_{0}} = \prod_{k=0}^{n} (1 + r_{i}).
+\end{align*}\]</span>
+</div>
+
+</div>
+<div id="asset-price-returns" class="section level3">
+<h3><span class="header-section-number">5.4.2</span> Asset Price Returns</h3>
+<p>Asset returns are a simpler concept, that is related to the <!-- We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy --></p>
+
+</div>
 </div>
 </div>
             </section>

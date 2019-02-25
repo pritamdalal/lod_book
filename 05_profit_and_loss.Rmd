@@ -23,11 +23,17 @@ In this section we will concern ourselves with #2.
 
 
 
-### The Notation the Trade
-Half the battle in discussing PNL rigorously is setting up the notation. 
+### Intuition and Notation
+Half the battle in discussing PNL rigorously first developing an intuition for what you are try to convey, and then setting up the notation appropriately. 
 
 
-Let $\mathcal{S}$ be a particular stock, and let $t_i, \ldots t_n$ be consecutive trading days.  Suppose that we purchase one share of stock in the middle of of the day on $t_i$, for a purchase price of $S^o$.  Suppose further that we hold that share until day $t_n$, at which time we sell it for $S^c$.
+Let's say we purchase a share of stock, hold it for a few days, and then sell it.  Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point.  That is precisely what daily PNL and TTD PNL convey.
+
+Intuitively, the daily PNL of our single share purchase is simply the dollar change in the price of the stock.  The cummulative PNL the total amount of dollar change in the price of the stock since the purchase - this is the same as the sum of the daily PNLs.
+
+Now let's set up the notation for a more rigorous treatment.
+
+Let $\mathcal{S}$ be a particular stock, and let $t_1, \ldots t_n$ be consecutive trading days.  Suppose that we purchase one share of $\mathcal{S}$ in the middle of day $t_1$, for a purchase price of $S^o$.  Suppose further that we hold that share until day $t_n$, at which time we sell it for $S^c$.
 
 
 We seek to define the following:  
@@ -36,123 +42,264 @@ We seek to define the following:
 
 **TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
 
-In words, the daily PNL of our single share purchase is simply the dollar change in the price of the stock.  The cummulative PNL is the sum of the daily PNLs.
+
 
 
 ### Marking to Mid
- <!-- Suppose we purchase one share of it in the middle of the day $t_1$, and that the trade price is $S^{*}$.  Now, let $S_{t_i}$ be the settle price for day $i=1,\ldots,n$.   -->
-
+Suppose that our price data consists solely of closing prices $S_1, \ldots\, S_n$. Recall that our initial purchase price to enter the trade was $S^o$ and that our sale price to exit the trade was $S^c$.  
+ 
+```{definition, name="Stock Purchase Marking to Mid"}
 \begin{align*}
-D_{i} &= \begin{cases} S_{1} - S^{o}, & i = 1 \\ S_{i} - S_{i-1}, & 1 < i < n \\ S^{c} - S_{n-1}, & i = n\end{cases} \\[10pt]
-C_{i} &= \sum_{k=1}^{i} D_{k}
+D_{i} &= \begin{cases} S_{1} - S^{o} & i = 1 \\ S_{i} - S_{i-1} & 1 < i < n \\ S^{c} - S_{n-1} & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (S^{c} - S_{n-1}) & i = n\end{cases} 
 \end{align*}
 
+```
 
-The fact that $C_{i} = S_{i} - S^{*}$ can be interpreted as the following intuitive statement: the stock purchase is worth the difference between its current price and the price we paid for it.
 
-The tacit assumption of this simple calculation is that if we unwind our position, we would do so at the *mid* price.  However, this isn't quite true in practice.  Depending on your application and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid.  This is what we will do in the next section.
+
+Notice that on the first day of the trade, day $t_{1}$,  the daily PNL is the difference between the close price and the purchase price. On the final day of the trade, $t_n$, the daily PNL is the difference between the sale price and the previous close.
+
+```{exercise}
+Show that for $i < n$ we have that  $C_i = S_{i} - S^o$.
+```
+<br>
+```{exercise}
+What is a simpler expression for $C_n$?
+```
+<br>
+The fact that $C_{i} = S_{i} - S^{o}$ can be interpreted as the following intuitive statement: the stock purchase is worth the difference between its current price and the price we paid for it.
+
+The tacit assumption of this simple calculation is that if we unwind our position, we would do so at the *mid* price. For situations which involve infrequent trading of stocks, this type of analysis is perfectly fine.
+
+However, depending on your application and the availability of the data, you may want to incorporate the fact that you would have to unwind at the bid.  This is what we will do in the next section.
 
 
 ### Marking to Bid
-Suppose now that instead of a single end of day price, that our data set tells us both the bid price and thd ask price, denoted $B_{i}$ and $A_{i}$.
+Suppose now that instead of a single end of day close price, that our data set tells us both the bid price and thd ask price at the end of the day.  These will be denoted $B_{i}$ and $A_{i}$, respectively.
 
 If we want to *mark* our stock trade to the bid, then we would need to modify the definiton of our daily and cumulative PNL as follows:
 
+```{definition, name="Stock Purchase Marking to Bid"}
 \begin{align*}
-D_{i} &= \begin{cases} B_{1} - S^{*} & i = 1 \\ B_{i} - B_{i-1} & i > 1 \end{cases} \\[10pt]
-C_{i} &= \sum_{k=1}^{i} D_{k} = B_{i} - S^{*}
+D_{i} &= \begin{cases} B_{1} - S^{o} & i = 1 \\ B_{i} - B_{i-1} & 1 < i < n \\ S^{c} - B_{n-1} & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (S^{c} - B_{n-1}) & i = n\end{cases} 
 \end{align*}
+
+```
+
 
 By marking to the bid, we are accounting for the fact that if we were to exit our long stock position, we would sell the stock, and we would have to sell the stock at the bid.  
 
-This type of If you are analyzing a trading system the involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.
+If you are analyzing a trading system that involves frequent opening and closing of positions, then it is important to account for bids and asks in your PNL calcuations.
 
 
 ## Option PNL
 
-Suppose we trade an option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  The letter $i$ will serve as an index over the trade dates, so $i = 1,\ldots,n$. 
+Since options are more complex than stock, their PNL caclulations can seem more formidable.  However, these PNLs operate on the exact same principles.
 
-Let $B_{i}$ and $A_{i}$ be the end-of-day bid and ask prices of the option for trade date $t_{i}$. Note that both $B_{n}$ and $A_{n}$ are equal to the option payoff.  We seek to define the following:  
+Let's begin with the simplest PNL calculation for options: total PNL on expiration date.
 
-**Daily:** $D_{i}$ -  the *daily PNL* for the trade as of end-of-day $t_i$.  
 
-**TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
-
-Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa.
-
-In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs.  We will consider both alternatives below.  It is useful to consider buys and sells separately.
 
 ### Total PNL At Expiration
-The easiest PNL concept for an option trade is the the total PNL at the time of expiration.
+Suppose we trade a vanilla option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  Let $\Pi$ be the payoff of the option.  Then at the time of expiration, the total PNLs (i.e. TTD PNL) for for the long and short positions are as follows:
 
-Suppose option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  Let $\Pi$ be the payoff of the option.  Then at the time of expiration, the total PNLs for for the long and shorts positions2 are as follows:
+```{definition, name="Option TTD PNL at Expiration"}
 
 
 Long: $\Pi - P$
 
 Short: $P - \Pi$
+```
+<br>
+When you buy an option, you pay a (strictly positive) premium up front and recieve a (non-negative) payoff at expiration.  Thus, your total PNL at expiration is the difference between the payoff you recieve and the premium you paid.
+
+When you sell an option, you receive premium up front and you are obligated to make a payoff at the time of expiration.  Thus, your total PNL at expiration is the difference between the upfront premium you recieved and the payoff you make at the time of expiration.
+
+### Intuition and Notation
+The notational setup for option PNL is very similar to that of stock PNL.
+
+Suppose we trade an option $\mathcal{O}$ at a price $P$ on trade date $t_{1}$, and we hold that position until expiration, which is trade date $t_{n}$.  The letter $i$ will serve as an index over the trade dates, so $i = 1,\ldots,n$. 
+
+Let $B_{i}$ and $A_{i}$ be the end-of-day bid and ask prices of the option for trade date $t_{i}$. Note that both $B_{n}$ and $A_{n}$ are equal to the option payoff, which we denote as $\Pi$.  We seek to define the following:  
+
+**Daily:** $D_{i}$ -  the *daily PNL* for the trade as of end-of-day $t_i$.  
+
+**TTD:** $C_{i}$ - the *trade-to-date PNL* for the trade as of end-of-day $t_i$.
 
 
 
-#### TTD as Sum of Daily - Buy {-}
+Intuitively, the daily PNL of an option trade is the dollar change in the value of the position for that day.  The cummulative PNL is the total dollar change - this is the same as the sum of the daily PNLs.
 
+<!-- Intuitively, the trade-to-date (TTD) PNL is the amount of money you made or lost if you unwind the trade at current market values.  The daily PNL is the one day change in the trade-to-date PNL.  The two concepts are interchangeable in that it is possible to define TTD PNL in terms of daily PNL, and vice versa. -->
 
+<!-- In my own work, I prefer to calculate daily PNLs for a trade, and then define the trade-to-date PNL as the sum of the previous daily PNLs.  We will consider both alternatives below.  It is useful to consider buys and sells separately. -->
+
+Option markets have much wider spread than equity markets, so it's important to account for bid-ask spread in most analysis of options markets.  However, marking to mid can be a valid approach for certain applications, so we will present both approaches.
+
+For both approaches we separate long and short option positions
+
+### Marking to Mid
+Let $M_i$ be the mid price at the end of trade date $t_i$.  Thus, $M_i$ is the  the average of $A_i$ and $B_i$.  When marking to mid prices the PNL for the long position is as follows.
+
+```{definition, name="Long Option - Marking to Mid"}
 \begin{align*}
-D_{i} &= \begin{cases} B_{1} - P & i = 1 \\ B_{i} - B_{i-1} & i > 1 \end{cases} \\[10pt]
-C_{i} &= \sum_{k=1}^{i} D_{k}
+D_{i} &= \begin{cases} M_11 - P & i = 1 \\ M_{i} - M_{i-1} & 1 < i < n \\ \Pi - M_{n-1} & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (\Pi - M_{n-1}) & i = n\end{cases} 
 \end{align*}
 
-&nbsp;
-
-**Exercise:** Show that $C_{j} = B_{j} - P$. 
+```
 
 
-#### TTD as Sum of Daily - Sell {-}
+The PNL definitions of the short position are simple the negatives of the definitions for the long position.
 
-
+```{definition, name="Short Option - Marking to Mid"}
 \begin{align*}
-D_{i} &= \begin{cases} P - A_{1} & i = 1 \\ A_{i-1} - A_{i} & i > 1 \end{cases} \\[10pt]
-C_{i} &= \sum_{k=1}^{i} D_{k}
+D_{i} &= \begin{cases} P - M_1 & i = 1 \\  M_{i-1} - M_{i} & 1 < i < n \\ M_{n-1} - \Pi & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (M_{n-1} - \Pi) & i = n\end{cases} 
+\end{align*}
+```
+
+
+<br>
+```{exercise}
+For the long position, show that for $i < n$ we have that  $C_i = M_{i} - P$.
+```
+<br>
+```{exercise}
+For the long position, show that $C_n = \Pi - P$.
+```
+<br>
+```{exercise}
+For the short position, show that for $i < n$ we have that  $C_i = P - M_i$.
+```
+<br>
+```{exercise}
+For the short position, show that $C_n = P - \Pi$.
+```
+
+### Marking to Bid/Ask
+For a long option position, it is appropriate to mark to bid because to unwind the position we would need to sell the options at the bid price. As for the PNL formulae, we simply replace the mid prices with the bid prices.
+
+```{definition, name="Long Option - Marking to Bid"}
+\begin{align*}
+D_{i} &= \begin{cases} B_1 - P & i = 1 \\ B_{i} - B_{i-1} & 1 < i < n \\ \Pi - B_{n-1} & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (\Pi - B_{n-1}) & i = n\end{cases} 
 \end{align*}
 
-&nbsp;
+```
 
-**Exercise:** Show that $C_{i} = P - A_{i}$. 
+For a short option position, we mark to the ask because unwinding the position would involve buying back the option at the ask price. So, the PNL formulae are modified by replacing the mid prices with the ask price.
 
-
-#### Daily as Change in TTD - Buy {-}
-
-
+```{definition, name="Short Option - Marking to Ask"}
 \begin{align*}
-C_{i} &= B_{i} - P \\[10pt]
-D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases}
+D_{i} &= \begin{cases} P - A_1 & i = 1 \\  A_{i-1} - A_{i} & 1 < i < n \\ A_{n-1} - \Pi & i = n\end{cases} \\[10pt]
+
+C_{i} &= \begin{cases} \sum_{k=1}^{i} D_{k} & i < n \\[10pt] \sum_{k=1}^{n-1} D_{k} + (A_{n-1} - \Pi) & i = n\end{cases} 
 \end{align*}
+```
 
-&nbsp;
-
-**Exercise:** Show that both formulations of $D_{i}$ are equivalent.
-
-
-#### Daily as Change in TTD - Sell {-}
+<br>
+```{exercise}
+For the long position, show that for $i < n$ we have that  $C_i = M_{i} - P$.
+```
 
 
-\begin{align*}
-C_{i} &= P - A_{i} \\[10pt]
-D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases}
-\end{align*}
 
-&nbsp;
 
-**Exercise:** Show that both formulations of $D_{i}$ are equivalent.
+<!-- #### TTD as Sum of Daily - Sell {-} -->
+
+
+<!-- \begin{align*} -->
+<!-- D_{i} &= \begin{cases} P - A_{1} & i = 1 \\ A_{i-1} - A_{i} & i > 1 \end{cases} \\[10pt] -->
+<!-- C_{i} &= \sum_{k=1}^{i} D_{k} -->
+<!-- \end{align*} -->
+
+<!-- &nbsp; -->
+
+<!-- **Exercise:** Show that $C_{i} = P - A_{i}$.  -->
+
+
+<!-- #### Daily as Change in TTD - Buy {-} -->
+
+
+<!-- \begin{align*} -->
+<!-- C_{i} &= B_{i} - P \\[10pt] -->
+<!-- D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases} -->
+<!-- \end{align*} -->
+
+<!-- &nbsp; -->
+
+<!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
+
+
+<!-- #### Daily as Change in TTD - Sell {-} -->
+
+
+<!-- \begin{align*} -->
+<!-- C_{i} &= P - A_{i} \\[10pt] -->
+<!-- D_{i} &= \begin{cases} C_{1} & i = 1 \\ C_{i} - C_{i-1} & i > 1 \end{cases} -->
+<!-- \end{align*} -->
+
+<!-- &nbsp; -->
+
+<!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
 
 ## Scaling Up
-In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades.  Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.  In practice, for large numbers of trades, you have to be careful because unforseen errors - say from missing data, or an erroneous price - can be hard to identify.
+In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades.  Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.  
 
-[CODING EXERCISE]
+In the language of mathematics, portfolio pnls are linear combinations of the pnls of trades on individual shares of stocks and options.  From a coding perspective, calculating a portfolio PNL from the PNLs of its constituent trades is a simple matter of grouping and aggregation. 
 
+
+In practice, for large numbers of trades, the only real challenge is that of missing or erroneous price data.   But this complexity arise from data integrity, not from the underlying quantititative finance or programming.
 
 ## Returns
 
-While PNL is an important performance metric, it is often hard to interpret without first normalizing by the amount of capital required to fund the investment.  This is precisely what the notion of a return is.  
+Suppose you are a trader and you are analyzing your book of trades.  You do you're daily calculations and you see that your daily PNL is a loss of \$10,000.  A loss is never good, but how badly do you feel about this?
 
+This is a difficult question to answer, but one critical peice of information is how big a book of trades you are managing.  For example, if you are a retail trader who's total investment size is \$20,000, then a \$10K loss would mean you were down 50% in one day, which should be cause for concern.  On the other hand, if you are a portfolio manager of a \$100 million dollar fund, then \$10K is effectively zero.
+
+
+So, while PNL is an important performance metric, it is often hard to interpret without first normalizing by the amount of capital required to fund the investment.  This is precisely what the notion of a return is.  
+
+
+### Portfolio Returns
+Let $\mathcal{P}$ be some portfolio of of trades.  Suppose we are interested in analyzing the returns of this portfolio on trade days $t_1, \ldots, t_n$. This portfolio of trades could be as simple as buy one share of stock on day $t_1$ and then sell it on day $t_n$.  Or it could be highly complex automated trading strategy in which thousands of options and shares of stock are traded every day.
+
+Let $I_{0}$ be the amount of capital required to fund the investments at the outset.  Let $D_{i}$ be the daily pnl for $\mathcal{P}$ for day $t_{i}$.  Then the daily return for the portfolio are defined as follows:
+
+```{definition, name="Portfolio Return"}
+Let $r_{i}$ denote the daily return for portfolio $\mathcal{P}$ on trade date $t_{i}$.  Then we have that
+
+\begin{align*}
+r_{i} = \frac{D_i}{I_i}
+\end{align*}
+
+where,
+
+\begin{align*}
+I_{i} = I_{0} + \sum_{k=1}^{i} D_{k}
+\end{align*}
+
+```
+
+In words, $I_i$ is simply the initial capital, plus cummulative pnl of the portfolio up until trade date $t_{i}$,
+<br>
+```{exercise}
+Show that:
+\begin{align*}
+\frac{I_{n}}{I_{0}} = \prod_{k=0}^{n} (1 + r_{i}).
+\end{align*}
+
+```
+
+### Asset Price Returns
+
+Asset returns are a simpler concept, that is related to the 
 <!-- We will let $R_{i}$ be the day $t_{i}$ be the return of a trading strategy -->
