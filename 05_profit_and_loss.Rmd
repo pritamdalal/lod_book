@@ -1,17 +1,21 @@
 # Profit & Loss
+
+In this chapter we will consider various performance related calculations: pnl, returns, volatility.
+
 The most basic performance measure of a particular trade is its daily *profit and loss*, usually shortened to *PNL*.  In essence, daily pnl measures how much the trade increased or decreased in value on a particular day?  We will also be interested in *cummualative PNL* - also know as *trade-to-date (TTD) PNL* - which measures the total amount a trade has increased or decreased in value since its inception.
 
+In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into empirical statements about PNL.  
 
-In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into statements about PNL.  
+PNLs without context are often hard to interpret, which is where the notion of *portfolio returns* show their value.  A portfolio return normalizes a PNL by the amount of capital required to generate it.  A somewhat related concept is that of *asset price returns*, which measures the percentage change in the price of an asset.
 
-<!-- It is my opinion that analyzing PNLs is the best way to internalize knowledge of options, which is in part why I wrote this book. -->
+*Volatility* is an important concept in finance - it captures the notion of variability.  Volatility can refer to the PNL variability of a trading strategy, and also the price variability of a particular asset.
 
-In this chapter we explore how to calculate profit and loss for trades on options and stock.
+
 
 ## Stock PNL
 As mentioned in the *Quantitative Results* chapter, after a stock has been issued, it can be traded in the secondary market.  These trades occur on various exchanges, throughout the day, on most business days.  The stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares transacted daily.
 
-For a given trading day, the final trade price of a stock is referred to as the *close* price.  The series of close prices of a stock give information about the performace of the stock as an investement.  
+For a given trading day, the final trade price of a stock is referred to as the *close* price.  A series of close prices of a stock can give information about the performace of that stock as an investement.  
 
 Daily close prices will be relevant to us for two reasons:
 
@@ -24,14 +28,14 @@ In this section we will concern ourselves with #2.
 
 
 ### Intuition and Notation
-Half the battle in discussing PNL rigorously first developing an intuition for what you are try to convey, and then setting up the notation appropriately. 
+When discussing PNL rigorously, the congitive heavy lifting happens in two steps: first, developing an intuition for what you are trying to convey; second, setting up the notation appropriately. 
 
 
-Let's say we purchase a share of stock, hold it for a few days, and then sell it.  Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point.  That is precisely what daily PNL and TTD PNL convey.
+Let's start with the intuition.  Suppose we purchase a share of stock, hold it for a few days, and then sell it.  Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point.  That is precisely what *daily PNL* and *TTD PNL* convey.
 
-Intuitively, the daily PNL of our single share purchase is simply the dollar change in the price of the stock.  The cummulative PNL the total amount of dollar change in the price of the stock since the purchase - this is the same as the sum of the daily PNLs.
+The daily PNL of our single share purchase is simply the dollar change in the price of the stock.  The cummulative PNL the total amount of dollar change in the price of the stock since the purchase, which is the same as the sum of the daily PNLs.
 
-Now let's set up the notation for a more rigorous treatment.
+Now let's set up the notation.
 
 Let $\mathcal{S}$ be a particular stock, and let $t_1, \ldots t_n$ be consecutive trading days.  Suppose that we purchase one share of $\mathcal{S}$ in the middle of day $t_1$, for a purchase price of $S^o$.  Suppose further that we hold that share until day $t_n$, at which time we sell it for $S^c$.
 
@@ -249,7 +253,7 @@ For the long position, show that for $i < n$ we have that  $C_i = M_{i} - P$.
 
 <!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
 
-## Scaling Up
+## Portfolio PNL
 In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades.  Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.  
 
 In the language of mathematics, portfolio pnls are linear combinations of the pnls of trades on individual shares of stocks and options.  From a coding perspective, calculating a portfolio PNL from the PNLs of its constituent trades is a simple matter of grouping and aggregation. 
@@ -308,7 +312,7 @@ Let $\mathcal{S}$ be a stock and let $t_{0}, \ldots ,t_{1}$ be consectutive trad
 Let $t_i$ and $t_j$ be tradind days with $0 < i < j$.  The **return** of stock $\mathcal{S}$ between $t_i$ and $t_j$ is denoted $r_{i,j}$ and is defined to be
   
 \begin{align*}
-r_{i,j} = \frac{S_j - S_i}{S_i} = \frac{S_j}{S_j} - 1.
+r_{i,j} = \frac{S_j - S_i}{S_i} = \frac{S_j}{S_i} - 1.
 \end{align*}
 
 
@@ -335,7 +339,9 @@ r_{0,n} = \Bigg( \prod_{k = 1}^{n} \big( 1 + r_k \big) \Bigg) - 1
 
 ## Volatility
 
-Both portfolio returns and price returns give a sense for growth or decline of the value of an investment.  We will also be concerned with overall variability of portfolios and stock prices.  One important measure of this overall variability is the volatility.
+Both portfolio returns and price returns give a sense for growth or decline of the value of an investment - the so called directional movement of the investment.
+
+We will also be concerned with overall variability of portfolios and stock prices.  One important measure of this overall variability is the *volatility*.
 
 ```{definition}
 Let $r_{1}, \ldots , r_{n}$ be returns (either portfolio or price) for consecutive trading days $t_1, \ldots t_n$.  Then the volaility of these returns is their annualized standard deviation:

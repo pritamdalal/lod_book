@@ -116,9 +116,13 @@ All other options are considered more complicated and are therefore referred to 
 
 American (equity) options are insurance contracts that have as their underlying publicly traded stocks.  They are called *options* because owning them gives you a *right* to do something, but you are **not required** to exercise that right.  You have the *option* exercise your right if it happens to be beneficial to you.  This *right without obiligation* has the effect of creating an insurance benefit for the option holder.
 
-American options come in two varieties: puts and calls.  *Put* contracts are insurance for those who already own the underlying stock and intend to sell it in the future; puts are protection against the price of the stock falling before they've had a chance to sell it.  *Call* contracts are insurance for those who intend to buy the underlying stock in the future; calls are protection against the price of the stock rising before they've had a chance to buy it.
+American options come in two varieties: puts and calls.  
 
-In reality, you don't have to purchase either puts or calls as insurance.  You don't have to own the underlying to buy a put.  And if you do happen to own the underlying, you don't have to intend to sell it.  Nor do you have to intend to buy the underlying in the future in order to buy calls.  You can buy or sell either type of contract to express different views on the underlying.
+*Put* contracts are insurance for those who already own the underlying stock and intend to sell it in the future; puts are protection against the price of the stock falling before they've had a chance to sell it.  
+
+*Call* contracts are insurance for those who intend to buy the underlying stock in the future; calls are protection against the price of the stock rising before they've had a chance to buy it.
+
+In reality, you don't have to purchase puts or calls as insurance.  You don't have to own the underlying to buy a put.  And if you do happen to own the underlying, you don't have to intend to sell it.  Nor do you have to intend to buy the underlying in the future in order to buy calls.  You can buy or sell either type of contract to express different views on the underlying.
 
 
 #### American Option Contract Specification {-}
@@ -142,7 +146,6 @@ There are two sides to every options transaction.  The *option buyer* pays premi
 In the case of puts, if the option buyer exercises their right to sell the underlying, the option seller is obligated to buy the underlying from them.  In the case of calls, if the option buyer exercise their right to buy the underlying, the option seller is obligate to sell the underlying to them.
 
 Sentences like those in the previous paragraph can be a quite confusing at first.  There are a lot of "buys" and "sells" floating around. Don't worry, it will get less confusing over time.  But in my experience, you will never outgrown need to occasionally take a deep breath, splash some cold water on your face, and then go back to the contract specifications.
-
 
 **Exercises:** Ruobing has purchased an American call on SPY with a strike price of \$250.  He paid \$10 in premium.  Farez was the option seller on this transaction.  It's now the final day of the contract and Ruobing has still not exercised his right. 
 

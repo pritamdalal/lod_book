@@ -49,43 +49,6 @@
 
 
 
-<style type="text/css">
-div.sourceCode { overflow-x: auto; }
-table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
-  margin: 0; padding: 0; vertical-align: baseline; border: none; }
-table.sourceCode { width: 100%; line-height: 100%; }
-td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
-td.sourceCode { padding-left: 5px; }
-code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code > span.dt { color: #902000; } /* DataType */
-code > span.dv { color: #40a070; } /* DecVal */
-code > span.bn { color: #40a070; } /* BaseN */
-code > span.fl { color: #40a070; } /* Float */
-code > span.ch { color: #4070a0; } /* Char */
-code > span.st { color: #4070a0; } /* String */
-code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code > span.ot { color: #007020; } /* Other */
-code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code > span.fu { color: #06287e; } /* Function */
-code > span.er { color: #ff0000; font-weight: bold; } /* Error */
-code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-code > span.cn { color: #880000; } /* Constant */
-code > span.sc { color: #4070a0; } /* SpecialChar */
-code > span.vs { color: #4070a0; } /* VerbatimString */
-code > span.ss { color: #bb6688; } /* SpecialString */
-code > span.im { } /* Import */
-code > span.va { color: #19177c; } /* Variable */
-code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code > span.op { color: #666666; } /* Operator */
-code > span.bu { } /* BuiltIn */
-code > span.ex { } /* Extension */
-code > span.pp { color: #bc7a00; } /* Preprocessor */
-code > span.at { color: #7d9029; } /* Attribute */
-code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-</style>
 
 <link rel="stylesheet" href="css/style.css" type="text/css" />
 </head>
@@ -160,6 +123,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li class="chapter" data-level="5.4.1" data-path="profit-loss.html"><a href="profit-loss.html#portfolio-returns"><i class="fa fa-check"></i><b>5.4.1</b> Portfolio Returns</a></li>
 <li class="chapter" data-level="5.4.2" data-path="profit-loss.html"><a href="profit-loss.html#stock-price-returns"><i class="fa fa-check"></i><b>5.4.2</b> Stock Price Returns</a></li>
 </ul></li>
+<li class="chapter" data-level="5.5" data-path="profit-loss.html"><a href="profit-loss.html#volatility"><i class="fa fa-check"></i><b>5.5</b> Volatility</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="option-pricing.html"><a href="option-pricing.html"><i class="fa fa-check"></i><b>6</b> Option Pricing</a><ul>
 <li class="chapter" data-level="6.1" data-path="option-pricing.html"><a href="option-pricing.html#black-scholes-merton"><i class="fa fa-check"></i><b>6.1</b> Black-Scholes-Merton</a></li>
@@ -190,7 +154,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
             <section class="normal" id="section-">
 <div id="quantitative-results" class="section level1">
 <h1><span class="header-section-number">3</span> Quantitative Results</h1>
-<p>In this section we consider the basic quantitative foundations of option pricing theory. For a more detailed treatment, I recommend the following execellent texts:</p>
+<p>In this section we cover the foundations of quantitative finance. For a more detailed treatment, I recommend the following execellent texts:</p>
 <!-- NOTE: In later stages of the book, see how necessary this chapter is and then give guidance on what can be skipped and what cannot. -->
 <!-- If you have a strong grasp over these results, or are simply not interested in the theoretical details, this chapter can be skipped. -->
 <!-- ANTI MATH RANTING {begin} -->
@@ -202,17 +166,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <p><strong>Derivative Markets</strong> by Robert L. McDonald</p>
 <div id="arbitrage" class="section level2">
 <h2><span class="header-section-number">3.1</span> Arbitrage</h2>
-<p>An <em>arbitrage</em> is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets. The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer available.</p>
+<p>An <em>arbitrage</em> is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets. The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade, thus moving prices until the arb no longer available.</p>
 <!-- Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).   -->
-<p>Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements. These theorems often involve questionable assumptions about the market, and they are often of little to use to finance practitioners.</p>
-<p>There is, however, a strong kernel of truth in arbitrage arguments. If markets significantly breach so-called <strong>no arbitrage</strong> prices, then there will be very safe and profitable trades in the market. Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.</p>
+<p>Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements. These theorems often involve questionable assumptions about the market, and can be of little to use to finance practitioners.</p>
+<p>There is, however, a strong kernel of truth in arbitrage arguments. If markets significantly breach so-called <strong>no arbitrage</strong> prices, then there will be safe and profitable trades in the market. Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.</p>
 <p>Keep your eyes peeled for arbs in the market. And if you find one, please call me.</p>
 </div>
 <div id="stocks-dividends" class="section level2">
 <h2><span class="header-section-number">3.2</span> Stocks &amp; Dividends</h2>
 <p>Companies can raise funds to grow their business by issuing <em>shares of stock</em>. The buyer of the stock, called a <em>shareholder</em>, pays money to the company which the company keeps forever. In return, the shareholder is entitled to a fraction of the companies future profits and also has the ability to vote on certain matters at shareholder meetings. A crucial point is that the owner of a stock has limited liability with respect to the company. The worst thing that can happen is that shareholder never receives any profits, and the stock itself also becomes worthless. So, for example, if the company is caught illegally polluting, the shareholder cannot be sued for damages. In this sense the value of stock can never be negative.</p>
 <p>Once a stock has been issued by a company, the owner of the stock can sell it to another investor. This is called a secondary market transaction. Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the new owner.</p>
-<p>Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about <em>the stock market</em>. These transactions occur via complicated auction mechanisms that match buyers and sellers. The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.</p>
+<p>Secondary market transactions occur on <em>exchanges</em> such as the New York Stock Exchange. The secondary markets are usually what people are referring to when they talk about <em>the stock market</em>. These transactions occur via complicated auction mechanisms that match buyers and sellers. The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.</p>
 <p>Here are some examples of companies who’s stocks trade heavily in the secondary markets.</p>
 <p><strong>AAPL</strong> - Apple <!-- (you seriously have an Android bro)  --></p>
 <p><strong>GOOG</strong> - Alphabet <!-- (...dude iPhones are totally overrated) --></p>
@@ -226,13 +190,14 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p>The last trade price as of time <span class="math inline">\(t\)</span>.</p></li>
 </ol>
 <p>For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case.</p>
-<p>For options, which are traded much less frequently than stocks. There is often a much bigger bid-ask spread, and long spans of time between trades, so it is important to clarify what is meant by the phrase <em>the price at time t</em>. <!-- Typically, we can safely gloss over what the phrase *the price of the stock* exactly means. --></p>
+<p>Options markets are far less liquid than stock markets. This means that there are larger bid-ask spreads, and longer spans of time between trades. For these reasons, in options markets it is important to clarify what is meant by the phrase <em>the price at time t</em>.</p>
+<!-- Typically, we can safely gloss over what the phrase *the price of the stock* exactly means. -->
 <p>The upshot of our previous discussion about exchanges is that <span class="math inline">\(S_{t}\)</span> varies through time. As it turns out, it is useful to think of the of <span class="math inline">\(S_{t}\)</span> as a series of random variable. In math circles this is know as a <em>stochastic process</em>.</p>
 <!-- It is my intention to avoid mathematical nerdery as much as possible, but sometimes I will be forced to indulge is such evils.  My apologies in advanced. -->
-<p>When profits are distributed to the owners of a stock, this is done on a per share basis. The amount that is paid per share is called a <em>dividend payment</em>. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock. As it turns out it does, and this question leads to our first <em>quantitative</em> result involving an arbitrage argument.</p>
+<p>When profits are distributed to the owners of a stock, this is done on a per share basis. The amount that is paid per share is called a <em>dividend payment</em>. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock. As it turns out it does, and this question leads to our first quantitative result involving an arbitrage argument.</p>
 <p><strong>Theorem:</strong> Suppose that a stock is going make a divided payment of <span class="math inline">\(c\)</span> at time <span class="math inline">\(T\)</span> and that just prior to the dividend payment is trading at a price of <span class="math inline">\(S^{*}\)</span>. Then then price of the stock just after the dividend payment is <span class="math inline">\(S_{T} = S^{*} - c\)</span>.</p>
 <p><strong>Proof:</strong> NEED TO FILL IN.</p>
-<p>Properly defining the concept of a share of <em>stock</em> is a complicated legal exercise, and a precise account of how stocks are bought and sold in the secondary market would require its own large book. The amount of detail you will ultimately need know depends on how you intend to apply your knowledge. For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff. If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.</p>
+<p>Rigorously defining the concept of a share of <em>stock</em> is a complicated legal exercise, and a precise account of how stocks are bought and sold in the secondary market would require its own large book. The amount of detail you will ultimately need know depends on how you intend to apply your knowledge. For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff. If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.</p>
 <p>For the purposes of this book, the following stylized facts will suffice.</p>
 <ol style="list-style-type: decimal">
 <li><p>A shareholder purchases stock which gives them claims to a company’s future profits. This is a limited liability investment in that the value of a stock can never be negative.</p></li>

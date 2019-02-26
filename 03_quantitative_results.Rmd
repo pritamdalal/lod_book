@@ -1,6 +1,6 @@
 # Quantitative Results
 
-In this section we consider the basic quantitative foundations of option pricing theory.  For a more detailed treatment, I recommend the following execellent texts:  
+In this section we cover the foundations of quantitative finance.  For a more detailed treatment, I recommend the following execellent texts:  
 
 
 <!-- NOTE: In later stages of the book, see how necessary this chapter is and then give guidance on what can be skipped and what cannot. -->
@@ -24,13 +24,13 @@ In this section we consider the basic quantitative foundations of option pricing
 
 
 ## Arbitrage
-An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade and thus move prices until the arb no longer available.
+An *arbitrage* is a risk-less profit that requires no initial investment. One of the basic tenets of quantitative finance is that arbitrage opportunities should not exist in the markets.  The reasoning is as follows: if an arbitrage exists, market participants will pile onto the trade, thus moving prices until the arb no longer available.
 
 <!-- Mathematically minded nerds with lots of time on their hands use arbitrage arguments to prove theorems about the nature of markets.  In doing so, they make stylized, and often questionable, assumptions about markets, glossing over certain details to make their mathematical stories work seamlessly.  Arbitrage arguments are highly academic in nature, and plenty of that work is of limited importance to finance practitioners (or anyone for that matter).   -->
 
-Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve questionable assumptions about the market, and they are often of little to use to finance practitioners.
+Much of theoretical quantitative finance consists of theorems which are proved by using arbitrage arguements.  These theorems often involve questionable assumptions about the market, and can be of little to use to finance practitioners.
 
-There is, however, a strong kernel of truth in arbitrage arguments.  If markets significantly breach so-called **no arbitrage** prices, then there will be very safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
+There is, however, a strong kernel of truth in arbitrage arguments.  If markets significantly breach so-called **no arbitrage** prices, then there will be safe and profitable trades in the market.  Traders will eventually catch on to the these trades, which will cause prices to move toward the no-arbitrage levels.
 
 Keep your eyes peeled for arbs in the market.  And if you find one, please call me.
 
@@ -42,7 +42,7 @@ Companies can raise funds to grow their business by issuing *shares of stock*. T
 
 Once a stock has been issued by a company, the owner of the stock can sell it to another investor.  This is called a secondary market transaction.  Once the share has been sold in the secondary market, the claims to profits and the voting rights are both transferred to the new owner.
 
-Secondary market transactions occur on exchanges, like the New York Stock Exchange, and are usually what people mean when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.  
+Secondary market transactions occur on *exchanges* such as the New York Stock Exchange. The secondary markets are usually what people are referring to when they talk about *the stock market*.  These transactions occur via complicated auction mechanisms that match buyers and sellers.  The mechanisms are such that the actual trade prices can fluctuate (sometimes greatly) from one transaction to the next.  
 
 Here are some examples of companies who's stocks trade heavily in the secondary markets.
 
@@ -70,7 +70,8 @@ Through out the course of this book, we will often refer to *the price of a stoc
 
 For stocks that have high trading volume, these two values will be usually quite close - but this is not always the case.
 
-For options, which are traded much less frequently than stocks.  There is often a much bigger bid-ask spread, and long spans of time between trades, so it is important to clarify what is meant by the phrase *the price at time t*.
+Options markets are far less liquid than stock markets.  This means that there are larger bid-ask spreads, and longer spans of time between trades.  For these reasons, in options markets it is important to clarify what is meant by the phrase *the price at time t*.
+
 <!-- Typically, we can safely gloss over what the phrase *the price of the stock* exactly means. -->
 
 
@@ -78,14 +79,14 @@ The upshot of our previous discussion about exchanges is that $S_{t}$ varies thr
 
 <!-- It is my intention to avoid mathematical nerdery as much as possible, but sometimes I will be forced to indulge is such evils.  My apologies in advanced. -->
 
-When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  As it turns out it does, and this question leads to our first *quantitative* result involving an arbitrage argument.
+When profits are distributed to the owners of a stock, this is done on a per share basis.  The amount that is paid per share is called a *dividend payment*. It is reasonable to wonder whether issuing a dividend payment has any near-term impact on the price of the stock.  As it turns out it does, and this question leads to our first quantitative result involving an arbitrage argument.
 
 
 **Theorem:** Suppose that a stock is going make a divided payment of $c$ at time $T$ and that just prior to the dividend payment is trading at a price of $S^{*}$.  Then then price of the stock just after the dividend payment is $S_{T} = S^{*} - c$.
 
 **Proof:** NEED TO FILL IN.
 
-Properly defining the concept of a share of *stock* is a complicated legal exercise, and a precise account of how stocks are bought and sold in the secondary market would require its own large book.  The amount of detail you will ultimately need know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
+Rigorously defining the concept of a share of *stock* is a complicated legal exercise, and a precise account of how stocks are bought and sold in the secondary market would require its own large book.  The amount of detail you will ultimately need know depends on how you intend to apply your knowledge.  For example, if you are an attorney that works on IPOs, you will need to know a lot about the legal stuff.  If you are a creating statistical arbitrage strategies, you will need be an expert on exchange microstructure.
 
 For the purposes of this book, the following stylized facts will suffice.
 

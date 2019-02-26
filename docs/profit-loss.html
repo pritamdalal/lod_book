@@ -118,7 +118,7 @@
 <li class="chapter" data-level="5.2.3" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-mid-1"><i class="fa fa-check"></i><b>5.2.3</b> Marking to Mid</a></li>
 <li class="chapter" data-level="5.2.4" data-path="profit-loss.html"><a href="profit-loss.html#marking-to-bidask"><i class="fa fa-check"></i><b>5.2.4</b> Marking to Bid/Ask</a></li>
 </ul></li>
-<li class="chapter" data-level="5.3" data-path="profit-loss.html"><a href="profit-loss.html#scaling-up"><i class="fa fa-check"></i><b>5.3</b> Scaling Up</a></li>
+<li class="chapter" data-level="5.3" data-path="profit-loss.html"><a href="profit-loss.html#portfolio-pnl"><i class="fa fa-check"></i><b>5.3</b> Portfolio PNL</a></li>
 <li class="chapter" data-level="5.4" data-path="profit-loss.html"><a href="profit-loss.html#returns"><i class="fa fa-check"></i><b>5.4</b> Returns</a><ul>
 <li class="chapter" data-level="5.4.1" data-path="profit-loss.html"><a href="profit-loss.html#portfolio-returns"><i class="fa fa-check"></i><b>5.4.1</b> Portfolio Returns</a></li>
 <li class="chapter" data-level="5.4.2" data-path="profit-loss.html"><a href="profit-loss.html#stock-price-returns"><i class="fa fa-check"></i><b>5.4.2</b> Stock Price Returns</a></li>
@@ -154,14 +154,15 @@
             <section class="normal" id="section-">
 <div id="profit-loss" class="section level1">
 <h1><span class="header-section-number">5</span> Profit &amp; Loss</h1>
+<p>In this chapter we will consider various performance related calculations: pnl, returns, volatility.</p>
 <p>The most basic performance measure of a particular trade is its daily <em>profit and loss</em>, usually shortened to <em>PNL</em>. In essence, daily pnl measures how much the trade increased or decreased in value on a particular day? We will also be interested in <em>cummualative PNL</em> - also know as <em>trade-to-date (TTD) PNL</em> - which measures the total amount a trade has increased or decreased in value since its inception.</p>
-<p>In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into statements about PNL.</p>
-<!-- It is my opinion that analyzing PNLs is the best way to internalize knowledge of options, which is in part why I wrote this book. -->
-<p>In this chapter we explore how to calculate profit and loss for trades on options and stock.</p>
+<p>In subsequent chapters, we will encounter a variety of theoretical statements regarding the pricing and hedging of options; many of these can be easily translated into empirical statements about PNL.</p>
+<p>PNLs without context are often hard to interpret, which is where the notion of <em>portfolio returns</em> show their value. A portfolio return normalizes a PNL by the amount of capital required to generate it. A somewhat related concept is that of <em>asset price returns</em>, which measures the percentage change in the price of an asset.</p>
+<p><em>Volatility</em> is an important concept in finance - it captures the notion of variability. Volatility can refer to the PNL variability of a trading strategy, and also the price variability of a particular asset.</p>
 <div id="stock-pnl" class="section level2">
 <h2><span class="header-section-number">5.1</span> Stock PNL</h2>
 <p>As mentioned in the <em>Quantitative Results</em> chapter, after a stock has been issued, it can be traded in the secondary market. These trades occur on various exchanges, throughout the day, on most business days. The stocks that you are familiar with (GOOG, AAPL, FB) trade tens of thousands of times a day, with millions of shares transacted daily.</p>
-<p>For a given trading day, the final trade price of a stock is referred to as the <em>close</em> price. The series of close prices of a stock give information about the performace of the stock as an investement.</p>
+<p>For a given trading day, the final trade price of a stock is referred to as the <em>close</em> price. A series of close prices of a stock can give information about the performace of that stock as an investement.</p>
 <p>Daily close prices will be relevant to us for two reasons:</p>
 <ol style="list-style-type: decimal">
 <li><p>The payoff of an equity option is determined by the close price of its underlying on the option expiration date.</p></li>
@@ -170,10 +171,10 @@
 <p>In this section we will concern ourselves with #2.</p>
 <div id="intuition-and-notation" class="section level3">
 <h3><span class="header-section-number">5.1.1</span> Intuition and Notation</h3>
-<p>Half the battle in discussing PNL rigorously first developing an intuition for what you are try to convey, and then setting up the notation appropriately.</p>
-<p>Let’s say we purchase a share of stock, hold it for a few days, and then sell it. Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point. That is precisely what daily PNL and TTD PNL convey.</p>
-<p>Intuitively, the daily PNL of our single share purchase is simply the dollar change in the price of the stock. The cummulative PNL the total amount of dollar change in the price of the stock since the purchase - this is the same as the sum of the daily PNLs.</p>
-<p>Now let’s set up the notation for a more rigorous treatment.</p>
+<p>When discussing PNL rigorously, the congitive heavy lifting happens in two steps: first, developing an intuition for what you are trying to convey; second, setting up the notation appropriately.</p>
+<p>Let’s start with the intuition. Suppose we purchase a share of stock, hold it for a few days, and then sell it. Each day we would like to have a sense for how our position faired done for that day, and also in total up to that point. That is precisely what <em>daily PNL</em> and <em>TTD PNL</em> convey.</p>
+<p>The daily PNL of our single share purchase is simply the dollar change in the price of the stock. The cummulative PNL the total amount of dollar change in the price of the stock since the purchase, which is the same as the sum of the daily PNLs.</p>
+<p>Now let’s set up the notation.</p>
 <p>Let <span class="math inline">\(\mathcal{S}\)</span> be a particular stock, and let <span class="math inline">\(t_1, \ldots t_n\)</span> be consecutive trading days. Suppose that we purchase one share of <span class="math inline">\(\mathcal{S}\)</span> in the middle of day <span class="math inline">\(t_1\)</span>, for a purchase price of <span class="math inline">\(S^o\)</span>. Suppose further that we hold that share until day <span class="math inline">\(t_n\)</span>, at which time we sell it for <span class="math inline">\(S^c\)</span>.</p>
 <p>We seek to define the following:</p>
 <p><strong>Daily:</strong> <span class="math inline">\(D_{i}\)</span> - the <em>daily PNL</em> for the trade as of end-of-day <span class="math inline">\(t_i\)</span>.</p>
@@ -346,8 +347,8 @@ C_{i} &amp;= \begin{cases} \sum_{k=1}^{i} D_{k} &amp; i &lt; n \\[10pt] \sum_{k=
 <!-- **Exercise:** Show that both formulations of $D_{i}$ are equivalent. -->
 </div>
 </div>
-<div id="scaling-up" class="section level2">
-<h2><span class="header-section-number">5.3</span> Scaling Up</h2>
+<div id="portfolio-pnl" class="section level2">
+<h2><span class="header-section-number">5.3</span> Portfolio PNL</h2>
 <p>In a professional setting, it is rare that you will calculate the PNL of a single stock trade or options trade. Rather, you will want to calculate the PNL of a portfolio of trades. Conceptually this is quite simple, as the daily PNL of a collection of trades is simply the sum of the daily PNL of the individual trades.</p>
 <p>In the language of mathematics, portfolio pnls are linear combinations of the pnls of trades on individual shares of stocks and options. From a coding perspective, calculating a portfolio PNL from the PNLs of its constituent trades is a simple matter of grouping and aggregation.</p>
 <p>In practice, for large numbers of trades, the only real challenge is that of missing or erroneous price data. But this complexity arise from data integrity, not from the underlying quantititative finance or programming.</p>
@@ -390,7 +391,7 @@ I_{i} = I_{0} + \sum_{k=1}^{i} D_{k}
 <div class="definition">
 <p><span id="def:unnamed-chunk-17" class="definition"><strong>Definition 5.9  (Stock Price Returns)  </strong></span>Let <span class="math inline">\(t_i\)</span> and <span class="math inline">\(t_j\)</span> be tradind days with <span class="math inline">\(0 &lt; i &lt; j\)</span>. The <strong>return</strong> of stock <span class="math inline">\(\mathcal{S}\)</span> between <span class="math inline">\(t_i\)</span> and <span class="math inline">\(t_j\)</span> is denoted <span class="math inline">\(r_{i,j}\)</span> and is defined to be</p>
 <span class="math display">\[\begin{align*}
-r_{i,j} = \frac{S_j - S_i}{S_i} = \frac{S_j}{S_j} - 1.
+r_{i,j} = \frac{S_j - S_i}{S_i} = \frac{S_j}{S_i} - 1.
 \end{align*}\]</span>
 When <span class="math inline">\(j = i + 1\)</span>, meaning that <span class="math inline">\(t_{i}\)</span> and <span class="math inline">\(t_{j}\)</span> are consecutive trading days, then this return is called the <strong>one day return</strong> and is denoted <span class="math inline">\(r_{j}\)</span>.
 </div>
@@ -411,7 +412,8 @@ r_{0,n} = \Bigg( \prod_{k = 1}^{n} \big( 1 + r_k \big) \Bigg) - 1
 </div>
 <div id="volatility" class="section level2">
 <h2><span class="header-section-number">5.5</span> Volatility</h2>
-<p>Both portfolio returns and price returns give a sense for growth or decline of the value of an investment. We will also be concerned with overall variability of portfolios and stock prices. One important measure of this overall variability is the volatility.</p>
+<p>Both portfolio returns and price returns give a sense for growth or decline of the value of an investment - the so called directional movement of the investment.</p>
+<p>We will also be concerned with overall variability of portfolios and stock prices. One important measure of this overall variability is the <em>volatility</em>.</p>
 
 <div class="definition">
 <p><span id="def:unnamed-chunk-19" class="definition"><strong>Definition 5.10  </strong></span>Let <span class="math inline">\(r_{1}, \ldots , r_{n}\)</span> be returns (either portfolio or price) for consecutive trading days <span class="math inline">\(t_1, \ldots t_n\)</span>. Then the volaility of these returns is their annualized standard deviation:</p>
