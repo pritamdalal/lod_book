@@ -1,0 +1,15 @@
+# (PART) Basic Wrangling {-}
+
+# Data Frames
+
+# Summarize
+
+# Subsetting
+
+# Pipes
+
+# Filtering
+
+# Group By
+
+# Scripts and Projects

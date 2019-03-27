@@ -1,0 +1,33 @@
+# (PART) Advanced Topics {-}
+
+
+# Packages
+
+## tidyquant
+
+## bizdays
+
+## fOptions
+
+## RQuantLib
+
+## rugarch
+
+
+
+# Option Prices & Greeks
+
+
+# Implied Volatility
+
+# Regression
+
+# PCA
+
+# GARCH
+
+# Simulation 
+
+## Geometric Brownian Motion
+
+

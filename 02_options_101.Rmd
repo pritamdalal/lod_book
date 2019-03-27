@@ -1,3 +1,5 @@
+# (PART) Finance {-}
+
 # Options 101
 
 The purpose of the chapter is to introduce the rudiments of options.  We start by building intuition, and introduce formalism as necessary.

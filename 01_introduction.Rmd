@@ -1,4 +1,4 @@
-# Introduction
+# Introduction {#finance-intro}
 
 The purpose of this initial chapter is to provide some context and motivation for how and why I wrote this book.  For those of you who want to get to the good stuff, it can safely be skipped.  
 

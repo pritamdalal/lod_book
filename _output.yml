@@ -4,7 +4,7 @@ bookdown::gitbook:
     toc:
       collapse: section
       before: |
-        <li><strong><a href="./">Learning Options from Data</a></strong></li>
+        <li><strong><a href="./">R for Finance</a></strong></li>
       after: |
         <li><a href="https://bookdown.org" target="_blank">Published with bookdown</a></li>
     download: [pdf]

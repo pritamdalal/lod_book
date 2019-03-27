@@ -1,0 +1,15 @@
+# (PART) Visualization {-}
+
+
+# ggplot2
+
+# Line Graphs
+
+# Bar Charts
+
+# Scatter Plots
+
+# Small Multiples
+
+
+
