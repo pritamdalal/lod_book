@@ -1,3 +1,3 @@
-# Learning Options from Data
+# R for Finance
 
-A manual for learning options through wrangling and analysis of options data.
+A book on financial data analysis using R.
